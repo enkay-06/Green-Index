@@ -10,6 +10,10 @@ export default function scoreCalculator(){
         setInputs((prev)=>({...prev, [name]:isNaN(value) ? value:parseFloat(value)}));
         //copies all previous states, takes current state, checks if it's not a number (converts to float if is)
     };
+    const handleSubmit = async()=>{
+        const result = await calculateScore(inputs);
+        setScore(result.score);
     }
 
-    const handleSubmit = async()=>{}
+    
+    };
