@@ -14,6 +14,18 @@ export default function scoreCalculator(){
         const result = await calculateScore(inputs);
         setScore(result.score);
     }
-
-    
-    };
+  return (
+    <div>
+      <h2>Calculate Recyclability Score</h2>
+      <input name="collection" placeholder="Collection (0-1)" onChange={handleChange} />
+      <input name="sorting" placeholder="Sorting (0-1)" onChange={handleChange} />
+      <input name="reprocessing" placeholder="Reprocessing (0-1)" onChange={handleChange} />
+      <input name="material_health" placeholder="Material Health (0-1)" onChange={handleChange} />
+      <input name="melting_point" placeholder="Melting Point (°C)" onChange={handleChange} />
+      <input name="density" placeholder="Density (g/cm³)" onChange={handleChange} />
+      <input name="toxicity" placeholder="Toxicity (Low/High)" onChange={handleChange} />
+      <button onClick={handleSubmit}>Calculate</button>
+      {score !== null && <p>Score: {score}</p>}
+    </div>
+  );
+}
