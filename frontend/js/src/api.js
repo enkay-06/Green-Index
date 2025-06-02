@@ -3,7 +3,7 @@ export async function fetchMaterials() {
     return response.json();
 }
 export async function fetchMaterialDetails(name) {
-  const response = await fetch(`http://localhost:5000/material/${name}`);
+  const response = await fetch(`http://localhost:5000/materials/${name}`);
   return response.json();
 }
 

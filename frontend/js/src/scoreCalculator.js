@@ -1,7 +1,8 @@
-import React, { use, useState } from "react";
+import { useEffect, useState } from "react";
 import { calculateScore } from "./api";
+import "./index.css";
 
-export default function scoreCalculator(){
+export default function ScoreCalculator(){
     const [inputs, setInputs] = useState({});
     const [score, setScore] = useState(null);
 
