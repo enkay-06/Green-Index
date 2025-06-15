@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Index - Create with the Earth in Mind</title>
+    <link rel="stylesheet" href="search.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-brand">Green Index</div>
-        <div class="nav-links">
-            <a href="search.html">Search Materials</a>
-            <a href="rScore.html">Calculate Score</a>
+        <div class="nav-search">
+            <input type="text" id="search-input" placeholder="Search materials...">
+            <button id="search-btn">Search</button>
         </div>
     </nav>
 
@@ -34,30 +35,6 @@
             <button class="cta-button" onclick="window.location.href='rScore.html'">
                 Calculate Recyclability Score
             </button>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="container">
-            <h2>Why Choose Green Index?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Comprehensive Search</h3>
-                    <p>Search through our extensive database of materials and their recyclability properties</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Accurate Scoring</h3>
-                    <p>Get precise recyclability scores based on scientific data and environmental factors</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌱</div>
-                    <h3>Sustainable Future</h3>
-                    <p>Make informed decisions that contribute to a more sustainable and circular economy</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -139,22 +116,6 @@
                 <!-- Carousel Navigation -->
                 <button class="carousel-btn carousel-btn-prev" id="prev-btn">❮</button>
                 <button class="carousel-btn carousel-btn-next" id="next-btn">❯</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Make a Difference?</h2>
-            <p>Start exploring materials and calculating recyclability scores to make more sustainable choices</p>
-            <div class="cta-buttons">
-                <button class="btn-primary" onclick="window.location.href='search.html'">
-                    Search Materials
-                </button>
-                <button class="btn-secondary" onclick="window.location.href='rScore.html'">
-                    Calculate Score
-                </button>
             </div>
         </div>
     </section>
@@ -242,6 +203,22 @@
         function openArticle(url) {
             window.open(url, '_blank');
         }
+
+        // Search functionality
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-input').value;
+            if (searchTerm.trim()) {
+                window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+            } else {
+                window.location.href = 'search.html';
+            }
+        });
+
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('search-btn').click();
+            }
+        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
