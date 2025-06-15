@@ -49,6 +49,12 @@ body {
     color: white;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -84,20 +90,24 @@ body {
 
 @media (max-width: 768px) {
     .navbar {
-        flex-wrap: wrap;
+        flex-direction: column;
         padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .nav-right {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
     }
     
     .nav-links {
-        order: 3;
-        width: 100%;
         justify-content: center;
-        margin-top: 1rem;
         gap: 1rem;
     }
     
     .nav-search {
-        order: 2;
+        justify-self: center;
     }
 }
 
