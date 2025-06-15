@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="material-details.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Details - Green Index</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="search.html" style="color: white; text-decoration: none;">Green Index</a>
+        </div>
+        <div class="nav-search">
+            <input type="text" id="search-input" placeholder="Search materials...">
+            <button id="search-btn">Search</button>
+        </div>
+    </nav>
+
+    <div class="material-container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb">
+            <a href="search.html">Search</a>
+            <span class="separator">></span>
+            <span class="current">Material Details</span>
+        </nav>
+
+        <!-- Material Header -->
+        <header class="material-header">
+            <div class="material-title-section">
+                <h1 id="material-name">PET Bottle</h1>
+                <span class="material-category plastic">Plastic</span>
+                <div class="recyclability-score">
+                    <span class="score-label">Recyclability Score</span>
+                    <div class="score-circle good">
+                        <span class="score-value">7.5</span>
+                        <span class="score-max">/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="material-image">
+                <div class="placeholder-image">
+                    <span>Material Image</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Material Information Sections -->
+        <div class="content-grid">
+            <!-- Basic Properties -->
+            <section class="info-card">
+                <h3>Basic Properties</h3>
+                <div class="property-grid">
+                    <div class="property-item">
+                        <span class="property-label">Material Type:</span>
+                        <span class="property-value">Plastic</span>
+                    </div>
+                    <div class="property-item">
+                        <span class="property-label">Polymer Type:</span>
+                        <span class="property-value">PET (Polyethylene Terephthalate)</span>
+                    </div>
+                    <div class="property-item">
+                        <span class="property-label">Density:</span>
+                        <span class="property-value">1.38 g/cm³</span>
+                    </div>
+                    <div class="property-item">
+                        <span class="property-label">Melting Point:</span>
+                        <span class="property-value">250°C</span>
+                    </div>
+                    <div class="property-item">
+                        <span class="property-label">Additives:</span>
+                        <span class="property-value">Colorants, UV Stabilizers</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recyclability Information -->
+            <section class="info-card">
+                <h3>Recyclability Analysis</h3>
+                <div class="recyclability-details">
+                    <div class="recyclability-item">
+                        <span class="rec-label">Collection Rate:</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                            <span class="progress-text">85%</span>
+                        </div>
+                    </div>
+                    <div class="recyclability-item">
+                        <span class="rec-label">Processing Difficulty:</span>
+                        <div class="difficulty-indicator low">Low</div>
+                    </div>
+                    <div class="recyclability-item">
+                        <span class="rec-label">Market Demand:</span>
+                        <div class="demand-indicator high">High</div>
+                    </div>
+                    <div class="recyclability-item">
+                        <span class="rec-label">Contamination Risk:</span>
+                        <div class="risk-indicator medium">Medium</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Environmental Impact -->
+            <section class="info-card">
+                <h3>Environmental Impact</h3>
+                <div class="environmental-metrics">
+                    <div class="metric-item">
+                        <div class="metric-icon">🌱</div>
+                        <div class="metric-content">
+                            <span class="metric-label">Carbon Footprint</span>
+                            <span class="metric-value">2.1 kg CO₂/kg</span>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-icon">💧</div>
+                        <div class="metric-content">
+                            <span class="metric-label">Water Usage</span>
+                            <span class="metric-value">28 L/kg</span>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-icon">⚡</div>
+                        <div class="metric-content">
+                            <span class="metric-label">Energy Consumption</span>
+                            <span class="metric-value">84 MJ/kg</span>
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-icon">♻️</div>
+                        <div class="metric-content">
+                            <span class="metric-label">Recycling Efficiency</span>
+                            <span class="metric-value">78%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Processing Information -->
+            <section class="info-card">
+                <h3>Processing & Recovery</h3>
+                <div class="processing-info">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Collection & Sorting</h4>
+                            <p>PET bottles are collected through curbside recycling programs and sorted using optical sorting technology.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Cleaning & Preparation</h4>
+                            <p>Labels and caps are removed, bottles are crushed and washed to remove contaminants.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Melting & Reformation</h4>
+                            <p>Clean PET flakes are melted and reformed into new products or recycled into fiber.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common Applications -->
+            <section class="info-card">
+                <h3>Common Applications</h3>
+                <div class="applications-grid">
+                    <div class="application-item">
+                        <div class="app-icon">🍾</div>
+                        <span>Beverage Bottles</span>
+                    </div>
+                    <div class="application-item">
+                        <div class="app-icon">🍽️</div>
+                        <span>Food Containers</span>
+                    </div>
+                    <div class="application-item">
+                        <div class="app-icon">🧴</div>
+                        <span>Personal Care Products</span>
+                    </div>
+                    <div class="application-item">
+                        <div class="app-icon">👕</div>
+                        <span>Textile Fibers</span>
+                    </div>
+                    <div class="application-item">
+                        <div class="app-icon">📦</div>
+                        <span>Packaging Materials</span>
+                    </div>
+                    <div class="application-item">
+                        <div class="app-icon">🏠</div>
+                        <span>Construction Materials</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recycling Guidelines -->
+            <section class="info-card guidelines">
+                <h3>Recycling Guidelines</h3>
+                <div class="guidelines-content">
+                    <div class="guideline-section">
+                        <h4>✅ Do's</h4>
+                        <ul>
+                            <li>Remove caps and lids before recycling</li>
+                            <li>Rinse containers to remove food residue</li>
+                            <li>Check for recycling symbols (1 - PET)</li>
+                            <li>Place in designated recycling bins</li>
+                        </ul>
+                    </div>
+                    <div class="guideline-section">
+                        <h4>❌ Don'ts</h4>
+                        <ul>
+                            <li>Don't include heavily contaminated bottles</li>
+                            <li>Don't crush bottles lengthwise</li>
+                            <li>Don't include non-PET plastic items</li>
+                            <li>Don't put in general waste</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn-primary" onclick="window.history.back()">
+                ← Back to Search
+            </button>
+            <button class="btn-secondary" onclick="window.print()">
+                📄 Print Details
+            </button>
+            <button class="btn-secondary" id="share-btn">
+                📤 Share Material
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Get material info from URL parameters (for future backend integration)
+        const urlParams = new URLSearchParams(window.location.search);
+        const materialId = urlParams.get('id') || 'pet-bottle';
+        const materialName = urlParams.get('name') || 'PET Bottle';
+
+        // Update page title and material name
+        document.title = `${materialName} - Green Index`;
+        document.getElementById('material-name').textContent = materialName;
+
+        // Search functionality
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-input').value;
+            if (searchTerm.trim()) {
+                window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+            } else {
+                window.location.href = 'search.html';
+            }
+        });
+
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('search-btn').click();
+            }
+        });
+
+        // Share functionality
+        document.getElementById('share-btn').addEventListener('click', function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: `${materialName} - Green Index`,
+                    text: `Learn about the recyclability of ${materialName}`,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback: copy URL to clipboard
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Link copied to clipboard!');
+                });
+            }
+        });
+
+        // Simulate loading different materials based on URL parameters
+        // This will be replaced with actual API calls to the backend
+        function loadMaterialData(materialId) {
+            // Placeholder function for future backend integration
+            console.log(`Loading data for material: ${materialId}`);
+            
+            // For now, we'll use the static placeholder data
+            // In the future, this will make an API call to fetch real data
+        }
+
+        // Initialize page
+        loadMaterialData(materialId);
+    </script>
+</body>
+</html>

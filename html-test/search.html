@@ -105,7 +105,7 @@
 
             <div class="results-grid" id="results-container">
                 <!-- Glass Materials -->
-                <div class="result-card glass-material">
+                <div class="result-card glass-material" onclick="openMaterialDetails('soda-lime-glass', 'Soda-Lime Glass')">
                     <h3>Soda-Lime Glass</h3>
                     <p class="material-type">Glass</p>
                     <div class="material-details">
@@ -115,7 +115,7 @@
                     </div>
                 </div>
 
-                <div class="result-card glass-material">
+                <div class="result-card glass-material" onclick="openMaterialDetails('borosilicate-glass', 'Borosilicate Glass')">
                     <h3>Borosilicate Glass</h3>
                     <p class="material-type">Glass</p>
                     <div class="material-details">
@@ -126,7 +126,7 @@
                 </div>
 
                 <!-- Metal Materials -->
-                <div class="result-card metal-material">
+                <div class="result-card metal-material" onclick="openMaterialDetails('aluminum-alloy', 'Aluminum Alloy')">
                     <h3>Aluminum Alloy</h3>
                     <p class="material-type">Metal</p>
                     <div class="material-details">
@@ -137,7 +137,7 @@
                     </div>
                 </div>
 
-                <div class="result-card metal-material">
+                <div class="result-card metal-material" onclick="openMaterialDetails('carbon-steel', 'Steel (Carbon)')">
                     <h3>Steel (Carbon)</h3>
                     <p class="material-type">Metal</p>
                     <div class="material-details">
@@ -148,7 +148,7 @@
                     </div>
                 </div>
 
-                <div class="result-card metal-material">
+                <div class="result-card metal-material" onclick="openMaterialDetails('copper', 'Copper')">
                     <h3>Copper</h3>
                     <p class="material-type">Metal</p>
                     <div class="material-details">
@@ -160,7 +160,7 @@
                 </div>
 
                 <!-- Plastic Materials -->
-                <div class="result-card plastic-material">
+                <div class="result-card plastic-material" onclick="openMaterialDetails('pet-bottle', 'PET Bottle')">
                     <h3>PET Bottle</h3>
                     <p class="material-type">Plastic</p>
                     <div class="material-details">
@@ -172,7 +172,7 @@
                     </div>
                 </div>
 
-                <div class="result-card plastic-material">
+                <div class="result-card plastic-material" onclick="openMaterialDetails('hdpe-container', 'HDPE Container')">
                     <h3>HDPE Container</h3>
                     <p class="material-type">Plastic</p>
                     <div class="material-details">
@@ -184,7 +184,7 @@
                     </div>
                 </div>
 
-                <div class="result-card plastic-material">
+                <div class="result-card plastic-material" onclick="openMaterialDetails('pvc-pipe', 'PVC Pipe')">
                     <h3>PVC Pipe</h3>
                     <p class="material-type">Plastic</p>
                     <div class="material-details">
@@ -196,7 +196,7 @@
                     </div>
                 </div>
 
-                <div class="result-card plastic-material">
+                <div class="result-card plastic-material" onclick="openMaterialDetails('polypropylene-film', 'Polypropylene Film')">
                     <h3>Polypropylene Film</h3>
                     <p class="material-type">Plastic</p>
                     <div class="material-details">
@@ -209,7 +209,7 @@
                 </div>
 
                 <!-- Mixed Materials -->
-                <div class="result-card glass-material">
+                <div class="result-card glass-material" onclick="openMaterialDetails('tempered-glass', 'Tempered Glass')">
                     <h3>Tempered Glass</h3>
                     <p class="material-type">Glass</p>
                     <div class="material-details">
@@ -219,7 +219,7 @@
                     </div>
                 </div>
 
-                <div class="result-card metal-material">
+                <div class="result-card metal-material" onclick="openMaterialDetails('stainless-steel', 'Stainless Steel')">
                     <h3>Stainless Steel</h3>
                     <p class="material-type">Metal</p>
                     <div class="material-details">
@@ -230,7 +230,7 @@
                     </div>
                 </div>
 
-                <div class="result-card plastic-material">
+                <div class="result-card plastic-material" onclick="openMaterialDetails('polystyrene-foam', 'Polystyrene Foam')">
                     <h3>Polystyrene Foam</h3>
                     <p class="material-type">Plastic</p>
                     <div class="material-details">
@@ -318,6 +318,12 @@
                 performSearch();
             });
         });
+
+        // Function to open material details page
+        function openMaterialDetails(materialId, materialName) {
+            const url = `material-details.html?id=${encodeURIComponent(materialId)}&name=${encodeURIComponent(materialName)}`;
+            window.location.href = url;
+        }
     </script>
 </body>
 </html>
