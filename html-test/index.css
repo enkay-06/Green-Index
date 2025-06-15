@@ -1,3 +1,5 @@
+
+
 *{
 /* removes default margin and padding */
     margin: 0;
@@ -112,7 +114,7 @@ ul li a:hover{
 .content{
     width:45%;
     height: 40%;
-    margin-top: 180px;
+    margin-top: 200px;
     margin-left: 740px;
     color: white;
     text-align: right;
@@ -190,14 +192,15 @@ ul li a:hover{
     text-align:center;
     margin-top: 500px;
     background-color: rgb(255, 255, 255);
-    height: 100vh;
+    height: 70vh;
 
     h1{
         font-size: 50px;
         font-family:'Gill Sans', 'sans-serif';
         font-weight: 550;
         margin-top: 1000px;
-        padding-top: 35px;
+        padding-top: 50px;
+        margin-bottom: -100px;
         height: 200px;
         color: rgb(126, 103, 68);
     }
@@ -207,18 +210,76 @@ ul li a:hover{
     width: 75%;
     text-align:center;
     background-color: rgb(94, 73, 53);
-    height: 50vh;
+    height: 10vh;
     align-items: center;
-    h1{
-        font-size:35px;
-        padding-top: 30px;
-        color: white;
-        font-family:'Gill Sans', 'sans-serif';
-        font-weight: 550;
-    }
+
 }
 
  
+
+.carousel-container {
+    overflow: scroll;
+    width: 100%;
+    padding: 40px 0;
+    
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .carousel-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: none;
+
+}
+
+.card {
+    flex: 0 0 300px;
+    background-color: rgb(243, 239, 232);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+    font-family:'Gill Sans', 'sans-serif';
+    color: rgb(94, 73, 53);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: rgb(126, 103, 68);
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.card a {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(126, 103, 68);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.card a:hover {
+    background-color: rgb(94, 73, 53);
+}
+
 
 @media (max-width:1366px){    
     .navbar{
@@ -315,4 +376,3 @@ ul li a:hover{
  
     }
 }
-

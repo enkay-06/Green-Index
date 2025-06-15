@@ -1,6 +1,7 @@
-Material,collection,sorting,reprocessing,materialHealth,meltingPoint,density,toxicity
-PET Plastic,1.0,1.0,1.0,0.8,260,1.38,Low
-PVC,0.5,0.3,0.2,0.4,212,1.45,High
-Aluminum,1.0,1.0,1.0,0.95,660,2.7,Low
-Glass,0.9,0.9,0.8,0.85,1400,2.5,Low
-HDPE Plastic,1.0,1.0,0.9,0.75,130,0.95,Low
+Material,meltingPoint,thermalStability,magnetic,polymerType,additives
+PET Plastic,260,Yes,No,PET,No
+PVC,212,Yes,No,PVC,Yes
+Aluminum,660,Yes,No,Metal,No
+Steel,1538,Yes,Yes,Metal,No
+Glass,1400,Yes,No,NonPolymer,No
+HDPE Plastic,130,No,No,HDPE,No
