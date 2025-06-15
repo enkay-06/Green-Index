@@ -104,150 +104,171 @@
             </div>
 
             <div class="results-grid" id="results-container">
-                <!-- Glass Materials -->
-                <div class="result-card glass-material" onclick="openMaterialDetails('soda-lime-glass', 'Soda-Lime Glass')">
-                    <h3>Soda-Lime Glass</h3>
-                    <p class="material-type">Glass</p>
-                    <div class="material-details">
-                        <span>Thermal Stability: 573°C</span>
-                        <span>Recyclability: High</span>
-                        <span>Common Uses: Bottles, Windows</span>
-                    </div>
-                </div>
-
-                <div class="result-card glass-material" onclick="openMaterialDetails('borosilicate-glass', 'Borosilicate Glass')">
-                    <h3>Borosilicate Glass</h3>
-                    <p class="material-type">Glass</p>
-                    <div class="material-details">
-                        <span>Thermal Stability: 820°C</span>
-                        <span>Recyclability: High</span>
-                        <span>Common Uses: Laboratory Equipment</span>
-                    </div>
-                </div>
-
-                <!-- Metal Materials -->
-                <div class="result-card metal-material" onclick="openMaterialDetails('aluminum-alloy', 'Aluminum Alloy')">
-                    <h3>Aluminum Alloy</h3>
-                    <p class="material-type">Metal</p>
-                    <div class="material-details">
-                        <span>Magnetism: Non-ferrous</span>
-                        <span>Melting Point: 660°C</span>
-                        <span>Recyclability: Excellent</span>
-                        <span>Common Uses: Cans, Automotive</span>
-                    </div>
-                </div>
-
-                <div class="result-card metal-material" onclick="openMaterialDetails('carbon-steel', 'Steel (Carbon)')">
-                    <h3>Steel (Carbon)</h3>
-                    <p class="material-type">Metal</p>
-                    <div class="material-details">
-                        <span>Magnetism: Ferrous</span>
-                        <span>Melting Point: 1500°C</span>
-                        <span>Recyclability: Excellent</span>
-                        <span>Common Uses: Construction, Automotive</span>
-                    </div>
-                </div>
-
-                <div class="result-card metal-material" onclick="openMaterialDetails('copper', 'Copper')">
-                    <h3>Copper</h3>
-                    <p class="material-type">Metal</p>
-                    <div class="material-details">
-                        <span>Magnetism: Non-ferrous</span>
-                        <span>Melting Point: 1085°C</span>
-                        <span>Recyclability: Excellent</span>
-                        <span>Common Uses: Wiring, Plumbing</span>
-                    </div>
-                </div>
-
-                <!-- Plastic Materials -->
-                <div class="result-card plastic-material" onclick="openMaterialDetails('pet-bottle', 'PET Bottle')">
-                    <h3>PET Bottle</h3>
-                    <p class="material-type">Plastic</p>
-                    <div class="material-details">
-                        <span>Polymer: PET</span>
-                        <span>Melting Point: 250°C</span>
-                        <span>Density: 1.38 g/cm³</span>
-                        <span>Additives: Colorants</span>
-                        <span>Recyclability: Good</span>
-                    </div>
-                </div>
-
-                <div class="result-card plastic-material" onclick="openMaterialDetails('hdpe-container', 'HDPE Container')">
-                    <h3>HDPE Container</h3>
-                    <p class="material-type">Plastic</p>
-                    <div class="material-details">
-                        <span>Polymer: HDPE</span>
-                        <span>Melting Point: 130°C</span>
-                        <span>Density: 0.95 g/cm³</span>
-                        <span>Additives: Stabilizers</span>
-                        <span>Recyclability: Good</span>
-                    </div>
-                </div>
-
-                <div class="result-card plastic-material" onclick="openMaterialDetails('pvc-pipe', 'PVC Pipe')">
-                    <h3>PVC Pipe</h3>
-                    <p class="material-type">Plastic</p>
-                    <div class="material-details">
-                        <span>Polymer: PVC</span>
-                        <span>Melting Point: 180°C</span>
-                        <span>Density: 1.4 g/cm³</span>
-                        <span>Additives: Plasticizers</span>
-                        <span>Recyclability: Limited</span>
-                    </div>
-                </div>
-
-                <div class="result-card plastic-material" onclick="openMaterialDetails('polypropylene-film', 'Polypropylene Film')">
-                    <h3>Polypropylene Film</h3>
-                    <p class="material-type">Plastic</p>
-                    <div class="material-details">
-                        <span>Polymer: PP</span>
-                        <span>Melting Point: 165°C</span>
-                        <span>Density: 0.9 g/cm³</span>
-                        <span>Additives: None</span>
-                        <span>Recyclability: Good</span>
-                    </div>
-                </div>
-
-                <!-- Mixed Materials -->
-                <div class="result-card glass-material" onclick="openMaterialDetails('tempered-glass', 'Tempered Glass')">
-                    <h3>Tempered Glass</h3>
-                    <p class="material-type">Glass</p>
-                    <div class="material-details">
-                        <span>Thermal Stability: 600°C</span>
-                        <span>Recyclability: Moderate</span>
-                        <span>Common Uses: Phone Screens, Auto Glass</span>
-                    </div>
-                </div>
-
-                <div class="result-card metal-material" onclick="openMaterialDetails('stainless-steel', 'Stainless Steel')">
-                    <h3>Stainless Steel</h3>
-                    <p class="material-type">Metal</p>
-                    <div class="material-details">
-                        <span>Magnetism: Ferrous</span>
-                        <span>Melting Point: 1400°C</span>
-                        <span>Recyclability: Excellent</span>
-                        <span>Common Uses: Cookware, Medical</span>
-                    </div>
-                </div>
-
-                <div class="result-card plastic-material" onclick="openMaterialDetails('polystyrene-foam', 'Polystyrene Foam')">
-                    <h3>Polystyrene Foam</h3>
-                    <p class="material-type">Plastic</p>
-                    <div class="material-details">
-                        <span>Polymer: PS</span>
-                        <span>Melting Point: 240°C</span>
-                        <span>Density: 0.05 g/cm³</span>
-                        <span>Additives: None</span>
-                        <span>Recyclability: Poor</span>
-                    </div>
-                </div>
+                <!-- Results will be loaded from CSV data -->
             </div>
         </main>
     </div>
 
     <script>
+        // Global variables
+        let materialsData = [];
+        let filteredMaterials = [];
+
+        // Load materials data from CSV
+        async function loadMaterialsData() {
+            try {
+                const response = await fetch('materialsData.csv');
+                const csvText = await response.text();
+                materialsData = parseCSV(csvText);
+                filteredMaterials = [...materialsData];
+                displayMaterials(filteredMaterials);
+                updateResultsCount(filteredMaterials.length);
+            } catch (error) {
+                console.error('Error loading materials data:', error);
+                // Fallback: show error message
+                document.getElementById('results-container').innerHTML = 
+                    '<p style="text-align: center; color: #666;">Error loading materials data. Please refresh the page.</p>';
+            }
+        }
+
+        // Parse CSV data
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            const headers = lines[0].split(',');
+            const materials = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',');
+                const material = {};
+                
+                headers.forEach((header, index) => {
+                    material[header.trim()] = values[index] ? values[index].trim() : '';
+                });
+                
+                materials.push(material);
+            }
+            
+            return materials;
+        }
+
+        // Calculate recyclability score based on material properties
+        function calculateRecyclabilityScore(material) {
+            let score = 0;
+
+            // Category scoring (0-3 points)
+            const categoryScores = {
+                'Metal': 3.0,
+                'Polymer': 2.0,
+                'Glass': 2.5,
+                'Ceramic': 1.0,
+                'Composite': 1.5
+            };
+            score += categoryScores[material.Category] || 0;
+
+            // Thermal stability scoring (0-2 points)
+            const thermalScores = {
+                'Low': 1.0,
+                'Moderate': 2.0,
+                'High': 2.0,
+                'Very High': 1.5 // Very high can be harder to process
+            };
+            score += thermalScores[material['Thermal Stability']] || 0;
+
+            // Toxicity scoring (0-2 points, inverted)
+            const toxicityScores = {
+                'Low': 2.0,
+                'Moderate': 1.5,
+                'High': 0.5,
+                'Very High': 0.0
+            };
+            score += toxicityScores[material.Toxicity] || 0;
+
+            // Processing advantages (0-2 points)
+            let processingScore = 1.0;
+            if (material.Category === 'Metal' && material.Magnetism === 'Ferrous') {
+                processingScore += 0.5; // Magnetic separation advantage
+            }
+            if (material.Category === 'Polymer' && material.Additives === 'No') {
+                processingScore += 0.5; // Easier to recycle without additives
+            }
+            score += Math.min(processingScore, 2.0);
+
+            // Market demand (0-1 point)
+            let demandScore = 0.5;
+            if (['Metal', 'Glass'].includes(material.Category)) {
+                demandScore = 1.0;
+            }
+            score += demandScore;
+
+            return Math.min(Math.round(score * 10) / 10, 10); // Round to 1 decimal place, max 10
+        }
+
+        // Get recyclability rating text
+        function getRecyclabilityRating(score) {
+            if (score >= 8) return 'Excellent';
+            if (score >= 6) return 'Good';
+            if (score >= 4) return 'Moderate';
+            return 'Poor';
+        }
+
+        // Display materials in the grid
+        function displayMaterials(materials) {
+            const container = document.getElementById('results-container');
+            
+            if (materials.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666; grid-column: 1 / -1;">No materials found matching your criteria.</p>';
+                return;
+            }
+
+            container.innerHTML = materials.map(material => {
+                const materialId = material.Material.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                const categoryClass = material.Category.toLowerCase();
+                const recyclabilityScore = calculateRecyclabilityScore(material);
+                const recyclabilityRating = getRecyclabilityRating(recyclabilityScore);
+                
+                // Create property details based on category
+                let details = [];
+                
+                if (material.Category === 'Metal') {
+                    if (material.Magnetism) details.push(`Magnetism: ${material.Magnetism}`);
+                    if (material['Melting Point']) details.push(`Melting Point: ${material['Melting Point']}°C`);
+                } else if (material.Category === 'Polymer') {
+                    if (material['Polymer Type']) details.push(`Polymer: ${material['Polymer Type']}`);
+                    if (material['Melting Point']) details.push(`Melting Point: ${material['Melting Point']}°C`);
+                    if (material.Additives) details.push(`Additives: ${material.Additives}`);
+                } else if (material.Category === 'Glass' || material.Category === 'Ceramic') {
+                    if (material['Melting Point']) details.push(`Melting Point: ${material['Melting Point']}°C`);
+                }
+                
+                // Common properties
+                if (material['Thermal Stability']) details.push(`Thermal Stability: ${material['Thermal Stability']}`);
+                if (material.Density) details.push(`Density: ${material.Density} g/cm³`);
+                if (material.Toxicity) details.push(`Toxicity: ${material.Toxicity}`);
+                
+                details.push(`Recyclability Score: ${recyclabilityScore}/10 (${recyclabilityRating})`);
+
+                return `
+                    <div class="result-card ${categoryClass}-material" onclick="openMaterialDetails('${materialId}', '${material.Material}')">
+                        <h3>${material.Material}</h3>
+                        <p class="material-type">${material.Category}</p>
+                        <div class="material-details">
+                            ${details.map(detail => `<span>${detail}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update results count
+        function updateResultsCount(count) {
+            document.getElementById('results-count').textContent = `${count} materials found`;
+        }
+
         // Filter functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Load materials data when page loads
+            loadMaterialsData();
+
             const materialCheckboxes = document.querySelectorAll('.material-checkbox');
             const sliders = document.querySelectorAll('input[type="range"]');
             
@@ -257,6 +278,7 @@
                     const materialType = this.id.replace('-filter', '');
                     const options = document.getElementById(materialType + '-options');
                     options.style.display = this.checked ? 'block' : 'none';
+                    applyFilters();
                 });
             });
 
@@ -269,7 +291,13 @@
                         let unit = this.id.includes('density') ? ' g/cm³' : '°C';
                         valueSpan.textContent = this.value + unit;
                     }
+                    applyFilters();
                 });
+            });
+
+            // Handle select changes
+            document.querySelectorAll('select').forEach(select => {
+                select.addEventListener('change', applyFilters);
             });
 
             // Search functionality
@@ -277,24 +305,17 @@
             const searchBtn = document.getElementById('search-btn');
             
             function performSearch() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const cards = document.querySelectorAll('.result-card');
-                let visibleCount = 0;
-                
-                cards.forEach(card => {
-                    const title = card.querySelector('h3').textContent.toLowerCase();
-                    const isVisible = title.includes(searchTerm) || searchTerm === '';
-                    card.style.display = isVisible ? 'block' : 'none';
-                    if (isVisible) visibleCount++;
-                });
-                
-                document.getElementById('results-count').textContent = `${visibleCount} materials found`;
+                applyFilters();
             }
 
             searchBtn.addEventListener('click', performSearch);
             searchInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') performSearch();
             });
+            searchInput.addEventListener('input', performSearch);
+
+            // Apply filters button
+            document.getElementById('apply-filters').addEventListener('click', applyFilters);
 
             // Clear filters
             document.getElementById('clear-filters').addEventListener('click', function() {
@@ -315,9 +336,86 @@
                 });
                 
                 searchInput.value = '';
-                performSearch();
+                filteredMaterials = [...materialsData];
+                displayMaterials(filteredMaterials);
+                updateResultsCount(filteredMaterials.length);
             });
         });
+
+        // Apply all active filters
+        function applyFilters() {
+            if (materialsData.length === 0) return;
+
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            
+            // Get active category filters
+            const activeCategories = [];
+            const materialCheckboxes = document.querySelectorAll('.material-checkbox:checked');
+            materialCheckboxes.forEach(cb => {
+                const categoryType = cb.id.replace('-filter', '');
+                if (categoryType === 'glass') activeCategories.push('Glass');
+                else if (categoryType === 'metal') activeCategories.push('Metal');
+                else if (categoryType === 'plastic') activeCategories.push('Polymer');
+            });
+
+            // Filter materials
+            filteredMaterials = materialsData.filter(material => {
+                // Search term filter
+                if (searchTerm && !material.Material.toLowerCase().includes(searchTerm)) {
+                    return false;
+                }
+
+                // Category filter
+                if (activeCategories.length > 0 && !activeCategories.includes(material.Category)) {
+                    return false;
+                }
+
+                // Category-specific filters
+                if (activeCategories.includes('Glass')) {
+                    const thermalStability = parseFloat(document.getElementById('thermal-stability').value);
+                    if (thermalStability && material['Melting Point']) {
+                        const materialTemp = parseFloat(material['Melting Point']);
+                        if (materialTemp < thermalStability) return false;
+                    }
+                }
+
+                if (activeCategories.includes('Metal')) {
+                    const magnetismSelect = document.getElementById('magnetism-select').value;
+                    if (magnetismSelect !== 'any' && material.Magnetism !== magnetismSelect) {
+                        return false;
+                    }
+                    
+                    const meltingPoint = parseFloat(document.getElementById('metal-melting-point').value);
+                    if (meltingPoint && material['Melting Point']) {
+                        const materialTemp = parseFloat(material['Melting Point']);
+                        if (Math.abs(materialTemp - meltingPoint) > 200) return false;
+                    }
+                }
+
+                if (activeCategories.includes('Polymer')) {
+                    const polymerType = document.getElementById('polymer-type').value;
+                    if (polymerType !== 'any' && material['Polymer Type'] !== polymerType) {
+                        return false;
+                    }
+                    
+                    const additives = document.getElementById('additives').value;
+                    if (additives !== 'any' && material.Additives !== additives) {
+                        return false;
+                    }
+                    
+                    const density = parseFloat(document.getElementById('density').value);
+                    if (density && material.Density) {
+                        const materialDensity = parseFloat(material.Density);
+                        if (Math.abs(materialDensity - density) > 0.5) return false;
+                    }
+                }
+
+                return true;
+            });
+
+            displayMaterials(filteredMaterials);
+            updateResultsCount(filteredMaterials.length);
+        }
 
         // Function to open material details page
         function openMaterialDetails(materialId, materialName) {

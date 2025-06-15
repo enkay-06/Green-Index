@@ -1,15 +1,507 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
-    <title>Green Index</title>
-    <link rel= "stylesheet" href="rScore.css">
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="rScore.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recyclability Calculator - Green Index</title>
 </head>
 <body>
-    <div class="icon">
-        <h2 class="logo">Green Index</h2>
-        <a href="parallax.html"></a>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="search.html" style="color: white; text-decoration: none;">Green Index</a>
+        </div>
+        <div class="nav-search">
+            <input type="text" id="search-input" placeholder="Search materials...">
+            <button id="search-btn">Search</button>
+        </div>
+    </nav>
+
+    <div class="calculator-container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb">
+            <a href="search.html">Search</a>
+            <span class="separator">></span>
+            <span class="current">Recyclability Calculator</span>
+        </nav>
+
+        <!-- Calculator Header -->
+        <header class="calculator-header">
+            <h1>Recyclability Calculator</h1>
+            <p>Enter material properties to calculate its recyclability score</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Input Form -->
+            <section class="input-section">
+                <div class="form-card">
+                    <h3>Material Properties</h3>
+                    
+                    <!-- Material Name -->
+                    <div class="input-group">
+                        <label for="material-name">Material Name</label>
+                        <input type="text" id="material-name" placeholder="Enter material name">
+                    </div>
+
+                    <!-- Category Selection -->
+                    <div class="input-group">
+                        <label for="category-select">Material Category</label>
+                        <select id="category-select">
+                            <option value="">Select Category</option>
+                            <option value="Metal">Metal</option>
+                            <option value="Polymer">Polymer</option>
+                            <option value="Ceramic">Ceramic</option>
+                            <option value="Glass">Glass</option>
+                            <option value="Composite">Composite</option>
+                        </select>
+                    </div>
+
+                    <!-- Common Properties -->
+                    <div class="input-group">
+                        <label for="thermal-stability">Thermal Stability</label>
+                        <select id="thermal-stability">
+                            <option value="">Select Stability</option>
+                            <option value="Low">Low</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="High">High</option>
+                            <option value="Very High">Very High</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="density">Density (g/cm³)</label>
+                        <input type="number" id="density" placeholder="Enter density" step="0.01" min="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="toxicity">Toxicity Level</label>
+                        <select id="toxicity">
+                            <option value="">Select Toxicity</option>
+                            <option value="Low">Low</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="High">High</option>
+                            <option value="Very High">Very High</option>
+                        </select>
+                    </div>
+
+                    <!-- Metal-specific Properties -->
+                    <div id="metal-properties" class="category-properties" style="display: none;">
+                        <h4>Metal Properties</h4>
+                        <div class="input-group">
+                            <label for="magnetism">Magnetism</label>
+                            <select id="magnetism">
+                                <option value="">Select Type</option>
+                                <option value="Ferrous">Ferrous</option>
+                                <option value="Non-ferrous">Non-ferrous</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="melting-point">Melting Point (°C)</label>
+                            <input type="number" id="melting-point" placeholder="Enter melting point" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Polymer-specific Properties -->
+                    <div id="polymer-properties" class="category-properties" style="display: none;">
+                        <h4>Polymer Properties</h4>
+                        <div class="input-group">
+                            <label for="polymer-type">Polymer Type</label>
+                            <select id="polymer-type">
+                                <option value="">Select Type</option>
+                                <option value="PMMA">PMMA</option>
+                                <option value="Epoxy">Epoxy</option>
+                                <option value="Melamine">Melamine</option>
+                                <option value="Nylon">Nylon</option>
+                                <option value="PC">PC</option>
+                                <option value="Polyester">Polyester</option>
+                                <option value="HDPE">HDPE</option>
+                                <option value="LDPE">LDPE</option>
+                                <option value="PET">PET</option>
+                                <option value="POM">POM</option>
+                                <option value="PP">PP</option>
+                                <option value="PS">PS</option>
+                                <option value="PTFE">PTFE</option>
+                                <option value="PVC">PVC</option>
+                                <option value="Butyl">Butyl</option>
+                                <option value="Natural">Natural</option>
+                                <option value="NBR">NBR</option>
+                                <option value="PU">PU</option>
+                                <option value="Silicone">Silicone</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="additives">Contains Additives</label>
+                            <select id="additives">
+                                <option value="">Select Option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="polymer-melting-point">Melting Point (°C)</label>
+                            <input type="number" id="polymer-melting-point" placeholder="Enter melting point (if applicable)" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Ceramic-specific Properties -->
+                    <div id="ceramic-properties" class="category-properties" style="display: none;">
+                        <h4>Ceramic Properties</h4>
+                        <div class="input-group">
+                            <label for="ceramic-melting-point">Melting Point (°C)</label>
+                            <input type="number" id="ceramic-melting-point" placeholder="Enter melting point (if applicable)" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Glass-specific Properties -->
+                    <div id="glass-properties" class="category-properties" style="display: none;">
+                        <h4>Glass Properties</h4>
+                        <div class="input-group">
+                            <label for="glass-melting-point">Melting Point (°C)</label>
+                            <input type="number" id="glass-melting-point" placeholder="Enter melting point" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Composite-specific Properties -->
+                    <div id="composite-properties" class="category-properties" style="display: none;">
+                        <h4>Composite Properties</h4>
+                        <div class="input-group">
+                            <label for="composite-additives">Contains Additives</label>
+                            <select id="composite-additives">
+                                <option value="">Select Option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="composite-melting-point">Processing Temperature (°C)</label>
+                            <input type="number" id="composite-melting-point" placeholder="Enter processing temperature" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Calculate Button -->
+                    <div class="button-group">
+                        <button id="calculate-btn" class="btn-primary">Calculate Recyclability Score</button>
+                        <button id="reset-btn" class="btn-secondary">Reset Form</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section">
+                <div class="results-card" id="results-container" style="display: none;">
+                    <h3>Recyclability Assessment</h3>
+                    
+                    <div class="score-display">
+                        <div class="score-circle" id="score-circle">
+                            <span class="score-value" id="score-value">0</span>
+                            <span class="score-max">/10</span>
+                        </div>
+                        <div class="score-info">
+                            <h4 id="score-rating">Rating</h4>
+                            <p id="score-description">Description</p>
+                        </div>
+                    </div>
+
+                    <div class="score-breakdown">
+                        <h4>Score Breakdown</h4>
+                        <div class="breakdown-grid">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Material Category:</span>
+                                <span class="breakdown-value" id="category-score">-</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Thermal Properties:</span>
+                                <span class="breakdown-value" id="thermal-score">-</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Toxicity Impact:</span>
+                                <span class="breakdown-value" id="toxicity-score">-</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Processing Ease:</span>
+                                <span class="breakdown-value" id="processing-score">-</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Market Demand:</span>
+                                <span class="breakdown-value" id="demand-score">-</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Contamination Risk:</span>
+                                <span class="breakdown-value" id="contamination-score">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recommendations">
+                        <h4>Recycling Recommendations</h4>
+                        <div id="recommendations-list">
+                            <!-- Recommendations will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn-primary" id="save-result-btn">Save Result</button>
+                        <button class="btn-secondary" id="print-result-btn">Print Assessment</button>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
+
+    <script>
+        // Category property visibility handler
+        document.getElementById('category-select').addEventListener('change', function() {
+            const category = this.value;
+            const allProperties = document.querySelectorAll('.category-properties');
+            
+            // Hide all category-specific properties
+            allProperties.forEach(prop => prop.style.display = 'none');
+            
+            // Show relevant properties based on category
+            if (category === 'Metal') {
+                document.getElementById('metal-properties').style.display = 'block';
+            } else if (category === 'Polymer') {
+                document.getElementById('polymer-properties').style.display = 'block';
+            } else if (category === 'Ceramic') {
+                document.getElementById('ceramic-properties').style.display = 'block';
+            } else if (category === 'Glass') {
+                document.getElementById('glass-properties').style.display = 'block';
+            } else if (category === 'Composite') {
+                document.getElementById('composite-properties').style.display = 'block';
+            }
+        });
+
+        // Search functionality
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-input').value;
+            if (searchTerm.trim()) {
+                window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+            } else {
+                window.location.href = 'search.html';
+            }
+        });
+
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('search-btn').click();
+            }
+        });
+
+        // Calculate recyclability score
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            const materialData = collectFormData();
+            if (validateFormData(materialData)) {
+                const score = calculateRecyclabilityScore(materialData);
+                displayResults(score, materialData);
+            }
+        });
+
+        // Reset form
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            document.querySelector('.form-card').reset();
+            document.querySelectorAll('.category-properties').forEach(prop => prop.style.display = 'none');
+            document.getElementById('results-container').style.display = 'none';
+        });
+
+        // Print results
+        document.getElementById('print-result-btn').addEventListener('click', function() {
+            window.print();
+        });
+
+        // Save results (placeholder for future implementation)
+        document.getElementById('save-result-btn').addEventListener('click', function() {
+            alert('Save functionality will be implemented with backend integration');
+        });
+
+        function collectFormData() {
+            const category = document.getElementById('category-select').value;
+            const data = {
+                name: document.getElementById('material-name').value,
+                category: category,
+                thermalStability: document.getElementById('thermal-stability').value,
+                density: parseFloat(document.getElementById('density').value) || 0,
+                toxicity: document.getElementById('toxicity').value
+            };
+
+            // Add category-specific properties
+            if (category === 'Metal') {
+                data.magnetism = document.getElementById('magnetism').value;
+                data.meltingPoint = parseFloat(document.getElementById('melting-point').value) || 0;
+            } else if (category === 'Polymer') {
+                data.polymerType = document.getElementById('polymer-type').value;
+                data.additives = document.getElementById('additives').value;
+                data.meltingPoint = parseFloat(document.getElementById('polymer-melting-point').value) || 0;
+            } else if (category === 'Ceramic') {
+                data.meltingPoint = parseFloat(document.getElementById('ceramic-melting-point').value) || 0;
+            } else if (category === 'Glass') {
+                data.meltingPoint = parseFloat(document.getElementById('glass-melting-point').value) || 0;
+            } else if (category === 'Composite') {
+                data.additives = document.getElementById('composite-additives').value;
+                data.meltingPoint = parseFloat(document.getElementById('composite-melting-point').value) || 0;
+            }
+
+            return data;
+        }
+
+        function validateFormData(data) {
+            if (!data.name || !data.category || !data.thermalStability || !data.toxicity) {
+                alert('Please fill in all required fields');
+                return false;
+            }
+            return true;
+        }
+
+        function calculateRecyclabilityScore(data) {
+            let score = 0;
+            const breakdown = {};
+
+            // Category scoring (0-2 points)
+            const categoryScores = {
+                'Metal': 2.0,
+                'Polymer': 1.5,
+                'Glass': 1.8,
+                'Ceramic': 0.5,
+                'Composite': 0.8
+            };
+            breakdown.category = categoryScores[data.category] || 0;
+            score += breakdown.category;
+
+            // Thermal stability scoring (0-2 points)
+            const thermalScores = {
+                'Low': 0.5,
+                'Moderate': 1.0,
+                'High': 1.5,
+                'Very High': 1.0 // Very high can be harder to process
+            };
+            breakdown.thermal = thermalScores[data.thermalStability] || 0;
+            score += breakdown.thermal;
+
+            // Toxicity scoring (0-2 points, inverted - lower toxicity = higher score)
+            const toxicityScores = {
+                'Low': 2.0,
+                'Moderate': 1.5,
+                'High': 0.5,
+                'Very High': 0.0
+            };
+            breakdown.toxicity = toxicityScores[data.toxicity] || 0;
+            score += breakdown.toxicity;
+
+            // Processing ease (0-2 points)
+            let processingScore = 1.0; // Base score
+            if (data.category === 'Metal' && data.magnetism === 'Ferrous') {
+                processingScore += 0.5; // Magnetic separation advantage
+            }
+            if (data.category === 'Polymer' && data.additives === 'No') {
+                processingScore += 0.5; // Easier to recycle without additives
+            }
+            breakdown.processing = Math.min(processingScore, 2.0);
+            score += breakdown.processing;
+
+            // Market demand (0-1 point)
+            let demandScore = 0.5; // Base score
+            if (['Metal', 'Glass'].includes(data.category)) {
+                demandScore = 1.0; // High demand materials
+            }
+            breakdown.demand = demandScore;
+            score += breakdown.demand;
+
+            // Contamination risk (0-1 point, inverted)
+            let contaminationScore = 0.5; // Base score
+            if (data.toxicity === 'Low' && data.category !== 'Composite') {
+                contaminationScore = 1.0; // Lower contamination risk
+            }
+            breakdown.contamination = contaminationScore;
+            score += breakdown.contamination;
+
+            return {
+                total: Math.min(score, 10),
+                breakdown: breakdown
+            };
+        }
+
+        function displayResults(scoreData, materialData) {
+            const resultsContainer = document.getElementById('results-container');
+            const scoreValue = document.getElementById('score-value');
+            const scoreCircle = document.getElementById('score-circle');
+            const scoreRating = document.getElementById('score-rating');
+            const scoreDescription = document.getElementById('score-description');
+
+            // Display total score
+            const totalScore = scoreData.total.toFixed(1);
+            scoreValue.textContent = totalScore;
+
+            // Set score circle color and rating
+            let ratingClass, ratingText, description;
+            if (totalScore >= 8) {
+                ratingClass = 'excellent';
+                ratingText = 'Excellent';
+                description = 'This material has excellent recyclability potential with minimal processing challenges.';
+            } else if (totalScore >= 6) {
+                ratingClass = 'good';
+                ratingText = 'Good';
+                description = 'This material has good recyclability potential with some processing considerations.';
+            } else if (totalScore >= 4) {
+                ratingClass = 'moderate';
+                ratingText = 'Moderate';
+                description = 'This material has moderate recyclability potential but may face significant challenges.';
+            } else {
+                ratingClass = 'poor';
+                ratingText = 'Poor';
+                description = 'This material has poor recyclability potential and significant processing challenges.';
+            }
+
+            scoreCircle.className = `score-circle ${ratingClass}`;
+            scoreRating.textContent = ratingText;
+            scoreDescription.textContent = description;
+
+            // Display breakdown scores
+            document.getElementById('category-score').textContent = scoreData.breakdown.category.toFixed(1);
+            document.getElementById('thermal-score').textContent = scoreData.breakdown.thermal.toFixed(1);
+            document.getElementById('toxicity-score').textContent = scoreData.breakdown.toxicity.toFixed(1);
+            document.getElementById('processing-score').textContent = scoreData.breakdown.processing.toFixed(1);
+            document.getElementById('demand-score').textContent = scoreData.breakdown.demand.toFixed(1);
+            document.getElementById('contamination-score').textContent = scoreData.breakdown.contamination.toFixed(1);
+
+            // Generate recommendations
+            generateRecommendations(materialData, scoreData);
+
+            // Show results
+            resultsContainer.style.display = 'block';
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generateRecommendations(materialData, scoreData) {
+            const recommendationsList = document.getElementById('recommendations-list');
+            const recommendations = [];
+
+            if (materialData.toxicity === 'High' || materialData.toxicity === 'Very High') {
+                recommendations.push('⚠️ Special handling required due to high toxicity - ensure proper safety protocols');
+            }
+
+            if (materialData.category === 'Metal' && materialData.magnetism === 'Ferrous') {
+                recommendations.push('✅ Can utilize magnetic separation for efficient sorting');
+            }
+
+            if (materialData.category === 'Polymer' && materialData.additives === 'Yes') {
+                recommendations.push('⚠️ May require additive removal or separation before recycling');
+            }
+
+            if (scoreData.total < 4) {
+                recommendations.push('💡 Consider alternative disposal methods or specialized recycling facilities');
+            }
+
+            if (materialData.category === 'Composite') {
+                recommendations.push('⚠️ Complex material separation may be required - consider specialized recycling programs');
+            }
+
+            if (recommendations.length === 0) {
+                recommendations.push('✅ Standard recycling processes should be suitable for this material');
+            }
+
+            recommendationsList.innerHTML = recommendations.map(rec => `<p class="recommendation-item">${rec}</p>`).join('');
+        }
+    </script>
 </body>
 </html>

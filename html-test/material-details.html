@@ -30,12 +30,12 @@
         <!-- Material Header -->
         <header class="material-header">
             <div class="material-title-section">
-                <h1 id="material-name">PET Bottle</h1>
-                <span class="material-category plastic">Plastic</span>
+                <h1 id="material-name">Loading...</h1>
+                <span class="material-category" id="material-category">Loading...</span>
                 <div class="recyclability-score">
                     <span class="score-label">Recyclability Score</span>
-                    <div class="score-circle good">
-                        <span class="score-value">7.5</span>
+                    <div class="score-circle" id="score-circle">
+                        <span class="score-value" id="score-value">-</span>
                         <span class="score-max">/10</span>
                     </div>
                 </div>
@@ -52,172 +52,48 @@
             <!-- Basic Properties -->
             <section class="info-card">
                 <h3>Basic Properties</h3>
-                <div class="property-grid">
-                    <div class="property-item">
-                        <span class="property-label">Material Type:</span>
-                        <span class="property-value">Plastic</span>
-                    </div>
-                    <div class="property-item">
-                        <span class="property-label">Polymer Type:</span>
-                        <span class="property-value">PET (Polyethylene Terephthalate)</span>
-                    </div>
-                    <div class="property-item">
-                        <span class="property-label">Density:</span>
-                        <span class="property-value">1.38 g/cm³</span>
-                    </div>
-                    <div class="property-item">
-                        <span class="property-label">Melting Point:</span>
-                        <span class="property-value">250°C</span>
-                    </div>
-                    <div class="property-item">
-                        <span class="property-label">Additives:</span>
-                        <span class="property-value">Colorants, UV Stabilizers</span>
-                    </div>
+                <div class="property-grid" id="basic-properties">
+                    <!-- Properties will be loaded dynamically -->
                 </div>
             </section>
 
             <!-- Recyclability Information -->
             <section class="info-card">
                 <h3>Recyclability Analysis</h3>
-                <div class="recyclability-details">
-                    <div class="recyclability-item">
-                        <span class="rec-label">Collection Rate:</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 85%"></div>
-                            <span class="progress-text">85%</span>
-                        </div>
-                    </div>
-                    <div class="recyclability-item">
-                        <span class="rec-label">Processing Difficulty:</span>
-                        <div class="difficulty-indicator low">Low</div>
-                    </div>
-                    <div class="recyclability-item">
-                        <span class="rec-label">Market Demand:</span>
-                        <div class="demand-indicator high">High</div>
-                    </div>
-                    <div class="recyclability-item">
-                        <span class="rec-label">Contamination Risk:</span>
-                        <div class="risk-indicator medium">Medium</div>
-                    </div>
+                <div class="recyclability-details" id="recyclability-analysis">
+                    <!-- Analysis will be loaded dynamically -->
                 </div>
             </section>
 
             <!-- Environmental Impact -->
             <section class="info-card">
                 <h3>Environmental Impact</h3>
-                <div class="environmental-metrics">
-                    <div class="metric-item">
-                        <div class="metric-icon">🌱</div>
-                        <div class="metric-content">
-                            <span class="metric-label">Carbon Footprint</span>
-                            <span class="metric-value">2.1 kg CO₂/kg</span>
-                        </div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-icon">💧</div>
-                        <div class="metric-content">
-                            <span class="metric-label">Water Usage</span>
-                            <span class="metric-value">28 L/kg</span>
-                        </div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-icon">⚡</div>
-                        <div class="metric-content">
-                            <span class="metric-label">Energy Consumption</span>
-                            <span class="metric-value">84 MJ/kg</span>
-                        </div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-icon">♻️</div>
-                        <div class="metric-content">
-                            <span class="metric-label">Recycling Efficiency</span>
-                            <span class="metric-value">78%</span>
-                        </div>
-                    </div>
+                <div class="environmental-metrics" id="environmental-metrics">
+                    <!-- Metrics will be loaded dynamically -->
                 </div>
             </section>
 
             <!-- Processing Information -->
             <section class="info-card">
                 <h3>Processing & Recovery</h3>
-                <div class="processing-info">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Collection & Sorting</h4>
-                            <p>PET bottles are collected through curbside recycling programs and sorted using optical sorting technology.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Cleaning & Preparation</h4>
-                            <p>Labels and caps are removed, bottles are crushed and washed to remove contaminants.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Melting & Reformation</h4>
-                            <p>Clean PET flakes are melted and reformed into new products or recycled into fiber.</p>
-                        </div>
-                    </div>
+                <div class="processing-info" id="processing-info">
+                    <!-- Processing info will be loaded dynamically -->
                 </div>
             </section>
 
             <!-- Common Applications -->
             <section class="info-card">
                 <h3>Common Applications</h3>
-                <div class="applications-grid">
-                    <div class="application-item">
-                        <div class="app-icon">🍾</div>
-                        <span>Beverage Bottles</span>
-                    </div>
-                    <div class="application-item">
-                        <div class="app-icon">🍽️</div>
-                        <span>Food Containers</span>
-                    </div>
-                    <div class="application-item">
-                        <div class="app-icon">🧴</div>
-                        <span>Personal Care Products</span>
-                    </div>
-                    <div class="application-item">
-                        <div class="app-icon">👕</div>
-                        <span>Textile Fibers</span>
-                    </div>
-                    <div class="application-item">
-                        <div class="app-icon">📦</div>
-                        <span>Packaging Materials</span>
-                    </div>
-                    <div class="application-item">
-                        <div class="app-icon">🏠</div>
-                        <span>Construction Materials</span>
-                    </div>
+                <div class="applications-grid" id="applications-grid">
+                    <!-- Applications will be loaded dynamically -->
                 </div>
             </section>
 
             <!-- Recycling Guidelines -->
             <section class="info-card guidelines">
                 <h3>Recycling Guidelines</h3>
-                <div class="guidelines-content">
-                    <div class="guideline-section">
-                        <h4>✅ Do's</h4>
-                        <ul>
-                            <li>Remove caps and lids before recycling</li>
-                            <li>Rinse containers to remove food residue</li>
-                            <li>Check for recycling symbols (1 - PET)</li>
-                            <li>Place in designated recycling bins</li>
-                        </ul>
-                    </div>
-                    <div class="guideline-section">
-                        <h4>❌ Don'ts</h4>
-                        <ul>
-                            <li>Don't include heavily contaminated bottles</li>
-                            <li>Don't crush bottles lengthwise</li>
-                            <li>Don't include non-PET plastic items</li>
-                            <li>Don't put in general waste</li>
-                        </ul>
-                    </div>
+                <div class="guidelines-content" id="guidelines-content">
+                    <!-- Guidelines will be loaded dynamically -->
                 </div>
             </section>
         </div>
@@ -237,14 +113,608 @@
     </div>
 
     <script>
-        // Get material info from URL parameters (for future backend integration)
-        const urlParams = new URLSearchParams(window.location.search);
-        const materialId = urlParams.get('id') || 'pet-bottle';
-        const materialName = urlParams.get('name') || 'PET Bottle';
+        // Global variables
+        let materialsData = [];
+        let currentMaterial = null;
 
-        // Update page title and material name
-        document.title = `${materialName} - Green Index`;
-        document.getElementById('material-name').textContent = materialName;
+        // Get material info from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const materialId = urlParams.get('id') || '';
+        const materialName = urlParams.get('name') || 'Material';
+
+        // Load materials data from CSV
+        async function loadMaterialsData() {
+            try {
+                const response = await fetch('materialsData.csv');
+                const csvText = await response.text();
+                materialsData = parseCSV(csvText);
+                
+                // Find the specific material
+                currentMaterial = materialsData.find(material => 
+                    material.Material.toLowerCase().replace(/[^a-z0-9]/g, '-') === materialId ||
+                    material.Material === materialName
+                );
+                
+                if (currentMaterial) {
+                    displayMaterialData(currentMaterial);
+                } else {
+                    // If no specific material found, use the first one or show error
+                    if (materialsData.length > 0) {
+                        currentMaterial = materialsData[0];
+                        displayMaterialData(currentMaterial);
+                    } else {
+                        showError('Material not found');
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading materials data:', error);
+                showError('Error loading material data');
+            }
+        }
+
+        // Parse CSV data
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            const headers = lines[0].split(',');
+            const materials = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',');
+                const material = {};
+                
+                headers.forEach((header, index) => {
+                    material[header.trim()] = values[index] ? values[index].trim() : '';
+                });
+                
+                materials.push(material);
+            }
+            
+            return materials;
+        }
+
+        // Calculate recyclability score
+        function calculateRecyclabilityScore(material) {
+            let score = 0;
+
+            // Category scoring (0-3 points)
+            const categoryScores = {
+                'Metal': 3.0,
+                'Polymer': 2.0,
+                'Glass': 2.5,
+                'Ceramic': 1.0,
+                'Composite': 1.5
+            };
+            score += categoryScores[material.Category] || 0;
+
+            // Thermal stability scoring (0-2 points)
+            const thermalScores = {
+                'Low': 1.0,
+                'Moderate': 2.0,
+                'High': 2.0,
+                'Very High': 1.5
+            };
+            score += thermalScores[material['Thermal Stability']] || 0;
+
+            // Toxicity scoring (0-2 points, inverted)
+            const toxicityScores = {
+                'Low': 2.0,
+                'Moderate': 1.5,
+                'High': 0.5,
+                'Very High': 0.0
+            };
+            score += toxicityScores[material.Toxicity] || 0;
+
+            // Processing advantages (0-2 points)
+            let processingScore = 1.0;
+            if (material.Category === 'Metal' && material.Magnetism === 'Ferrous') {
+                processingScore += 0.5;
+            }
+            if (material.Category === 'Polymer' && material.Additives === 'No') {
+                processingScore += 0.5;
+            }
+            score += Math.min(processingScore, 2.0);
+
+            // Market demand (0-1 point)
+            let demandScore = 0.5;
+            if (['Metal', 'Glass'].includes(material.Category)) {
+                demandScore = 1.0;
+            }
+            score += demandScore;
+
+            return Math.min(Math.round(score * 10) / 10, 10);
+        }
+
+        // Get recyclability rating
+        function getRecyclabilityRating(score) {
+            if (score >= 8) return { text: 'Excellent', class: 'excellent' };
+            if (score >= 6) return { text: 'Good', class: 'good' };
+            if (score >= 4) return { text: 'Moderate', class: 'moderate' };
+            return { text: 'Poor', class: 'poor' };
+        }
+
+        // Display material data
+        function displayMaterialData(material) {
+            // Update page title and header
+            document.title = `${material.Material} - Green Index`;
+            document.getElementById('material-name').textContent = material.Material;
+            
+            // Set category badge
+            const categoryElement = document.getElementById('material-category');
+            categoryElement.textContent = material.Category;
+            categoryElement.className = `material-category ${material.Category.toLowerCase()}`;
+            
+            // Calculate and display recyclability score
+            const score = calculateRecyclabilityScore(material);
+            const rating = getRecyclabilityRating(score);
+            
+            document.getElementById('score-value').textContent = score;
+            const scoreCircle = document.getElementById('score-circle');
+            scoreCircle.className = `score-circle ${rating.class}`;
+            
+            // Display basic properties
+            displayBasicProperties(material);
+            
+            // Display recyclability analysis
+            displayRecyclabilityAnalysis(material, score);
+            
+            // Display environmental metrics
+            displayEnvironmentalMetrics(material);
+            
+            // Display processing information
+            displayProcessingInfo(material);
+            
+            // Display applications
+            displayApplications(material);
+            
+            // Display guidelines
+            displayGuidelines(material);
+        }
+
+        // Display basic properties
+        function displayBasicProperties(material) {
+            const container = document.getElementById('basic-properties');
+            const properties = [
+                { label: 'Material Category', value: material.Category },
+                { label: 'Thermal Stability', value: material['Thermal Stability'] },
+                { label: 'Density', value: material.Density ? `${material.Density} g/cm³` : 'N/A' },
+                { label: 'Toxicity Level', value: material.Toxicity }
+            ];
+
+            // Add category-specific properties
+            if (material.Category === 'Metal') {
+                if (material.Magnetism) properties.push({ label: 'Magnetism', value: material.Magnetism });
+                if (material['Melting Point']) properties.push({ label: 'Melting Point', value: `${material['Melting Point']}°C` });
+            } else if (material.Category === 'Polymer') {
+                if (material['Polymer Type']) properties.push({ label: 'Polymer Type', value: material['Polymer Type'] });
+                if (material.Additives) properties.push({ label: 'Contains Additives', value: material.Additives });
+                if (material['Melting Point']) properties.push({ label: 'Melting Point', value: `${material['Melting Point']}°C` });
+            } else if (material.Category === 'Glass' || material.Category === 'Ceramic') {
+                if (material['Melting Point']) properties.push({ label: 'Melting Point', value: `${material['Melting Point']}°C` });
+            }
+
+            container.innerHTML = properties.filter(prop => prop.value).map(prop => `
+                <div class="property-item">
+                    <span class="property-label">${prop.label}:</span>
+                    <span class="property-value">${prop.value}</span>
+                </div>
+            `).join('');
+        }
+
+        // Display recyclability analysis
+        function displayRecyclabilityAnalysis(material, score) {
+            const container = document.getElementById('recyclability-analysis');
+            
+            // Calculate collection rate based on category and properties
+            let collectionRate = 50; // Base rate
+            if (material.Category === 'Metal') collectionRate = 85;
+            else if (material.Category === 'Glass') collectionRate = 75;
+            else if (material.Category === 'Polymer') collectionRate = 65;
+            else if (material.Category === 'Ceramic') collectionRate = 30;
+            
+            // Adjust for toxicity
+            if (material.Toxicity === 'High' || material.Toxicity === 'Very High') {
+                collectionRate -= 20;
+            }
+            
+            collectionRate = Math.max(10, Math.min(95, collectionRate));
+            
+            // Determine processing difficulty
+            let difficulty = 'Medium';
+            let difficultyClass = 'medium';
+            if (material.Category === 'Metal' || (material.Category === 'Polymer' && material.Additives === 'No')) {
+                difficulty = 'Low';
+                difficultyClass = 'low';
+            } else if (material.Category === 'Composite' || material.Toxicity === 'High') {
+                difficulty = 'High';
+                difficultyClass = 'high';
+            }
+            
+            // Market demand
+            let demand = 'Medium';
+            let demandClass = 'medium';
+            if (material.Category === 'Metal' || material.Category === 'Glass') {
+                demand = 'High';
+                demandClass = 'high';
+            } else if (material.Category === 'Ceramic') {
+                demand = 'Low';
+                demandClass = 'low';
+            }
+            
+            // Contamination risk
+            let contaminationRisk = 'Medium';
+            let riskClass = 'medium';
+            if (material.Toxicity === 'Low' && material.Category !== 'Composite') {
+                contaminationRisk = 'Low';
+                riskClass = 'low';
+            } else if (material.Toxicity === 'High' || material.Toxicity === 'Very High') {
+                contaminationRisk = 'High';
+                riskClass = 'high';
+            }
+            
+            container.innerHTML = `
+                <div class="recyclability-item">
+                    <span class="rec-label">Collection Rate:</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${collectionRate}%"></div>
+                        <span class="progress-text">${collectionRate}%</span>
+                    </div>
+                </div>
+                <div class="recyclability-item">
+                    <span class="rec-label">Processing Difficulty:</span>
+                    <div class="difficulty-indicator ${difficultyClass}">${difficulty}</div>
+                </div>
+                <div class="recyclability-item">
+                    <span class="rec-label">Market Demand:</span>
+                    <div class="demand-indicator ${demandClass}">${demand}</div>
+                </div>
+                <div class="recyclability-item">
+                    <span class="rec-label">Contamination Risk:</span>
+                    <div class="risk-indicator ${riskClass}">${contaminationRisk}</div>
+                </div>
+            `;
+        }
+
+        // Display environmental metrics (estimated based on material properties)
+        function displayEnvironmentalMetrics(material) {
+            const container = document.getElementById('environmental-metrics');
+            
+            // Estimate environmental impact based on material type
+            const metrics = getEnvironmentalMetrics(material);
+            
+            container.innerHTML = `
+                <div class="metric-item">
+                    <div class="metric-icon">🌱</div>
+                    <div class="metric-content">
+                        <span class="metric-label">Carbon Footprint</span>
+                        <span class="metric-value">${metrics.carbonFootprint}</span>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">💧</div>
+                    <div class="metric-content">
+                        <span class="metric-label">Water Usage</span>
+                        <span class="metric-value">${metrics.waterUsage}</span>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">⚡</div>
+                    <div class="metric-content">
+                        <span class="metric-label">Energy Consumption</span>
+                        <span class="metric-value">${metrics.energyConsumption}</span>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">♻️</div>
+                    <div class="metric-content">
+                        <span class="metric-label">Recycling Efficiency</span>
+                        <span class="metric-value">${metrics.recyclingEfficiency}%</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get estimated environmental metrics
+        function getEnvironmentalMetrics(material) {
+            const defaults = {
+                carbonFootprint: '2.0 kg CO₂/kg',
+                waterUsage: '25 L/kg',
+                energyConsumption: '75 MJ/kg',
+                recyclingEfficiency: 70
+            };
+            
+            switch (material.Category) {
+                case 'Metal':
+                    return {
+                        carbonFootprint: '8.5 kg CO₂/kg',
+                        waterUsage: '150 L/kg',
+                        energyConsumption: '120 MJ/kg',
+                        recyclingEfficiency: 90
+                    };
+                case 'Glass':
+                    return {
+                        carbonFootprint: '0.8 kg CO₂/kg',
+                        waterUsage: '20 L/kg',
+                        energyConsumption: '45 MJ/kg',
+                        recyclingEfficiency: 85
+                    };
+                case 'Polymer':
+                    return {
+                        carbonFootprint: '2.1 kg CO₂/kg',
+                        waterUsage: '28 L/kg',
+                        energyConsumption: '84 MJ/kg',
+                        recyclingEfficiency: material.Additives === 'No' ? 80 : 65
+                    };
+                case 'Ceramic':
+                    return {
+                        carbonFootprint: '1.2 kg CO₂/kg',
+                        waterUsage: '35 L/kg',
+                        energyConsumption: '95 MJ/kg',
+                        recyclingEfficiency: 30
+                    };
+                case 'Composite':
+                    return {
+                        carbonFootprint: '3.5 kg CO₂/kg',
+                        waterUsage: '45 L/kg',
+                        energyConsumption: '110 MJ/kg',
+                        recyclingEfficiency: 25
+                    };
+                default:
+                    return defaults;
+            }
+        }
+
+        // Display processing information
+        function displayProcessingInfo(material) {
+            const container = document.getElementById('processing-info');
+            const steps = getProcessingSteps(material);
+            
+            container.innerHTML = steps.map((step, index) => `
+                <div class="process-step">
+                    <div class="step-number">${index + 1}</div>
+                    <div class="step-content">
+                        <h4>${step.title}</h4>
+                        <p>${step.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Get processing steps based on material type
+        function getProcessingSteps(material) {
+            switch (material.Category) {
+                case 'Metal':
+                    return [
+                        {
+                            title: 'Collection & Sorting',
+                            description: `${material.Material} is collected and sorted using ${material.Magnetism === 'Ferrous' ? 'magnetic separation and' : ''} visual/density sorting methods.`
+                        },
+                        {
+                            title: 'Cleaning & Preparation',
+                            description: 'Contaminants are removed through cleaning processes, and the material is prepared for melting.'
+                        },
+                        {
+                            title: 'Melting & Reformation',
+                            description: `The material is melted at approximately ${material['Melting Point'] || 'high'}°C and reformed into new products.`
+                        }
+                    ];
+                case 'Polymer':
+                    return [
+                        {
+                            title: 'Collection & Sorting',
+                            description: `${material.Material} is collected and sorted using optical sorting technology to identify the specific polymer type.`
+                        },
+                        {
+                            title: 'Cleaning & Preparation',
+                            description: `Contaminants and ${material.Additives === 'Yes' ? 'additives are removed or managed, and' : ''} the material is cleaned and shredded.`
+                        },
+                        {
+                            title: 'Reprocessing',
+                            description: `Clean polymer flakes are melted and reformed into pellets or directly into new products.`
+                        }
+                    ];
+                case 'Glass':
+                    return [
+                        {
+                            title: 'Collection & Sorting',
+                            description: 'Glass is collected and sorted by color and type to maintain quality during recycling.'
+                        },
+                        {
+                            title: 'Cleaning & Crushing',
+                            description: 'Glass is cleaned to remove labels and contaminants, then crushed into cullet.'
+                        },
+                        {
+                            title: 'Melting & Reformation',
+                            description: `Cullet is melted at ${material['Melting Point'] || 'high temperatures'} and formed into new glass products.`
+                        }
+                    ];
+                default:
+                    return [
+                        {
+                            title: 'Collection',
+                            description: `${material.Material} is collected through specialized recycling programs.`
+                        },
+                        {
+                            title: 'Processing',
+                            description: 'Material undergoes category-specific processing to prepare for reuse.'
+                        },
+                        {
+                            title: 'Recovery',
+                            description: 'Processed material is recovered for use in new applications where possible.'
+                        }
+                    ];
+            }
+        }
+
+        // Display applications
+        function displayApplications(material) {
+            const container = document.getElementById('applications-grid');
+            const applications = getApplications(material);
+            
+            container.innerHTML = applications.map(app => `
+                <div class="application-item">
+                    <div class="app-icon">${app.icon}</div>
+                    <span>${app.name}</span>
+                </div>
+            `).join('');
+        }
+
+        // Get applications based on material type
+        function getApplications(material) {
+            switch (material.Category) {
+                case 'Metal':
+                    return [
+                        { icon: '🏗️', name: 'Construction' },
+                        { icon: '🚗', name: 'Automotive' },
+                        { icon: '🥫', name: 'Packaging' },
+                        { icon: '⚡', name: 'Electronics' },
+                        { icon: '🔧', name: 'Tools & Hardware' },
+                        { icon: '🏠', name: 'Infrastructure' }
+                    ];
+                case 'Polymer':
+                    return [
+                        { icon: '🍾', name: 'Bottles & Containers' },
+                        { icon: '📦', name: 'Packaging' },
+                        { icon: '👕', name: 'Textiles' },
+                        { icon: '🚗', name: 'Automotive Parts' },
+                        { icon: '🏠', name: 'Construction' },
+                        { icon: '🧸', name: 'Consumer Goods' }
+                    ];
+                case 'Glass':
+                    return [
+                        { icon: '🍾', name: 'Bottles' },
+                        { icon: '🪟', name: 'Windows' },
+                        { icon: '🍽️', name: 'Tableware' },
+                        { icon: '🔬', name: 'Laboratory Equipment' },
+                        { icon: '💡', name: 'Lighting' },
+                        { icon: '🏢', name: 'Architecture' }
+                    ];
+                case 'Ceramic':
+                    return [
+                        { icon: '🏠', name: 'Construction Materials' },
+                        { icon: '🍽️', name: 'Tableware' },
+                        { icon: '🔥', name: 'Heat Resistant Applications' },
+                        { icon: '⚡', name: 'Electrical Insulators' },
+                        { icon: '🎨', name: 'Decorative Items' },
+                        { icon: '🏭', name: 'Industrial Components' }
+                    ];
+                case 'Composite':
+                    return [
+                        { icon: '✈️', name: 'Aerospace' },
+                        { icon: '🚗', name: 'Automotive' },
+                        { icon: '⛵', name: 'Marine' },
+                        { icon: '🏗️', name: 'Construction' },
+                        { icon: '⚽', name: 'Sports Equipment' },
+                        { icon: '🔬', name: 'Specialized Applications' }
+                    ];
+                default:
+                    return [
+                        { icon: '🔧', name: 'General Applications' },
+                        { icon: '🏭', name: 'Industrial Use' },
+                        { icon: '🏠', name: 'Construction' },
+                        { icon: '📦', name: 'Packaging' }
+                    ];
+            }
+        }
+
+        // Display recycling guidelines
+        function displayGuidelines(material) {
+            const container = document.getElementById('guidelines-content');
+            const guidelines = getRecyclingGuidelines(material);
+            
+            container.innerHTML = `
+                <div class="guideline-section">
+                    <h4>✅ Do's</h4>
+                    <ul>
+                        ${guidelines.dos.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="guideline-section">
+                    <h4>❌ Don'ts</h4>
+                    <ul>
+                        ${guidelines.donts.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Get recycling guidelines based on material
+        function getRecyclingGuidelines(material) {
+            const baseGuidelines = {
+                dos: [
+                    'Clean the material before disposal',
+                    'Check local recycling guidelines',
+                    'Separate from other materials',
+                    'Use designated recycling bins'
+                ],
+                donts: [
+                    'Don\'t contaminate with other materials',
+                    'Don\'t include heavily soiled items',
+                    'Don\'t put in general waste',
+                    'Don\'t ignore safety precautions'
+                ]
+            };
+
+            switch (material.Category) {
+                case 'Metal':
+                    return {
+                        dos: [
+                            'Remove any attached non-metal components',
+                            'Clean off food residue and labels',
+                            'Separate ferrous and non-ferrous metals',
+                            'Take to scrap metal dealers for best value'
+                        ],
+                        donts: [
+                            'Don\'t include painted or coated metals without checking',
+                            'Don\'t mix different metal types',
+                            'Don\'t include items with hazardous substances',
+                            'Don\'t compress aluminum cans lengthwise'
+                        ]
+                    };
+                case 'Polymer':
+                    return {
+                        dos: [
+                            'Check recycling symbols and codes',
+                            'Remove caps and labels where possible',
+                            'Rinse containers to remove residue',
+                            'Keep different polymer types separated'
+                        ],
+                        donts: [
+                            'Don\'t include mixed or unknown plastic types',
+                            'Don\'t recycle items with heavy contamination',
+                            'Don\'t include plastic bags in regular recycling',
+                            'Don\'t assume all plastics are recyclable'
+                        ]
+                    };
+                case 'Glass':
+                    return {
+                        dos: [
+                            'Separate by color (clear, brown, green)',
+                            'Remove metal caps and lids',
+                            'Rinse to remove food residue',
+                            'Handle with care to avoid breakage'
+                        ],
+                        donts: [
+                            'Don\'t include window glass or mirrors',
+                            'Don\'t mix with ceramic or porcelain',
+                            'Don\'t include light bulbs or fluorescent tubes',
+                            'Don\'t put broken glass loose in bins'
+                        ]
+                    };
+                default:
+                    if (material.Toxicity === 'High' || material.Toxicity === 'Very High') {
+                        baseGuidelines.dos.unshift('Use proper safety equipment when handling');
+                        baseGuidelines.donts.unshift('Don\'t handle without proper protection');
+                    }
+                    return baseGuidelines;
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            document.getElementById('material-name').textContent = 'Error';
+            document.getElementById('material-category').textContent = message;
+            document.getElementById('basic-properties').innerHTML = `<p style="text-align: center; color: #666;">${message}</p>`;
+        }
 
         // Search functionality
         document.getElementById('search-btn').addEventListener('click', function() {
@@ -266,8 +736,8 @@
         document.getElementById('share-btn').addEventListener('click', function() {
             if (navigator.share) {
                 navigator.share({
-                    title: `${materialName} - Green Index`,
-                    text: `Learn about the recyclability of ${materialName}`,
+                    title: `${currentMaterial?.Material || 'Material'} - Green Index`,
+                    text: `Learn about the recyclability of ${currentMaterial?.Material || 'this material'}`,
                     url: window.location.href
                 });
             } else {
@@ -278,18 +748,10 @@
             }
         });
 
-        // Simulate loading different materials based on URL parameters
-        // This will be replaced with actual API calls to the backend
-        function loadMaterialData(materialId) {
-            // Placeholder function for future backend integration
-            console.log(`Loading data for material: ${materialId}`);
-            
-            // For now, we'll use the static placeholder data
-            // In the future, this will make an API call to fetch real data
-        }
-
         // Initialize page
-        loadMaterialData(materialId);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMaterialsData();
+        });
     </script>
 </body>
 </html>

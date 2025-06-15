@@ -1,0 +1,81 @@
+Material,Category,Thermal Stability,Magnetism,Melting Point,Density,Toxicity,Polymer Type,Additives
+Aluminum,Metal,High,Non-ferrous,660,2.7,Low,,
+Aluminum Alloys,Metal,High,Non-ferrous,580,2.8,Low,,
+Cobalt,Metal,High,Ferrous,1495,8.9,High,,
+Cobalt Alloys,Metal,High,Ferrous,1400,8.5,High,,
+Copper,Metal,High,Non-ferrous,1085,8.96,Low,,
+Brass,Metal,High,Non-ferrous,950,8.5,Low,,
+Bronze,Metal,High,Non-ferrous,1000,8.8,Low,,
+Iron,Metal,High,Ferrous,1538,7.87,Low,,
+Steel (Carbon),Metal,High,Ferrous,1500,7.85,Low,,
+Steel (Stainless),Metal,High,Ferrous,1400,8.0,Low,,
+Steel (Alloy),Metal,High,Ferrous,1450,7.8,Low,,
+Magnesium,Metal,Moderate,Non-ferrous,650,1.74,Low,,
+Magnesium Alloys,Metal,Moderate,Non-ferrous,600,1.8,Low,,
+Molybdenum,Metal,Very High,Non-ferrous,2623,10.2,Moderate,,
+Molybdenum Alloys,Metal,Very High,Non-ferrous,2500,10.0,Moderate,,
+Nickel,Metal,High,Ferrous,1455,8.9,Moderate,,
+Nickel Alloys,Metal,High,Ferrous,1400,8.5,Moderate,,
+Lead,Metal,Low,Non-ferrous,327,11.34,Very High,,
+Babbitt (Lead Alloy),Metal,Low,Non-ferrous,300,9.5,Very High,,
+Tin,Metal,Low,Non-ferrous,232,7.31,Low,,
+Pewter (Tin Alloy),Metal,Low,Non-ferrous,220,7.5,Low,,
+Titanium,Metal,Very High,Non-ferrous,1668,4.5,Low,,
+Titanium Alloys,Metal,Very High,Non-ferrous,1600,4.4,Low,,
+Tungsten,Metal,Very High,Non-ferrous,3422,19.25,Low,,
+Tungsten Alloys,Metal,Very High,Non-ferrous,3000,17.0,Low,,
+Zinc,Metal,Moderate,Non-ferrous,420,7.14,Low,,
+Zinc Alloys,Metal,Moderate,Non-ferrous,380,6.8,Low,,
+Zirconium,Metal,Very High,Non-ferrous,1855,6.52,Low,,
+Zirconium Alloys,Metal,Very High,Non-ferrous,1800,6.5,Low,,
+Acrylics,Polymer,Moderate,Non-magnetic,160,1.18,Low,PMMA,Yes
+Epoxies,Polymer,High,Non-magnetic,,1.2,Moderate,Epoxy,Yes
+Melamines,Polymer,High,Non-magnetic,,1.5,Low,Melamine,Yes
+Nylons,Polymer,Moderate,Non-magnetic,220,1.15,Low,Nylon,Yes
+Polycarbonates,Polymer,High,Non-magnetic,155,1.2,Low,PC,Yes
+Polyesters,Polymer,Moderate,Non-magnetic,250,1.4,Low,Polyester,Yes
+HDPE (High Density Polyethylene),Polymer,Low,Non-magnetic,130,0.95,Low,HDPE,No
+LDPE (Low Density Polyethylene),Polymer,Low,Non-magnetic,110,0.92,Low,LDPE,No
+PET (Polyethylene Terephthalate),Polymer,Moderate,Non-magnetic,260,1.38,Low,PET,No
+Polyformaldehyde (POM),Polymer,Moderate,Non-magnetic,175,1.41,Low,POM,Yes
+PMMA (Polymethylmethacrylate),Polymer,Moderate,Non-magnetic,160,1.18,Low,PMMA,Yes
+Polypropylene,Polymer,Low,Non-magnetic,165,0.9,Low,PP,Yes
+Polystyrene (Dense),Polymer,Low,Non-magnetic,240,1.05,Low,PS,Yes
+PTFE (Polytetrafluorethylene),Polymer,High,Non-magnetic,327,2.2,Low,PTFE,No
+PVC (Polyvinylchloride),Polymer,Low,Non-magnetic,212,1.45,High,PVC,Yes
+Hard Butyl Rubber,Polymer,Moderate,Non-magnetic,,1.2,Low,Butyl,Yes
+Natural Rubber,Polymer,Low,Non-magnetic,,0.92,Low,Natural,Yes
+Nitrile Rubber,Polymer,Moderate,Non-magnetic,,1.0,Low,NBR,Yes
+Polyurethanes,Polymer,Moderate,Non-magnetic,,1.2,Moderate,PU,Yes
+Silicone Rubber,Polymer,High,Non-magnetic,,1.1,Low,Silicone,Yes
+Soft Butyl Rubber,Polymer,Low,Non-magnetic,,0.9,Low,Butyl,Yes
+Cork,Polymer,Low,Non-magnetic,,0.24,Low,,No
+Polyester Foam,Polymer,Moderate,Non-magnetic,,0.3,Low,Polyester,Yes
+Polystyrene Foam,Polymer,Low,Non-magnetic,,0.05,Low,PS,Yes
+Polyurethane Foam,Polymer,Moderate,Non-magnetic,,0.2,Moderate,PU,Yes
+Brick,Ceramic,High,Non-magnetic,,1.8,Low,,No
+Porous Ceramics,Ceramic,High,Non-magnetic,,1.5,Low,,No
+Cement,Ceramic,Moderate,Non-magnetic,,3.15,Low,,No
+Common Rocks,Ceramic,High,Non-magnetic,,2.7,Low,,No
+Concrete,Ceramic,Moderate,Non-magnetic,,2.4,Low,,No
+Porcelain,Ceramic,High,Non-magnetic,,2.4,Low,,No
+Pottery,Ceramic,High,Non-magnetic,,2.2,Low,,No
+Alumina (Al2O3),Ceramic,Very High,Non-magnetic,2072,3.95,Low,,No
+Borides,Ceramic,Very High,Non-magnetic,2200,2.5,Low,,No
+Carbides,Ceramic,Very High,Non-magnetic,2830,3.2,Low,,No
+Diamond,Ceramic,Very High,Non-magnetic,3550,3.52,Low,,No
+Magnesia (MgO),Ceramic,Very High,Non-magnetic,2852,3.6,Low,,No
+Mullite,Ceramic,Very High,Non-magnetic,1850,3.2,Low,,No
+Sialons,Ceramic,Very High,Non-magnetic,1900,3.2,Low,,No
+Silicon Carbide (SiC),Ceramic,Very High,Non-magnetic,2730,3.2,Low,,No
+Silicon Nitride (Si3N4),Ceramic,Very High,Non-magnetic,1900,3.2,Low,,No
+Titania (TiO2),Ceramic,High,Non-magnetic,1843,4.23,Low,,No
+Zirconia (ZrO2),Ceramic,Very High,Non-magnetic,2715,6.0,Low,,No
+Partially Stabilized Zirconia,Ceramic,Very High,Non-magnetic,2700,5.8,Low,,No
+Borosilicate Glass,Glass,High,Non-magnetic,820,2.23,Low,,No
+Leaded Glass,Glass,High,Non-magnetic,630,3.0,High,,No
+Soda-lime Glass,Glass,High,Non-magnetic,573,2.5,Low,,No
+Silica Glass (Fused),Glass,Very High,Non-magnetic,1713,2.2,Low,,No
+CFRP (Carbon Fiber Reinforced Polymer),Composite,High,Non-magnetic,350,1.6,Moderate,,Yes
+GFRP (Glass Fiber Reinforced Polymer),Composite,Moderate,Non-magnetic,300,1.8,Low,,Yes
+KFRP (Kevlar Fiber Reinforced Polymer),Composite,High,Non-magnetic,400,1.4,Low,,Yes

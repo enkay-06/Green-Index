@@ -4,27 +4,6 @@ from flask_cors import CORS
 from dataLoader import loadMaterialsData
 from scoreCalculator import calculateRecyclabilityScore
 
-materialExplanations = {
-    "PVC": {
-        "collection": "PVC is not widely accepted in curbside recycling programs due to its chlorine content and limited recycling demand.",
-        "sorting": "Difficult to sort because it resembles other plastics visually.",
-        "reprocessing": "Limited reprocessing facilities and can reease hydrochloric acid + toxic dioxins, especially when flame-retardant additives are present.",
-        "material health": "Contains toxic stailizers such as lead-based compounds and phthalates."
-    },
-    "Aluminum": {
-        "collection": "Widely accepted in curbside recycling programs due to its high value and widespread use.",
-        "sorting": "Easy to sort using eddy current separators.",
-        "reprocessing": "Recycling aluminum is energy-efficient and it can be recycled indefinitely without loss of quality.",
-        "material health": "Generally considered safe, but concerns exist about aluminum exposure and its potential health effects."
-    },
-    "PET Plastic": {
-        "collection": "Widely accepted in curbside recycling programs.",
-        "sorting": "Easy to sort using infrared technology.",
-        "reprocessing": "Recycling facilities are widely available, and PET can be recycled into new bottles or fibers. However, the process can degrade the material after multiple cycles.",
-        "material health": "Low toxicity and well-studied for food-grade use, however there are concerns about the leaching of antimony and other additives."
-    }
-}
-
 #initialize Flask application 
 app = Flask(__name__)
 #Enable CORS 
@@ -42,9 +21,8 @@ def getAllMaterials():
 @app.route('/materials/<name>', methods=['GET'])
 def getMaterial(name):
     materialInfo = MaterialsData.get(name)
-    explanations = materialExplanations.get(name,{})
     if materialInfo:
-        return jsonify({"properties":materialInfo, "explanations":explanations})
+        return jsonify({"properties":materialInfo})
     else:
         #return error if material is not found
         return jsonify({"error": "Material not found"}), 404
@@ -57,7 +35,9 @@ def getRecyclabilityScore():
     #calculate score 
     scoreResult = calculateRecyclabilityScore(requestData)
 
-    return jsonify({"score": scoreResult})
-
+    return jsonify({
+        "score": scoreResult["score"],
+        "explanations": scoreResult["explanations"]
+    })
 if __name__ == '__main__':
     app.run(debug=True)
