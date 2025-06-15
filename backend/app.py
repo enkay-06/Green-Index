@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
  #allows for cross-origin requests (from frontend to backend)
 from flask_cors import CORS
 from dataLoader import loadMaterialsData
-from scoring import calculateRecyclabilityScore
+from scoreCalculator import calculateRecyclabilityScore
 
 materialExplanations = {
     "PVC": {

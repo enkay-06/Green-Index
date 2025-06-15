@@ -1,7 +1,6 @@
-Material,meltingPoint,thermalStability,magnetic,polymerType,additives
-PET Plastic,260,Yes,No,PET,No
-PVC,212,Yes,No,PVC,Yes
-Aluminum,660,Yes,No,Metal,No
-Steel,1538,Yes,Yes,Metal,No
-Glass,1400,Yes,No,NonPolymer,No
-HDPE Plastic,130,No,No,HDPE,No
+Material,Category,Thermal Stability,Magnetism,Melting Point,Density,Toxicity,Polymer Type,Additives
+Aluminum,Metal,High,Non-ferrous,660,2.7,Low,, 
+PVC,Polymer,Low,Non-magnetic,212,1.45,High,PVC,Yes
+PET Plastic,Polymer,Moderate,Non-magnetic,260,1.38,Low,PET,No
+Glass,GlassCeramic,High,Non-magnetic,1400,2.5,Low,, 
+Carbon Fiber Composite,Composite,High,Non-magnetic,350,1.6,Moderate,,Yes
