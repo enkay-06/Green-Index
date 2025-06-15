@@ -33,7 +33,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: var(--primary-green-rgba);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     padding: 1rem 2rem;
     display: flex;
@@ -375,7 +375,7 @@ body {
 
 /* Footer */
 .footer {
-    background: #2c3e50;
+    background: #2c2c2c;
     color: white;
     padding: 3rem 0 1rem;
 }
@@ -420,7 +420,7 @@ body {
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid #34495e;
+    border-top: 1px solid #444444;
     opacity: 0.6;
 }
 
