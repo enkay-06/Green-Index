@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     border: 2px solid white;
-    border-radius: 25px;
+    border-radius: 5px;
     overflow: hidden;
     background-color: transparent;
 }
@@ -528,7 +528,7 @@
     }
     
     .nav-search {
-        border-radius: 20px;
+        border-radius: 4px;
         width: 100%;
         max-width: 400px;
         margin: 0 auto;
