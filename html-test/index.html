@@ -8,16 +8,21 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="nav-brand">Green Index</div>
-        <div class="nav-search">
-            <input type="text" id="search-input" placeholder="Search materials...">
-            <button id="search-btn">Search</button>
+        <div class="logo">Green Index</div>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="search.html">SEARCH</a>
+                <a href="overview.html">OVERVIEW</a>
+                <a href="rScore.html">CALCULATOR</a>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="search-input" placeholder="Search materials...">
+                <button id="search-btn">Search</button>
+            </div>
         </div>
     </nav>
-
-    <!-- Parallax Hero Section -->
     <section class="parallax-container">
         <div class="parallax-layer" id="back-layer">
             <img src="images/back.png" alt="Background" class="parallax-image">
@@ -132,6 +137,7 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="search.html">Search Materials</a></li>
+                        <li><a href="overview.html">Materials Overview</a></li>
                         <li><a href="rScore.html">Calculate Score</a></li>
                         <li><a href="material-details.html">Material Details</a></li>
                     </ul>
@@ -156,16 +162,16 @@
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const parallax = document.querySelector('.parallax-container');
-            const rate = scrolled * -0.5;
+            const rate = scrolled * -0.4;
             
-            // Different speeds for different layers
+            // Much slower speeds for different layers to prevent bottom showing
             const backLayer = document.getElementById('back-layer');
             const middleLayer = document.getElementById('middle-layer');
             const foreLayer = document.getElementById('fore-layer');
             
-            if (backLayer) backLayer.style.transform = `translateY(${rate * 0.3}px)`;
-            if (middleLayer) middleLayer.style.transform = `translateY(${rate * 0.6}px)`;
-            if (foreLayer) foreLayer.style.transform = `translateY(${rate * 0.9}px)`;
+            if (backLayer) backLayer.style.transform = `translateY(${rate * 0.1}px)`;
+            if (middleLayer) middleLayer.style.transform = `translateY(${rate * 0.2}px)`;
+            if (foreLayer) foreLayer.style.transform = `translateY(${rate * 0.45}px)`;
         });
 
         // Carousel functionality
