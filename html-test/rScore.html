@@ -355,7 +355,7 @@
 
         function calculateRecyclabilityScore(data) {
             let score = 0;
-            const breakdown = {};
+            const explanation = {};
 
             // Category scoring (0-2 points)
             const categoryScores = {
@@ -365,8 +365,8 @@
                 'Ceramic': 0.5,
                 'Composite': 0.8
             };
-            breakdown.category = categoryScores[data.category] || 0;
-            score += breakdown.category;
+            explanation.category = categoryScores[data.category] || 0;
+            score += explanation.category;
 
             // Thermal stability scoring (0-2 points)
             const thermalScores = {
@@ -375,8 +375,8 @@
                 'High': 1.5,
                 'Very High': 1.0 // Very high can be harder to process
             };
-            breakdown.thermal = thermalScores[data.thermalStability] || 0;
-            score += breakdown.thermal;
+            explanation.thermal = thermalScores[data.thermalStability] || 0;
+            score += explanation.thermal;
 
             // Toxicity scoring (0-2 points, inverted - lower toxicity = higher score)
             const toxicityScores = {
@@ -477,27 +477,27 @@
             const recommendations = [];
 
             if (materialData.toxicity === 'High' || materialData.toxicity === 'Very High') {
-                recommendations.push('⚠️ Special handling required due to high toxicity - ensure proper safety protocols');
+                recommendations.push('Special handling required due to high toxicity - ensure proper safety protocols');
             }
 
             if (materialData.category === 'Metal' && materialData.magnetism === 'Ferrous') {
-                recommendations.push('✅ Can utilize magnetic separation for efficient sorting');
+                recommendations.push('Can utilize magnetic separation for efficient sorting');
             }
 
             if (materialData.category === 'Polymer' && materialData.additives === 'Yes') {
-                recommendations.push('⚠️ May require additive removal or separation before recycling');
+                recommendations.push('May require additive removal or separation before recycling');
             }
 
             if (scoreData.total < 4) {
-                recommendations.push('💡 Consider alternative disposal methods or specialized recycling facilities');
+                recommendations.push('Consider alternative disposal methods or specialized recycling facilities');
             }
 
             if (materialData.category === 'Composite') {
-                recommendations.push('⚠️ Complex material separation may be required - consider specialized recycling programs');
+                recommendations.push('Complex material separation may be required - consider specialized recycling programs');
             }
 
             if (recommendations.length === 0) {
-                recommendations.push('✅ Standard recycling processes should be suitable for this material');
+                recommendations.push('Standard recycling processes should be suitable for this material');
             }
 
             recommendationsList.innerHTML = recommendations.map(rec => `<p class="recommendation-item">${rec}</p>`).join('');
