@@ -8,26 +8,31 @@
     <title>Material Details - Green Index</title>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="nav-brand">
-            <a href="search.html" style="color: white; text-decoration: none;">Green Index</a>
+        <div class="logo">
+            <a href="index.html" style="font-size: 1.5rem; font-weight: bold; color: white;"> Green Index</a>
         </div>
-        <div class="nav-search">
-            <input type="text" id="search-input" placeholder="Search materials...">
-            <button id="search-btn">Search</button>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="search.html">Search</a>
+                <a href="overview.html">Overview</a>
+                <a href="rScore.html">Calculator</a>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="search-input" placeholder="Search materials...">
+                <button id="search-btn">Search</button>
+            </div>
         </div>
     </nav>
 
     <div class="material-container">
-        <!-- Breadcrumb Navigation -->
         <nav class="breadcrumb">
             <a href="search.html">Search</a>
             <span class="separator">></span>
             <span class="current">Material Details</span>
         </nav>
 
-        <!-- Material Header -->
         <header class="material-header">
             <div class="material-title-section">
                 <h1 id="material-name">Loading...</h1>
@@ -47,67 +52,54 @@
             </div>
         </header>
 
-        <!-- Material Information Sections -->
         <div class="content-grid">
-            <!-- Basic Properties -->
             <section class="info-card">
                 <h3>Basic Properties</h3>
                 <div class="property-grid" id="basic-properties">
-                    <!-- Properties will be loaded dynamically -->
                 </div>
             </section>
 
-            <!-- Recyclability Information -->
             <section class="info-card">
                 <h3>Recyclability Analysis</h3>
                 <div class="recyclability-details" id="recyclability-analysis">
-                    <!-- Analysis will be loaded dynamically -->
                 </div>
             </section>
 
-            <!-- Environmental Impact -->
             <section class="info-card">
                 <h3>Environmental Impact</h3>
                 <div class="environmental-metrics" id="environmental-metrics">
-                    <!-- Metrics will be loaded dynamically -->
                 </div>
             </section>
 
-            <!-- Processing Information -->
+
             <section class="info-card">
                 <h3>Processing & Recovery</h3>
                 <div class="processing-info" id="processing-info">
-                    <!-- Processing info will be loaded dynamically -->
                 </div>
             </section>
 
-            <!-- Common Applications -->
             <section class="info-card">
                 <h3>Common Applications</h3>
                 <div class="applications-grid" id="applications-grid">
-                    <!-- Applications will be loaded dynamically -->
                 </div>
             </section>
 
-            <!-- Recycling Guidelines -->
             <section class="info-card guidelines">
                 <h3>Recycling Guidelines</h3>
                 <div class="guidelines-content" id="guidelines-content">
-                    <!-- Guidelines will be loaded dynamically -->
                 </div>
             </section>
         </div>
 
-        <!-- Action Buttons -->
         <div class="action-buttons">
-            <button class="btn-primary" onclick="window.history.back()">
-                ← Back to Search
-            </button>
             <button class="btn-secondary" onclick="window.print()">
-                📄 Print Details
+                Print Details
+            </button>
+            <button class="btn-primary" onclick="search.html">
+                Back to Search
             </button>
             <button class="btn-secondary" id="share-btn">
-                📤 Share Material
+                Share Material
             </button>
         </div>
     </div>
