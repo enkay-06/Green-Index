@@ -5,13 +5,11 @@
     <link rel="stylesheet" href="material-details.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Material Details - Green Index</title>
+    <title>Green Index</title>
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <a href="index.html" style="font-size: 1.5rem; font-weight: bold; color: white;"> Green Index</a>
-        </div>
+        <a href="index.html" style="font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none;"> Green Index</a>
         <div class="nav-right">
             <div class="nav-links">
                 <a href="index.html">Home</a>
@@ -615,13 +613,13 @@
             
             container.innerHTML = `
                 <div class="guideline-section">
-                    <h4>✅ Do's</h4>
+                    <h4>Do's</h4>
                     <ul>
                         ${guidelines.dos.map(item => `<li>${item}</li>`).join('')}
                     </ul>
                 </div>
                 <div class="guideline-section">
-                    <h4>❌ Don'ts</h4>
+                    <h4>Don'ts</h4>
                     <ul>
                         ${guidelines.donts.map(item => `<li>${item}</li>`).join('')}
                     </ul>

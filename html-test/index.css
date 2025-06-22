@@ -1,11 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
     font-family: 'Gill Sans', sans-serif;
+    box-sizing: border-box;
 }
 
 .container {
@@ -15,7 +12,6 @@ body {
 }
 
 
-/* Navigation Bar */
 .navbar {
     position: fixed;
     top: 0;
@@ -30,13 +26,7 @@ body {
     z-index: 1000;
     height: 65px;
     transition: all 0.3s ease;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-}
+}   
 
 .nav-right {
     display: flex;
@@ -45,7 +35,6 @@ body {
 }
 
 .nav-links {
-    font-family: 'Gill Sans', sans-serif;
     display: flex;
     gap: 2.2rem;
     align-items: center;
@@ -57,17 +46,16 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 550;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, font-size 0.3s ease;
     position: relative;
 }
 
 .nav-links a:hover {
-    color: rgb(135, 99, 26);
+    font-size:1.3rem;
 }
 
 #search-btn{
     color: rgb(135, 99, 26);
-    font-family: 'Gill Sans', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
 }
