@@ -7,29 +7,33 @@
     <title>Search - Green Index</title>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="nav-brand">Green Index</div>
-        <div class="nav-search">
-            <input type="text" id="search-input" placeholder="Search materials...">
-            <button id="search-btn">Search</button>
+        <a href="index.html" style="font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none;"> Green Index</a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="search.html">Search</a>
+                <a href="overview.html">Overview</a>
+                <a href="rScore.html">Calculator</a>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="search-input" placeholder="Search materials...">
+                <button id="search-btn">Search</button>
+            </div>
         </div>
     </nav>
 
     <div class="main-container">
-        <!-- Filter Sidebar -->
         <aside class="filter-sidebar">
             <h3>Filters</h3>
             
-            <!-- Material Type Filters -->
             <div class="filter-section">
                 <h4>Material Types</h4>
                 
-                <!-- Glass Filter -->
                 <div class="filter-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="glass-filter" class="material-checkbox">
-                        Glass
+                        Glass & Ceramics
                     </label>
                     <div id="glass-options" class="sub-options" style="display: none;">
                         <label>Thermal Stability (°C)</label>
@@ -38,7 +42,6 @@
                     </div>
                 </div>
 
-                <!-- Metal Filter -->
                 <div class="filter-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="metal-filter" class="material-checkbox">
@@ -57,23 +60,12 @@
                     </div>
                 </div>
 
-                <!-- Plastic Filter -->
                 <div class="filter-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="plastic-filter" class="material-checkbox">
                         Plastic
                     </label>
                     <div id="plastic-options" class="sub-options" style="display: none;">
-                        <label>Polymer Type</label>
-                        <select id="polymer-type">
-                            <option value="any">Any</option>
-                            <option value="pet">PET</option>
-                            <option value="hdpe">HDPE</option>
-                            <option value="pvc">PVC</option>
-                            <option value="ldpe">LDPE</option>
-                            <option value="pp">PP</option>
-                            <option value="ps">PS</option>
-                        </select>
                         <label>Melting Point (°C)</label>
                         <input type="range" id="plastic-melting-point" min="80" max="300" value="150">
                         <span id="plastic-melting-value">150°C</span>
@@ -96,7 +88,6 @@
             <button id="clear-filters">Clear All</button>
         </aside>
 
-        <!-- Results Section -->
         <main class="results-section">
             <div class="results-header">
                 <h2>Search Results</h2>
@@ -110,11 +101,9 @@
     </div>
 
     <script>
-        // Global variables
         let materialsData = [];
         let filteredMaterials = [];
 
-        // Load materials data from CSV
         async function loadMaterialsData() {
             try {
                 const response = await fetch('materialsData.csv');
@@ -125,13 +114,11 @@
                 updateResultsCount(filteredMaterials.length);
             } catch (error) {
                 console.error('Error loading materials data:', error);
-                // Fallback: show error message
                 document.getElementById('results-container').innerHTML = 
                     '<p style="text-align: center; color: #666;">Error loading materials data. Please refresh the page.</p>';
             }
         }
 
-        // Parse CSV data
         function parseCSV(csvText) {
             const lines = csvText.trim().split('\n');
             const headers = lines[0].split(',');
@@ -150,60 +137,114 @@
             
             return materials;
         }
-
-        // Calculate recyclability score based on material properties
         function calculateRecyclabilityScore(material) {
             let score = 0;
 
-            // Category scoring (0-3 points)
+            // Category scoring (0–3)
             const categoryScores = {
                 'Metal': 3.0,
-                'Polymer': 2.0,
                 'Glass': 2.5,
+                'Polymer': 2.0,
                 'Ceramic': 1.0,
-                'Composite': 1.5
+                'Composite': 0.5
             };
             score += categoryScores[material.Category] || 0;
 
-            // Thermal stability scoring (0-2 points)
+            // Thermal Stability (0–2), slightly adjusted for recyclability logic
             const thermalScores = {
-                'Low': 1.0,
-                'Moderate': 2.0,
-                'High': 2.0,
-                'Very High': 1.5 // Very high can be harder to process
+                'Low': 0.5,
+                'Moderate': 1.5,
+                'High': 1.0,
+                'Very High': 0.5
             };
             score += thermalScores[material['Thermal Stability']] || 0;
 
-            // Toxicity scoring (0-2 points, inverted)
+            // Magnetism (0–1)
+            const magneticScore = (material.Category === 'Metal' && material.Magnetism === 'Ferrous') ? 1.0 : 0.0;
+            score += magneticScore;
+
+            // Melting Point (0–1.5), material-specific
+            const meltingPoint = material['Melting Point']; // °C
+            if (material.Category === 'Polymer') {
+                if (meltingPoint < 200) {
+                    score += 1.5;
+                } else if (meltingPoint < 350) {
+                    score += 1.0;
+                } else {
+                    score += 0.5;
+                }
+            } else if (material.Category === 'Metal') {
+                if (meltingPoint < 800) {
+                    score += 0.5; // Too soft, not common
+                } else if (meltingPoint < 1500) {
+                    score += 1.5;
+                } else {
+                    score += 1.0;
+                }
+            } else if (material.Category === 'Glass' || material.Category === 'Ceramic') {
+                if (meltingPoint < 1000) {
+                    score += 1.5;
+                } else if (meltingPoint < 1600) {
+                    score += 1.0;
+                } else {
+                    score += 0.5;
+                }
+            }
+
+            // Density (0–1), general heuristic
+            const density = material.Density;
+            if (density < 1.0) {
+                score += 1.0;
+            } else if (density < 3.0) {
+                score += 0.5;
+            }
+
+            // Toxicity (0–2), inverse score
             const toxicityScores = {
                 'Low': 2.0,
-                'Moderate': 1.5,
-                'High': 0.5,
+                'Moderate': 1.0,
+                'High': 0.3,
                 'Very High': 0.0
             };
             score += toxicityScores[material.Toxicity] || 0;
 
-            // Processing advantages (0-2 points)
-            let processingScore = 1.0;
-            if (material.Category === 'Metal' && material.Magnetism === 'Ferrous') {
-                processingScore += 0.5; // Magnetic separation advantage
+            // Polymer Type (0–1.5) – only if polymer
+            const polymerTypeScores = {
+                'PET': 1.5,
+                'HDPE': 1.5,
+                'PP': 1.0,
+                'PVC': 0.5,
+                'PS': 0.5,
+                'Other': 0.0
+            };
+            if (material.Category === 'Polymer') {
+                score += polymerTypeScores[material['Polymer Type']] || 0;
             }
-            if (material.Category === 'Polymer' && material.Additives === 'No') {
-                processingScore += 0.5; // Easier to recycle without additives
-            }
-            score += Math.min(processingScore, 2.0);
 
-            // Market demand (0-1 point)
-            let demandScore = 0.5;
-            if (['Metal', 'Glass'].includes(material.Category)) {
-                demandScore = 1.0;
+            // Additives (penalty of up to -1)
+            if (material.Category === 'Polymer' && material.Additives === 'Yes') {
+                score -= 1.0;
             }
+            let demandScore = 0.5;
+
+            if (material.Category === 'Metal') {
+                demandScore = material.Magnetism === 'Ferrous' ? 1.0 : 0.8; // Slightly less for non-ferrous
+            } else if (material.Category === 'Glass') {
+                demandScore = 1.0;
+            } else if (material.Category === 'Polymer') {
+                demandScore = ['PET', 'HDPE'].includes(material['Polymer Type']) ? 1.0 : 0.5;
+            } else if (material.Category === 'Ceramic') {
+                demandScore = 0.3;
+            } else if (material.Category === 'Composite') {
+                demandScore = 0.2;
+            }
+
             score += demandScore;
 
-            return Math.min(Math.round(score * 10) / 10, 10); // Round to 1 decimal place, max 10
+            return Math.min(Math.max(Math.round(score * 100) / 100, 0), 10);      
         }
 
-        // Get recyclability rating text
+
         function getRecyclabilityRating(score) {
             if (score >= 8) return 'Excellent';
             if (score >= 6) return 'Good';
