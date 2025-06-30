@@ -30,22 +30,16 @@
             <span class="separator">></span>
             <span class="current">Material Details</span>
         </nav>
-
         <header class="material-header">
             <div class="material-title-section">
                 <h1 id="material-name">Loading...</h1>
                 <span class="material-category" id="material-category">Loading...</span>
-                <div class="recyclability-score">
-                    <span class="score-label">Recyclability Score</span>
-                    <div class="score-circle" id="score-circle">
-                        <span class="score-value" id="score-value">-</span>
-                        <span class="score-max">/10</span>
-                    </div>
-                </div>
             </div>
-            <div class="material-image">
-                <div class="placeholder-image">
-                    <span>Material Image</span>
+            <div class="recyclability-score">
+                <span class="score-label">Recyclability Score</span>
+                <div class="score-circle" id="score-circle">
+                    <span class="score-value" id="score-value">-</span>
+                    <span class="score-max">/10</span>
                 </div>
             </div>
         </header>
@@ -156,7 +150,7 @@
             
             return materials;
         }
-function calculateRecyclabilityScore(material) {
+        function calculateRecyclabilityScore(material) {
             let score = 0;
 
             const categoryScores = {
@@ -246,7 +240,7 @@ function calculateRecyclabilityScore(material) {
             let demandScore = 0.5;
 
             if (material.Category === 'Metal') {
-                demandScore = material.Magnetism === 'Ferrous' ? 1.0 : 0.8; // Slightly less for non-ferrous
+                demandScore = material.Magnetism === 'Ferrous' ? 1.0 : 0.8; 
             } else if (material.Category === 'Glass') {
                 demandScore = 1.0;
             } else if (material.Category === 'Polymer') {
@@ -316,7 +310,7 @@ function calculateRecyclabilityScore(material) {
             } else if (material.Category === 'Glass' || material.Category === 'Ceramic') {
                 if (material['Melting Point']) properties.push({ label: 'Melting Point', value: `${material['Melting Point']}°C` });
             }
-
+            // filters out empty values and, creates two spans for label and value, and then concatenates them into string of HTML
             container.innerHTML = properties.filter(prop => prop.value).map(prop => `
                 <div class="property-item">
                     <span class="property-label">${prop.label}:</span>
@@ -327,22 +321,34 @@ function calculateRecyclabilityScore(material) {
 
         function displayRecyclabilityAnalysis(material, score) {
             const container = document.getElementById('recyclability-analysis');
-            
-            // Calculate collection rate based on category and properties
-            let collectionRate = 50; // Base rate
-            if (material.Category === 'Metal') collectionRate = 85;
-            else if (material.Category === 'Glass') collectionRate = 75;
-            else if (material.Category === 'Polymer') collectionRate = 65;
-            else if (material.Category === 'Ceramic') collectionRate = 30;
-            
-            // Adjust for toxicity
-            if (material.Toxicity === 'High' || material.Toxicity === 'Very High') {
-                collectionRate -= 20;
+            let collectionRate = 50;
+            switch (material.Category) {
+                case 'Metal':
+                    collectionRate = 85;
+                    break;
+                case 'Glass':
+                    collectionRate = 75;
+                    break;
+                case 'Polymer':
+                    collectionRate = 65;
+                    break;
+                case 'Ceramic':
+                    collectionRate = 30;
+                    break;
+                case 'Composite':
+                    collectionRate = 55;
+                    break;
+                default:
+                    collectionRate = 50;
             }
-            
+            if (material.Toxicity === 'High') {
+                collectionRate -= 15;
+            } else if (material.Toxicity === 'Very High') {
+                collectionRate -= 25;
+            }
             collectionRate = Math.max(10, Math.min(95, collectionRate));
-            
-            // Determine processing difficulty
+
+            // processing difficulty
             let difficulty = 'Medium';
             let difficultyClass = 'medium';
             if (material.Category === 'Metal' || (material.Category === 'Polymer' && material.Additives === 'No')) {
@@ -353,7 +359,6 @@ function calculateRecyclabilityScore(material) {
                 difficultyClass = 'high';
             }
             
-            // Market demand
             let demand = 'Medium';
             let demandClass = 'medium';
             if (material.Category === 'Metal' || material.Category === 'Glass') {
@@ -398,22 +403,20 @@ function calculateRecyclabilityScore(material) {
             `;
         }
 
-        // Display environmental metrics (estimated based on material properties)
         function displayEnvironmentalMetrics(material) {
             const container = document.getElementById('environmental-metrics');
             
-            // Estimate environmental impact based on material type
             const metrics = getEnvironmentalMetrics(material);
             
             container.innerHTML = `
                 <div class="metric-item">
-                    <div class="metric-icon">🌱</div>
+                    <div class="metric-icon"><img src="images/carbon-footprint.png" style="width: 55px; height: 55px; padding: 15px 5px 5px;"></div>
                     <div class="metric-content">
                         <span class="metric-label">Carbon Footprint</span>
                         <span class="metric-value">${metrics.carbonFootprint}</span>
                     </div>
                 </div>
-                <div class="metric-item">
+                <div class="metric-item">                  
                     <div class="metric-icon">💧</div>
                     <div class="metric-content">
                         <span class="metric-label">Water Usage</span>
@@ -437,7 +440,6 @@ function calculateRecyclabilityScore(material) {
             `;
         }
 
-        // Get estimated environmental metrics
         function getEnvironmentalMetrics(material) {
             const defaults = {
                 carbonFootprint: '2.0 kg CO₂/kg',

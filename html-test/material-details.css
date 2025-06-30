@@ -104,7 +104,7 @@
 .material-header {
     background: white;
     border-radius: 12px;
-    padding: 2rem;
+    padding: 2.5rem;
     margin-bottom: 2rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: flex;
@@ -137,28 +137,32 @@
 
 .recyclability-score {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    text-align: center;
+    gap: 0.5rem;
+    padding-right: 10px;
 }
 
 .score-label {
-    font-size: 1.1rem;
-    color: #555;
-    font-weight: 500;
+    font-size: 0.85rem;
+    color: #616161;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    padding-right: 10px;
 }
 
 .score-circle {
-    width: 80px;
-    height: 80px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-    border: 5px solid;
+    border: 8px solid;
     background-color: white;
-
+    padding-right: 7px;
 }
 
 .score-circle.excellent {
@@ -178,31 +182,15 @@
 }
 
 .score-value {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: rgb(117, 112, 102);
 }
 
 .score-max {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: rgb(117, 112, 102);
-}
-
-.material-image {
-    flex-shrink: 0;
-}
-
-.placeholder-image {
-    width: 200px;
-    height: 200px;
-    background-color: #f0f0f0;
-    border: 2px dashed #ccc;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-size: 0.9rem;
+    padding-left: 9px;
 }
 
 /* Content Grid */
