@@ -59,6 +59,7 @@ body {
     border-radius: 25px;
     overflow: hidden;
     background-color: transparent;
+    height: 35px;
 }
 
 .nav-search input {
