@@ -26,6 +26,7 @@
     z-index: 1000;
     height: 65px;
     transition: all 0.3s ease;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }   
 
 .nav-right {
@@ -48,6 +49,7 @@
     font-weight: 550;
     transition: color 0.3s ease, font-size 0.3s ease;
     position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif';
 }
 
 .nav-links a:hover {
@@ -58,6 +60,7 @@
     color: rgb(135, 99, 26);
     font-size: 1.1rem;
     font-weight: 600;
+    font-family: 'Gill Sans', sans-serif;
 }
 
 .nav-search {
@@ -82,6 +85,7 @@
 
 .nav-search input::placeholder {
     color: rgba(255, 255, 255, 0.7);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .nav-search button {

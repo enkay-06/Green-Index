@@ -1,6 +1,57 @@
 /* Recyclability Calculator Specific Styles */
 
 /* Navbar Search Styling Override */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    height: 65px;
+    transition: all 0.3s ease;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}   
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.2rem;
+    align-items: center;
+    font-size: 1.2rem;
+    color: rgb(135, 99, 26);
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 550;
+    transition: color 0.3s ease, font-size 0.3s ease;
+    position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif';
+}
+
+.nav-links a:hover {
+    font-size:1.3rem;
+}
+
+#search-btn{
+    color: rgb(135, 99, 26);
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Gill Sans', sans-serif;
+}
+
 .nav-search {
     display: flex;
     align-items: center;
@@ -23,6 +74,7 @@
 
 .nav-search input::placeholder {
     color: rgba(255, 255, 255, 0.7);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .nav-search button {
