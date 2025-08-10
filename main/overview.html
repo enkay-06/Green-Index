@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <a href="index.html" style="font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none;"> Green Index</a>
         <div class="nav-right">
@@ -27,20 +26,17 @@
     </nav>
 
     <div class="overview-container">
-        <!-- Breadcrumb Navigation -->
         <nav class="breadcrumb">
             <a href="index.html">Home</a>
             <span class="separator">></span>
             <span class="current">Materials Overview</span>
         </nav>
 
-        <!-- Page Header -->
         <header class="overview-header">
             <h1>Materials Recyclability Overview</h1>
-            <p>Comprehensive analysis of material recyclability scores and environmental impact</p>
+            <p>Comprehensive analysis of recyclability scores and environmental impact</p>
         </header>
 
-        <!-- Summary Cards -->
         <section class="summary-section">
             <div class="summary-grid">
                 <div class="summary-card">
@@ -66,28 +62,12 @@
             </div>
         </section>
 
-        <!-- Charts Section -->
         <section class="charts-section">
             <div class="charts-grid">
-                <!-- Recyclability by Category -->
                 <div class="chart-container">
                     <h3>Recyclability Score by Category</h3>
                     <canvas id="categoryChart"></canvas>
                 </div>
-
-                <!-- Score Distribution -->
-                <div class="chart-container">
-                    <h3>Score Distribution</h3>
-                    <canvas id="distributionChart"></canvas>
-                </div>
-
-                <!-- Toxicity Analysis -->
-                <div class="chart-container">
-                    <h3>Toxicity Level Distribution</h3>
-                    <canvas id="toxicityChart"></canvas>
-                </div>
-
-                <!-- Thermal Stability -->
                 <div class="chart-container">
                     <h3>Thermal Stability by Category</h3>
                     <canvas id="thermalChart"></canvas>
@@ -95,7 +75,6 @@
             </div>
         </section>
 
-        <!-- Detailed Materials Table -->
         <section class="table-section">
             <div class="table-container">
                 <h3>Detailed Materials Analysis</h3>
@@ -357,8 +336,6 @@
         // Create all charts
         function createCharts() {
             createCategoryChart();
-            createDistributionChart();
-            createToxicityChart();
             createThermalChart();
         }
 
@@ -419,89 +396,6 @@
                                 display: true,
                                 text: 'Material Category'
                             }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Distribution chart
-        function createDistributionChart() {
-            const ctx = document.getElementById('distributionChart').getContext('2d');
-            
-            const scoreRanges = {
-                'Poor (0-2)': 0,
-                'Fair (2-4)': 0,
-                'Good (4-6)': 0,
-                'Very Good (6-8)': 0,
-                'Excellent (8-10)': 0
-            };
-
-            materialsData.forEach(material => {
-                const score = material.recyclabilityScore;
-                if (score < 2) scoreRanges['Poor (0-2)']++;
-                else if (score < 4) scoreRanges['Fair (2-4)']++;
-                else if (score < 6) scoreRanges['Good (4-6)']++;
-                else if (score < 8) scoreRanges['Very Good (6-8)']++;
-                else scoreRanges['Excellent (8-10)']++;
-            });
-
-            charts.distribution = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(scoreRanges),
-                    datasets: [{
-                        data: Object.values(scoreRanges),
-                        backgroundColor: [
-                            '#f44336',
-                            '#ff9800',
-                            '#ffeb3b',
-                            '#4caf50',
-                            '#1a734c'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-        }
-
-        // Toxicity chart
-        function createToxicityChart() {
-            const ctx = document.getElementById('toxicityChart').getContext('2d');
-            
-            const toxicityData = {};
-            materialsData.forEach(material => {
-                const toxicity = material.Toxicity || 'Unknown';
-                toxicityData[toxicity] = (toxicityData[toxicity] || 0) + 1;
-            });
-
-            charts.toxicity = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: Object.keys(toxicityData),
-                    datasets: [{
-                        data: Object.values(toxicityData),
-                        backgroundColor: [
-                            '#4caf50',
-                            '#ffeb3b',
-                            '#ff9800',
-                            '#f44336',
-                            '#9e9e9e'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
                         }
                     }
                 }

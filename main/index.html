@@ -25,13 +25,13 @@
     </nav>
     <section class="parallax-container">
         <div class="parallax-layer" id="back-layer">
-            <img src="images/back.png" alt="Background" class="parallax-image">
+            <img src="images/back.png" id="back-layer"class="parallax-image">
         </div>
         <div class="parallax-layer" id="middle-layer">
-            <img src="images/middle.png" alt="Middle layer" class="parallax-image">
+            <img src="images/middle.png" id="middle-layer" class="parallax-image">
         </div>
         <div class="parallax-layer" id="fore-layer">
-            <img src="images/fore.png" alt="Foreground" class="parallax-image">
+            <img src="images/fore.png" id="fore-layer" class="parallax-image">
         </div>
         
         <div class="hero-content">
@@ -135,12 +135,8 @@
                         <li><a href="search.html">Search Materials</a></li>
                         <li><a href="overview.html">Materials Overview</a></li>
                         <li><a href="rScore.html">Calculate Score</a></li>
-                        <li><a href="material-details.html">Material Details</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Green Index. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -157,9 +153,9 @@
             const middleLayer = document.getElementById('middle-layer');
             const foreLayer = document.getElementById('fore-layer');
             
-            if (backLayer) backLayer.style.transform = `translateY(${rate * -0.1}px)`;
-            if (middleLayer) middleLayer.style.transform = `translateY(${rate * 0.2}px)`;
-            if (foreLayer) foreLayer.style.transform = `translateY(${rate * 0.57}px)`;
+            if (backLayer) backLayer.style.transform = `translateY(${rate * -0.05}px)`;
+            if (middleLayer) middleLayer.style.transform = `translateY(${rate * 0.3}px)`;
+            if (foreLayer) foreLayer.style.transform = `translateY(${rate * 0.8}px)`;
         });
 
         // Carousel functionality
