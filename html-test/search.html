@@ -32,18 +32,6 @@
                 
                 <div class="filter-group">
                     <label class="checkbox-label">
-                        <input type="checkbox" id="glass-filter" class="material-checkbox">
-                        Glass & Ceramics
-                    </label>
-                    <div id="glass-options" class="sub-options" style="display: none;">
-                        <label>Thermal Stability (°C)</label>
-                        <input type="range" id="thermal-stability" min="100" max="1000" value="500">
-                        <span id="thermal-value">500°C</span>
-                    </div>
-                </div>
-
-                <div class="filter-group">
-                    <label class="checkbox-label">
                         <input type="checkbox" id="metal-filter" class="material-checkbox">
                         Metal
                     </label>
@@ -51,35 +39,102 @@
                         <label>Magnetism</label>
                         <select id="magnetism-select">
                             <option value="any">Any</option>
-                            <option value="ferrous">Ferrous</option>
-                            <option value="non-ferrous">Non-ferrous</option>
+                            <option value="Ferrous">Ferrous</option>
+                            <option value="Non-ferrous">Non-ferrous</option>
                         </select>
-                        <label>Melting Point (°C)</label>
-                        <input type="range" id="metal-melting-point" min="200" max="3000" value="1000">
+                        <label>Melting Point Range (°C)</label>
+                        <input type="range" id="metal-melting-point" min="200" max="3500" value="1000">
                         <span id="metal-melting-value">1000°C</span>
+                        <label>Thermal Stability</label>
+                        <select id="metal-thermal">
+                            <option value="any">Any</option>
+                            <option value="Low">Low</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="High">High</option>
+                            <option value="Very High">Very High</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="filter-group">
                     <label class="checkbox-label">
-                        <input type="checkbox" id="plastic-filter" class="material-checkbox">
-                        Plastic
+                        <input type="checkbox" id="polymer-filter" class="material-checkbox">
+                        Polymer
                     </label>
-                    <div id="plastic-options" class="sub-options" style="display: none;">
-                        <label>Melting Point (°C)</label>
-                        <input type="range" id="plastic-melting-point" min="80" max="300" value="150">
-                        <span id="plastic-melting-value">150°C</span>
+                    <div id="polymer-options" class="sub-options" style="display: none;">
+                        <label>Polymer Type</label>
+                        <select id="polymer-type">
+                            <option value="any">Any</option>
+                            <option value="PET">PET</option>
+                            <option value="HDPE">HDPE</option>
+                            <option value="LDPE">LDPE</option>
+                            <option value="PP">PP</option>
+                            <option value="PS">PS</option>
+                            <option value="PVC">PVC</option>
+                            <option value="PMMA">PMMA</option>
+                            <option value="PC">PC</option>
+                            <option value="PTFE">PTFE</option>
+                            <option value="Other">Other</option>
+                        </select>
                         <label>Additives</label>
                         <select id="additives">
                             <option value="any">Any</option>
-                            <option value="none">None</option>
-                            <option value="plasticizers">Plasticizers</option>
-                            <option value="stabilizers">Stabilizers</option>
-                            <option value="colorants">Colorants</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                         </select>
-                        <label>Density (g/cm³)</label>
-                        <input type="range" id="density" min="0.8" max="2.5" step="0.1" value="1.2">
-                        <span id="density-value">1.2 g/cm³</span>
+                        <label>Density Range (g/cm³)</label>
+                        <input type="range" id="density" min="0.05" max="2.5" step="0.1" value="1.0">
+                        <span id="density-value">1.0 g/cm³</span>
+                        <label>Toxicity</label>
+                        <select id="polymer-toxicity">
+                            <option value="any">Any</option>
+                            <option value="Low">Low</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="glass-filter" class="material-checkbox">
+                        Glass
+                    </label>
+                    <div id="glass-options" class="sub-options" style="display: none;">
+                        <label>Melting Point Range (°C)</label>
+                        <input type="range" id="glass-melting-point" min="500" max="2000" value="800">
+                        <span id="glass-melting-value">800°C</span>
+                        <label>Density Range (g/cm³)</label>
+                        <input type="range" id="glass-density" min="2.0" max="3.5" step="0.1" value="2.5">
+                        <span id="glass-density-value">2.5 g/cm³</span>
+                        <label>Toxicity</label>
+                        <select id="glass-toxicity">
+                            <option value="any">Any</option>
+                            <option value="Low">Low</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="ceramic-filter" class="material-checkbox">
+                        Ceramic
+                    </label>
+                    <div id="ceramic-options" class="sub-options" style="display: none;">
+                        <label>Melting Point Range (°C)</label>
+                        <input type="range" id="ceramic-melting-point" min="1500" max="4000" value="2500">
+                        <span id="ceramic-melting-value">2500°C</span>
+                        <label>Thermal Stability</label>
+                        <select id="ceramic-thermal">
+                            <option value="any">Any</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="High">High</option>
+                            <option value="Very High">Very High</option>
+                        </select>
+                        <label>Density Range (g/cm³)</label>
+                        <input type="range" id="ceramic-density" min="1.5" max="6.5" step="0.1" value="3.0">
+                        <span id="ceramic-density-value">3.0 g/cm³</span>
                     </div>
                 </div>
             </div>
@@ -273,16 +328,21 @@
                 if (material.Category === 'Metal') {
                     if (material.Magnetism) details.push(`Magnetism: ${material.Magnetism}`);
                     if (material['Melting Point']) details.push(`Melting Point: ${material['Melting Point']}°C`);
+                    if (material['Thermal Stability']) details.push(`Thermal Stability: ${material['Thermal Stability']}`);
                 } else if (material.Category === 'Polymer') {
                     if (material['Polymer Type']) details.push(`Polymer: ${material['Polymer Type']}`);
                     if (material['Melting Point']) details.push(`Melting Point: ${material['Melting Point']}°C`);
                     if (material.Additives) details.push(`Additives: ${material.Additives}`);
-                } else if (material.Category === 'Glass' || material.Category === 'Ceramic') {
+                } else if (material.Category === 'Glass') {
+                    if (material['Melting Point']) details.push(`Melting Point: ${material['Melting Point']}°C`);
+                } else if (material.Category === 'Ceramic') {
+                    if (material['Melting Point']) details.push(`Melting Point: ${material['Melting Point']}°C`);
+                    if (material['Thermal Stability']) details.push(`Thermal Stability: ${material['Thermal Stability']}`);
+                } else if (material.Category === 'Composite') {
                     if (material['Melting Point']) details.push(`Melting Point: ${material['Melting Point']}°C`);
                 }
                 
                 // Common properties
-                if (material['Thermal Stability']) details.push(`Thermal Stability: ${material['Thermal Stability']}`);
                 if (material.Density) details.push(`Density: ${material.Density} g/cm³`);
                 if (material.Toxicity) details.push(`Toxicity: ${material.Toxicity}`);
                 
@@ -313,53 +373,46 @@
             const materialCheckboxes = document.querySelectorAll('.material-checkbox');
             const sliders = document.querySelectorAll('input[type="range"]');
             
-            // Handle material checkbox changes
+            // Handle material checkbox changes - only show/hide options, don't filter
             materialCheckboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', function() {
                     const materialType = this.id.replace('-filter', '');
                     const options = document.getElementById(materialType + '-options');
                     options.style.display = this.checked ? 'block' : 'none';
-                    applyFilters();
                 });
             });
 
-            // Handle slider value updates
+            // Handle slider value updates - only update display values, don't filter
             sliders.forEach(slider => {
                 slider.addEventListener('input', function() {
-                    const valueSpan = document.getElementById(this.id.replace('-', '-') + '-value') || 
-                                    document.getElementById(this.id + '-value');
+                    const valueSpan = document.getElementById(this.id + '-value');
                     if (valueSpan) {
                         let unit = this.id.includes('density') ? ' g/cm³' : '°C';
                         valueSpan.textContent = this.value + unit;
                     }
-                    applyFilters();
                 });
             });
 
-            // Handle select changes
-            document.querySelectorAll('select').forEach(select => {
-                select.addEventListener('change', applyFilters);
-            });
-
-            // Search functionality
+            // Search functionality - only update on manual search, not automatic
             const searchInput = document.getElementById('search-input');
             const searchBtn = document.getElementById('search-btn');
             
             function performSearch() {
-                applyFilters();
+                // Only perform search if apply filters is clicked or search button is clicked
+                // Don't auto-filter on input
             }
 
-            searchBtn.addEventListener('click', performSearch);
+            searchBtn.addEventListener('click', applyFilters);
             searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') performSearch();
+                if (e.key === 'Enter') applyFilters();
             });
-            searchInput.addEventListener('input', performSearch);
 
-            // Apply filters button
+            // Apply filters button - this is the only way to actually filter
             document.getElementById('apply-filters').addEventListener('click', applyFilters);
 
             // Clear filters
             document.getElementById('clear-filters').addEventListener('click', function() {
+                // Reset all checkboxes
                 materialCheckboxes.forEach(cb => {
                     cb.checked = false;
                     const materialType = cb.id.replace('-filter', '');
@@ -367,16 +420,28 @@
                     options.style.display = 'none';
                 });
                 
+                // Reset all sliders to their default values
                 sliders.forEach(slider => {
-                    slider.value = slider.defaultValue || slider.min;
+                    if (slider.id === 'metal-melting-point') slider.value = 1000;
+                    else if (slider.id === 'density') slider.value = 1.0;
+                    else if (slider.id === 'glass-melting-point') slider.value = 800;
+                    else if (slider.id === 'glass-density') slider.value = 2.5;
+                    else if (slider.id === 'ceramic-melting-point') slider.value = 2500;
+                    else if (slider.id === 'ceramic-density') slider.value = 3.0;
+                    else slider.value = slider.getAttribute('value') || slider.min;
+                    
                     slider.dispatchEvent(new Event('input'));
                 });
                 
+                // Reset all selects
                 document.querySelectorAll('select').forEach(select => {
                     select.selectedIndex = 0;
                 });
                 
+                // Reset search input
                 searchInput.value = '';
+                
+                // Show all materials
                 filteredMaterials = [...materialsData];
                 displayMaterials(filteredMaterials);
                 updateResultsCount(filteredMaterials.length);
@@ -391,13 +456,10 @@
             
             // Get active category filters
             const activeCategories = [];
-            const materialCheckboxes = document.querySelectorAll('.material-checkbox:checked');
-            materialCheckboxes.forEach(cb => {
-                const categoryType = cb.id.replace('-filter', '');
-                if (categoryType === 'glass') activeCategories.push('Glass');
-                else if (categoryType === 'metal') activeCategories.push('Metal');
-                else if (categoryType === 'plastic') activeCategories.push('Polymer');
-            });
+            if (document.getElementById('metal-filter').checked) activeCategories.push('Metal');
+            if (document.getElementById('polymer-filter').checked) activeCategories.push('Polymer');
+            if (document.getElementById('glass-filter').checked) activeCategories.push('Glass');
+            if (document.getElementById('ceramic-filter').checked) activeCategories.push('Ceramic');
 
             // Filter materials
             filteredMaterials = materialsData.filter(material => {
@@ -406,34 +468,31 @@
                     return false;
                 }
 
-                // Category filter
+                // Category filter - if no categories selected, show all
                 if (activeCategories.length > 0 && !activeCategories.includes(material.Category)) {
                     return false;
                 }
 
-                // Category-specific filters
-                if (activeCategories.includes('Glass')) {
-                    const thermalStability = parseFloat(document.getElementById('thermal-stability').value);
-                    if (thermalStability && material['Melting Point']) {
-                        const materialTemp = parseFloat(material['Melting Point']);
-                        if (materialTemp < thermalStability) return false;
-                    }
-                }
-
-                if (activeCategories.includes('Metal')) {
+                // Metal-specific filters
+                if (activeCategories.includes('Metal') && material.Category === 'Metal') {
                     const magnetismSelect = document.getElementById('magnetism-select').value;
                     if (magnetismSelect !== 'any' && material.Magnetism !== magnetismSelect) {
                         return false;
                     }
                     
-                    const meltingPoint = parseFloat(document.getElementById('metal-melting-point').value);
-                    if (meltingPoint && material['Melting Point']) {
-                        const materialTemp = parseFloat(material['Melting Point']);
-                        if (Math.abs(materialTemp - meltingPoint) > 200) return false;
+                    const thermalSelect = document.getElementById('metal-thermal').value;
+                    if (thermalSelect !== 'any' && material['Thermal Stability'] !== thermalSelect) {
+                        return false;
+                    }
+                    
+                    const meltingPointThreshold = parseFloat(document.getElementById('metal-melting-point').value);
+                    if (material['Melting Point'] && parseFloat(material['Melting Point']) < meltingPointThreshold) {
+                        return false;
                     }
                 }
 
-                if (activeCategories.includes('Polymer')) {
+                // Polymer-specific filters
+                if (activeCategories.includes('Polymer') && material.Category === 'Polymer') {
                     const polymerType = document.getElementById('polymer-type').value;
                     if (polymerType !== 'any' && material['Polymer Type'] !== polymerType) {
                         return false;
@@ -444,10 +503,50 @@
                         return false;
                     }
                     
-                    const density = parseFloat(document.getElementById('density').value);
-                    if (density && material.Density) {
-                        const materialDensity = parseFloat(material.Density);
-                        if (Math.abs(materialDensity - density) > 0.5) return false;
+                    const toxicity = document.getElementById('polymer-toxicity').value;
+                    if (toxicity !== 'any' && material.Toxicity !== toxicity) {
+                        return false;
+                    }
+                    
+                    const densityThreshold = parseFloat(document.getElementById('density').value);
+                    if (material.Density && Math.abs(parseFloat(material.Density) - densityThreshold) > 0.5) {
+                        return false;
+                    }
+                }
+
+                // Glass-specific filters
+                if (activeCategories.includes('Glass') && material.Category === 'Glass') {
+                    const meltingPointThreshold = parseFloat(document.getElementById('glass-melting-point').value);
+                    if (material['Melting Point'] && parseFloat(material['Melting Point']) < meltingPointThreshold) {
+                        return false;
+                    }
+                    
+                    const densityThreshold = parseFloat(document.getElementById('glass-density').value);
+                    if (material.Density && Math.abs(parseFloat(material.Density) - densityThreshold) > 0.5) {
+                        return false;
+                    }
+                    
+                    const toxicity = document.getElementById('glass-toxicity').value;
+                    if (toxicity !== 'any' && material.Toxicity !== toxicity) {
+                        return false;
+                    }
+                }
+
+                // Ceramic-specific filters
+                if (activeCategories.includes('Ceramic') && material.Category === 'Ceramic') {
+                    const meltingPointThreshold = parseFloat(document.getElementById('ceramic-melting-point').value);
+                    if (material['Melting Point'] && parseFloat(material['Melting Point']) < meltingPointThreshold) {
+                        return false;
+                    }
+                    
+                    const thermalSelect = document.getElementById('ceramic-thermal').value;
+                    if (thermalSelect !== 'any' && material['Thermal Stability'] !== thermalSelect) {
+                        return false;
+                    }
+                    
+                    const densityThreshold = parseFloat(document.getElementById('ceramic-density').value);
+                    if (material.Density && Math.abs(parseFloat(material.Density) - densityThreshold) > 1.0) {
+                        return false;
                     }
                 }
 
