@@ -244,7 +244,6 @@ body {
     max-height: 400px;
 }
 
-/* Table Section */
 .table-section {
     margin-bottom: 40px;
 }
@@ -257,7 +256,7 @@ body {
 }
 
 .table-container h3 {
-    color: white;
+    color: #555;
     padding: 30px 30px 20px;
     margin: 0;
     font-size: 1.5rem;
