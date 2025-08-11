@@ -398,11 +398,9 @@
 
 .btn-secondary:hover {
     background: white;
-    color: var(--primary-green);
     transform: translateY(-2px);
 }
 
-/* Footer */
 .footer {
     background: #2c2c2c;
     color: white;
@@ -416,9 +414,8 @@
     margin-bottom: 2rem;
 }
 
-.footer-section h3, .footer-section h4 {
-    margin-bottom: 1rem;
-    color: var(--primary-green-light);
+.footer-section h2, .footer-section h4 {
+    margin-bottom: 0.5rem;
 }
 
 .footer-section p {
@@ -441,17 +438,6 @@
     transition: opacity 0.3s ease;
 }
 
-.footer-section ul li a:hover {
-    opacity: 1;
-    color: var(--primary-green-light);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid #444444;
-    opacity: 0.6;
-}
 
 /* Animations */
 @keyframes fadeInUp {

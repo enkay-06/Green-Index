@@ -5,6 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search - Green Index</title>
+    <style>
+        .range-inputs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .range-inputs input[type="number"] {
+            width: 80px;
+            padding: 4px;
+        }
+        .range-inputs span {
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -16,10 +31,10 @@
                 <a href="overview.html">Overview</a>
                 <a href="rScore.html">Calculator</a>
             </div>
-            <div class="nav-search">
-                <input type="text" id="search-input" placeholder="Search materials...">
-                <button id="search-btn">Search</button>
-            </div>
+            <form class="nav-search" action="search.html" method="GET" style="display: flex;" onsubmit="return handleNavSearch(event);">
+                <input type="text" id="search-input" name="q" placeholder="Search materials...">
+                <button id="search-btn" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 
@@ -43,8 +58,11 @@
                             <option value="Non-ferrous">Non-ferrous</option>
                         </select>
                         <label>Melting Point Range (°C)</label>
-                        <input type="range" id="metal-melting-point" min="200" max="3500" value="1000">
-                        <span id="metal-melting-value">1000°C</span>
+                        <div class="range-inputs">
+                            <input type="number" id="metal-melting-min" placeholder="Min" value="200" min="200" max="3500">
+                            <span>-</span>
+                            <input type="number" id="metal-melting-max" placeholder="Max" value="3500" min="200" max="3500">
+                        </div>
                         <label>Thermal Stability</label>
                         <select id="metal-thermal">
                             <option value="any">Any</option>
@@ -83,8 +101,11 @@
                             <option value="No">No</option>
                         </select>
                         <label>Density Range (g/cm³)</label>
-                        <input type="range" id="density" min="0.05" max="2.5" step="0.1" value="1.0">
-                        <span id="density-value">1.0 g/cm³</span>
+                        <div class="range-inputs">
+                            <input type="number" id="polymer-density-min" placeholder="Min" value="0.05" min="0.05" max="2.5" step="0.05">
+                            <span>-</span>
+                            <input type="number" id="polymer-density-max" placeholder="Max" value="2.5" min="0.05" max="2.5" step="0.05">
+                        </div>
                         <label>Toxicity</label>
                         <select id="polymer-toxicity">
                             <option value="any">Any</option>
@@ -102,11 +123,17 @@
                     </label>
                     <div id="glass-options" class="sub-options" style="display: none;">
                         <label>Melting Point Range (°C)</label>
-                        <input type="range" id="glass-melting-point" min="500" max="2000" value="800">
-                        <span id="glass-melting-value">800°C</span>
+                        <div class="range-inputs">
+                            <input type="number" id="glass-melting-min" placeholder="Min" value="500" min="500" max="2000">
+                            <span>-</span>
+                            <input type="number" id="glass-melting-max" placeholder="Max" value="2000" min="500" max="2000">
+                        </div>
                         <label>Density Range (g/cm³)</label>
-                        <input type="range" id="glass-density" min="2.0" max="3.5" step="0.1" value="2.5">
-                        <span id="glass-density-value">2.5 g/cm³</span>
+                        <div class="range-inputs">
+                            <input type="number" id="glass-density-min" placeholder="Min" value="2.0" min="2.0" max="3.5" step="0.1">
+                            <span>-</span>
+                            <input type="number" id="glass-density-max" placeholder="Max" value="3.5" min="2.0" max="3.5" step="0.1">
+                        </div>
                         <label>Toxicity</label>
                         <select id="glass-toxicity">
                             <option value="any">Any</option>
@@ -123,18 +150,17 @@
                     </label>
                     <div id="ceramic-options" class="sub-options" style="display: none;">
                         <label>Melting Point Range (°C)</label>
-                        <input type="range" id="ceramic-melting-point" min="1500" max="4000" value="2500">
-                        <span id="ceramic-melting-value">2500°C</span>
-                        <label>Thermal Stability</label>
-                        <select id="ceramic-thermal">
-                            <option value="any">Any</option>
-                            <option value="Moderate">Moderate</option>
-                            <option value="High">High</option>
-                            <option value="Very High">Very High</option>
-                        </select>
+                        <div class="range-inputs">
+                            <input type="number" id="ceramic-melting-min" placeholder="Min" value="1500" min="1500" max="4000">
+                            <span>-</span>
+                            <input type="number" id="ceramic-melting-max" placeholder="Max" value="4000" min="1500" max="4000">
+                        </div>
                         <label>Density Range (g/cm³)</label>
-                        <input type="range" id="ceramic-density" min="1.5" max="6.5" step="0.1" value="3.0">
-                        <span id="ceramic-density-value">3.0 g/cm³</span>
+                        <div class="range-inputs">
+                            <input type="number" id="ceramic-density-min" placeholder="Min" value="1.5" min="1.5" max="6.5" step="0.1">
+                            <span>-</span>
+                            <input type="number" id="ceramic-density-max" placeholder="Max" value="6.5" min="1.5" max="6.5" step="0.1">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,18 +181,67 @@
         </main>
     </div>
 
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2>Green Index</h2>
+                    <p>Behind Every Bin Is a Better Decision.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="search.html">Search Materials</a></li>
+                        <li><a href="overview.html">Materials Overview</a></li>
+                        <li><a href="rScore.html">Calculate Score</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Disclaimer:</h4>
+                    <p>This website is for informational purposes only. The information provided should not be used as the sole basis for making environmental or recycling decisions. We do not accept any responsibility or liability for actions taken based on this information.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
         let materialsData = [];
         let filteredMaterials = [];
+
+        // Utility to get URL query parameter
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name) || '';
+        }
+
+        // Handle nav search submit from any page
+        function handleNavSearch(event) {
+            event.preventDefault();
+            const input = document.getElementById('search-input');
+            const query = input.value.trim();
+            if (query.length > 0) {
+                window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+            } else {
+                window.location.href = 'search.html';
+            }
+            return false;
+        }
 
         async function loadMaterialsData() {
             try {
                 const response = await fetch('materialsData.csv');
                 const csvText = await response.text();
                 materialsData = parseCSV(csvText);
-                filteredMaterials = [...materialsData];
-                displayMaterials(filteredMaterials);
-                updateResultsCount(filteredMaterials.length);
+                // If there's a search query in URL, apply it
+                const initialQuery = getQueryParam('q').trim();
+                if (initialQuery.length > 0) {
+                    document.getElementById('search-input').value = initialQuery;
+                    applyFilters(initialQuery);
+                } else {
+                    filteredMaterials = [...materialsData];
+                    displayMaterials(filteredMaterials);
+                    updateResultsCount(filteredMaterials.length);
+                }
             } catch (error) {
                 console.error('Error loading materials data:', error);
                 document.getElementById('results-container').innerHTML = 
@@ -393,24 +468,19 @@
                 });
             });
 
-            // Search functionality - only update on manual search, not automatic
-            const searchInput = document.getElementById('search-input');
-            const searchBtn = document.getElementById('search-btn');
-            
-            function performSearch() {
-                // Only perform search if apply filters is clicked or search button is clicked
-                // Don't auto-filter on input
-            }
-
-            searchBtn.addEventListener('click', applyFilters);
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') applyFilters();
+            document.getElementById('apply-filters').addEventListener('click', function() {
+                applyFilters();
+                // Update URL with search query if present
+                const q = document.getElementById('search-input').value.trim();
+                const url = new URL(window.location.href);
+                if (q.length > 0) {
+                    url.searchParams.set('q', q);
+                } else {
+                    url.searchParams.delete('q');
+                }
+                window.history.replaceState({}, '', url);
             });
 
-            // Apply filters button - this is the only way to actually filter
-            document.getElementById('apply-filters').addEventListener('click', applyFilters);
-
-            // Clear filters
             document.getElementById('clear-filters').addEventListener('click', function() {
                 // Reset all checkboxes
                 materialCheckboxes.forEach(cb => {
@@ -420,26 +490,29 @@
                     options.style.display = 'none';
                 });
                 
-                // Reset all sliders to their default values
-                sliders.forEach(slider => {
-                    if (slider.id === 'metal-melting-point') slider.value = 1000;
-                    else if (slider.id === 'density') slider.value = 1.0;
-                    else if (slider.id === 'glass-melting-point') slider.value = 800;
-                    else if (slider.id === 'glass-density') slider.value = 2.5;
-                    else if (slider.id === 'ceramic-melting-point') slider.value = 2500;
-                    else if (slider.id === 'ceramic-density') slider.value = 3.0;
-                    else slider.value = slider.getAttribute('value') || slider.min;
-                    
-                    slider.dispatchEvent(new Event('input'));
-                });
+                // Reset all number inputs to their default values
+                document.getElementById('metal-melting-min').value = '200';
+                document.getElementById('metal-melting-max').value = '3500';
+                document.getElementById('polymer-density-min').value = '0.05';
+                document.getElementById('polymer-density-max').value = '2.5';
+                document.getElementById('glass-melting-min').value = '500';
+                document.getElementById('glass-melting-max').value = '2000';
+                document.getElementById('glass-density-min').value = '2.0';
+                document.getElementById('glass-density-max').value = '3.5';
+                document.getElementById('ceramic-melting-min').value = '1500';
+                document.getElementById('ceramic-melting-max').value = '4000';
+                document.getElementById('ceramic-density-min').value = '1.5';
+                document.getElementById('ceramic-density-max').value = '6.5';
                 
                 // Reset all selects
                 document.querySelectorAll('select').forEach(select => {
                     select.selectedIndex = 0;
                 });
                 
-                // Reset search input
+                // Reset search input and URL
+                const searchInput = document.getElementById('search-input');
                 searchInput.value = '';
+                window.history.replaceState({}, '', 'search.html');
                 
                 // Show all materials
                 filteredMaterials = [...materialsData];
@@ -449,11 +522,12 @@
         });
 
         // Apply all active filters
-        function applyFilters() {
+        function applyFilters(forcedSearchTerm) {
             if (materialsData.length === 0) return;
 
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            
+            // Use forcedSearchTerm if provided, otherwise get from input
+            const searchTerm = (typeof forcedSearchTerm === 'string' ? forcedSearchTerm : document.getElementById('search-input').value).toLowerCase();
+
             // Get active category filters
             const activeCategories = [];
             if (document.getElementById('metal-filter').checked) activeCategories.push('Metal');
@@ -485,8 +559,10 @@
                         return false;
                     }
                     
-                    const meltingPointThreshold = parseFloat(document.getElementById('metal-melting-point').value);
-                    if (material['Melting Point'] && parseFloat(material['Melting Point']) < meltingPointThreshold) {
+                    const meltingMin = parseFloat(document.getElementById('metal-melting-min').value);
+                    const meltingMax = parseFloat(document.getElementById('metal-melting-max').value);
+                    const meltingPoint = parseFloat(material['Melting Point']);
+                    if (meltingPoint < meltingMin || meltingPoint > meltingMax) {
                         return false;
                     }
                 }
@@ -508,44 +584,44 @@
                         return false;
                     }
                     
-                    const densityThreshold = parseFloat(document.getElementById('density').value);
-                    if (material.Density && Math.abs(parseFloat(material.Density) - densityThreshold) > 0.5) {
+                    const densityMin = parseFloat(document.getElementById('polymer-density-min').value);
+                    const densityMax = parseFloat(document.getElementById('polymer-density-max').value);
+                    const density = parseFloat(material.Density);
+                    if (density < densityMin || density > densityMax) {
                         return false;
                     }
                 }
 
                 // Glass-specific filters
                 if (activeCategories.includes('Glass') && material.Category === 'Glass') {
-                    const meltingPointThreshold = parseFloat(document.getElementById('glass-melting-point').value);
-                    if (material['Melting Point'] && parseFloat(material['Melting Point']) < meltingPointThreshold) {
+                    const meltingMin = parseFloat(document.getElementById('glass-melting-min').value);
+                    const meltingMax = parseFloat(document.getElementById('glass-melting-max').value);
+                    const meltingPoint = parseFloat(material['Melting Point']);
+                    if (meltingPoint < meltingMin || meltingPoint > meltingMax) {
                         return false;
                     }
                     
-                    const densityThreshold = parseFloat(document.getElementById('glass-density').value);
-                    if (material.Density && Math.abs(parseFloat(material.Density) - densityThreshold) > 0.5) {
-                        return false;
-                    }
-                    
-                    const toxicity = document.getElementById('glass-toxicity').value;
-                    if (toxicity !== 'any' && material.Toxicity !== toxicity) {
+                    const densityMin = parseFloat(document.getElementById('glass-density-min').value);
+                    const densityMax = parseFloat(document.getElementById('glass-density-max').value);
+                    const density = parseFloat(material.Density);
+                    if (density < densityMin || density > densityMax) {
                         return false;
                     }
                 }
 
                 // Ceramic-specific filters
                 if (activeCategories.includes('Ceramic') && material.Category === 'Ceramic') {
-                    const meltingPointThreshold = parseFloat(document.getElementById('ceramic-melting-point').value);
-                    if (material['Melting Point'] && parseFloat(material['Melting Point']) < meltingPointThreshold) {
+                    const meltingMin = parseFloat(document.getElementById('ceramic-melting-min').value);
+                    const meltingMax = parseFloat(document.getElementById('ceramic-melting-max').value);
+                    const meltingPoint = parseFloat(material['Melting Point']);
+                    if (meltingPoint < meltingMin || meltingPoint > meltingMax) {
                         return false;
                     }
                     
-                    const thermalSelect = document.getElementById('ceramic-thermal').value;
-                    if (thermalSelect !== 'any' && material['Thermal Stability'] !== thermalSelect) {
-                        return false;
-                    }
-                    
-                    const densityThreshold = parseFloat(document.getElementById('ceramic-density').value);
-                    if (material.Density && Math.abs(parseFloat(material.Density) - densityThreshold) > 1.0) {
+                    const densityMin = parseFloat(document.getElementById('ceramic-density-min').value);
+                    const densityMax = parseFloat(document.getElementById('ceramic-density-max').value);
+                    const density = parseFloat(material.Density);
+                    if (density < densityMin || density > densityMax) {
                         return false;
                     }
                 }
@@ -563,5 +639,6 @@
             window.location.href = url;
         }
     </script>
+
 </body>
 </html>
