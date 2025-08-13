@@ -97,7 +97,7 @@
     </div>
 
     <footer class="footer">
-        <div class="footer-container">
+        <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h2>Green Index</h2>
@@ -527,72 +527,134 @@
                 </div>
             `).join('');
         }
+// Get processing steps based on material type
+function getProcessingSteps(material) {
+    switch (material.Category) {
+        case 'Metal':
+            return [
+                {
+                    title: 'Collection & Sorting',
+                    description: `${material.Material} is collected and sorted. ${
+                        material.Magnetism === 'Ferrous' ? 
+                        'Magnetic separation enables efficient sorting of ferrous metals.' : 
+                        'Non-ferrous metals require visual/density sorting and alloy identification.'
+                    }`
+                },
+                {
+                    title: 'Cleaning & Preparation',
+                    description: 'Contaminants are removed and the material is prepared for melting. Highly toxic metals require additional handling precautions.'
+                },
+                {
+                    title: 'Melting & Reformation',
+                    description: `Material is melted at ~${material['Melting Point'] || 'high'}°C and reformed into new products. Energy use depends on metal type: e.g., aluminum is low-energy, copper and steel are more energy-intensive.`
+                },
+                {
+                    title: 'Processing Challenges & Benefits',
+                    description: 'Metals can be recycled indefinitely without significant quality loss. Challenges include maintaining purity for alloys, energy-intensive melting, and safe handling of toxic metals.'
+                }
+            ];
 
-        // Get processing steps based on material type
-        function getProcessingSteps(material) {
-            switch (material.Category) {
-                case 'Metal':
-                    return [
-                        {
-                            title: 'Collection & Sorting',
-                            description: `${material.Material} is collected and sorted using ${material.Magnetism === 'Ferrous' ? 'magnetic separation and' : ''} visual/density sorting methods.`
-                        },
-                        {
-                            title: 'Cleaning & Preparation',
-                            description: 'Contaminants are removed through cleaning processes, and the material is prepared for melting.'
-                        },
-                        {
-                            title: 'Melting & Reformation',
-                            description: `The material is melted at approximately ${material['Melting Point'] || 'high'}°C and reformed into new products.`
-                        }
-                    ];
-                case 'Polymer':
-                    return [
-                        {
-                            title: 'Collection & Sorting',
-                            description: `${material.Material} is collected and sorted using optical sorting technology to identify the specific polymer type.`
-                        },
-                        {
-                            title: 'Cleaning & Preparation',
-                            description: `Contaminants and ${material.Additives === 'Yes' ? 'additives are removed or managed, and' : ''} the material is cleaned and shredded.`
-                        },
-                        {
-                            title: 'Reprocessing',
-                            description: `Clean polymer flakes are melted and reformed into pellets or directly into new products.`
-                        }
-                    ];
-                case 'Glass':
-                    return [
-                        {
-                            title: 'Collection & Sorting',
-                            description: 'Glass is collected and sorted by color and type to maintain quality during recycling.'
-                        },
-                        {
-                            title: 'Cleaning & Crushing',
-                            description: 'Glass is cleaned to remove labels and contaminants, then crushed into cullet.'
-                        },
-                        {
-                            title: 'Melting & Reformation',
-                            description: `Cullet is melted at ${material['Melting Point'] || 'high temperatures'} and formed into new glass products.`
-                        }
-                    ];
-                default:
-                    return [
-                        {
-                            title: 'Collection',
-                            description: `${material.Material} is collected through specialized recycling programs.`
-                        },
-                        {
-                            title: 'Processing',
-                            description: 'Material undergoes category-specific processing to prepare for reuse.'
-                        },
-                        {
-                            title: 'Recovery',
-                            description: 'Processed material is recovered for use in new applications where possible.'
-                        }
-                    ];
-            }
-        }
+        case 'Polymer':
+            return [
+                {
+                    title: 'Collection & Sorting',
+                    description: `${material.Material} is collected and sorted using optical or manual methods to identify polymer type.`
+                },
+                {
+                    title: 'Cleaning & Preparation',
+                    description: `Contaminants and ${material.Additives === 'Yes' ? 'additives are removed or managed, and ' : ''}the polymer is cleaned and shredded.`
+                },
+                {
+                    title: 'Reprocessing',
+                    description: 'Clean polymer flakes are melted into pellets or new products. Low melting temperatures reduce energy use compared to metals.'
+                },
+                {
+                    title: 'Processing Challenges & Benefits',
+                    description: 'Challenges include degradation over multiple cycles and contamination from mixed plastics. PET and HDPE benefit from established recycling streams.'
+                }
+            ];
+
+        case 'Glass':
+            return [
+                {
+                    title: 'Collection & Sorting',
+                    description: 'Glass is collected and sorted by color and type to reduce contamination and maintain quality.'
+                },
+                {
+                    title: 'Cleaning & Crushing',
+                    description: 'Labels and contaminants are removed, then glass is crushed into cullet.'
+                },
+                {
+                    title: 'Melting & Reformation',
+                    description: `Cullet is melted at ~${material['Melting Point'] || 'high temperatures'}°C and formed into new products. Energy savings achieved using recycled cullet.`
+                },
+                {
+                    title: 'Processing Challenges & Benefits',
+                    description: `${
+                        material.Material.includes('Borosilicate') ? 
+                        'Borosilicate glass requires separate processing due to high durability and melting point, but is highly recyclable for specialized uses.' : 
+                        'Breakage during collection contaminates streams. Heavy weight increases transport costs. Color sorting is essential for quality.'
+                    }`
+                }
+            ];
+
+        case 'Ceramic':
+            return [
+                {
+                    title: 'Collection & Sorting',
+                    description: `${material.Material} is collected and sorted based on composition and contamination.`
+                },
+                {
+                    title: 'Processing',
+                    description: `Material is crushed and processed at high temperatures (~${material['Melting Point'] || 'high'}) for potential reuse as aggregate or filler.`
+                },
+                {
+                    title: 'Recovery & Application',
+                    description: 'Recycled ceramics are used in construction or industrial applications.'
+                },
+                {
+                    title: 'Processing Challenges & Benefits',
+                    description: 'Challenges include high energy requirements and limited applications. Benefits include reduced landfill usage and potential incorporation into new materials.'
+                }
+            ];
+
+        case 'Composite':
+            return [
+                {
+                    title: 'Collection & Assessment',
+                    description: `${material.Material} is collected and assessed for composition and contamination.`
+                },
+                {
+                    title: 'Pre-processing & Separation',
+                    description: 'Materials are reduced in size and separated using thermal, chemical, or mechanical methods.'
+                },
+                {
+                    title: 'Material Recovery',
+                    description: 'Components recovered where possible. Some materials may be used for energy recovery via pyrolysis.'
+                },
+                {
+                    title: 'Processing Challenges & Benefits',
+                    description: 'Challenges include complex bonding, energy-intensive separation, and limited applications. Benefits include partial material recovery and reduced raw material demand.'
+                }
+            ];
+
+        default:
+            return [
+                {
+                    title: 'Collection',
+                    description: `${material.Material} is collected for recycling or reuse.`
+                },
+                {
+                    title: 'Processing',
+                    description: 'Processed according to category-specific methods.'
+                },
+                {
+                    title: 'Recovery',
+                    description: 'Recovered material is used in new applications where possible.'
+                }
+            ];
+    }
+}
 
         // Display applications
         function displayApplications(material) {
