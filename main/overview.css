@@ -117,7 +117,7 @@ body {
     color: #1e3a21;
 }
 
-.container {
+.footer-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 10px;
@@ -161,7 +161,6 @@ body {
 }
 
 
-/* Container */
 .overview-container {
     max-width: 1400px;
     margin: 0 auto;

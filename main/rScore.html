@@ -257,7 +257,7 @@
     </div>
 
     <footer class="footer">
-        <div class="container">
+        <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h2>Green Index</h2>
@@ -382,72 +382,110 @@
             return true;
         }
 
-        function calculateRecyclabilityScore(data) {
+        function calculateRecyclabilityScore(material) {
             let score = 0;
-            const explanation = {};
 
-            // Category scoring (0-2 points)
             const categoryScores = {
-                'Metal': 2.0,
-                'Polymer': 1.5,
-                'Glass': 1.8,
-                'Ceramic': 0.5,
-                'Composite': 0.8
+                'Metal': 3.0,
+                'Glass': 2.5,
+                'Polymer': 2.0,
+                'Ceramic': 1.0,
+                'Composite': 0.5
             };
-            explanation.category = categoryScores[data.category] || 0;
-            score += explanation.category;
+            score += categoryScores[material.Category] || 0;
 
-            // Thermal stability scoring (0-2 points)
+            // Thermal Stability (0–2), slightly adjusted for recyclability logic
             const thermalScores = {
                 'Low': 0.5,
-                'Moderate': 1.0,
-                'High': 1.5,
-                'Very High': 1.0 // Very high can be harder to process
+                'Moderate': 1.5,
+                'High': 1.0,
+                'Very High': 0.5
             };
-            explanation.thermal = thermalScores[data.thermalStability] || 0;
-            score += explanation.thermal;
+            score += thermalScores[material['Thermal Stability']] || 0;
 
-            // Toxicity scoring (0-2 points, inverted - lower toxicity = higher score)
+            // Magnetism (0–1)
+            const magneticScore = (material.Category === 'Metal' && material.Magnetism === 'Ferrous') ? 1.0 : 0.0;
+            score += magneticScore;
+
+            // Melting Point (0–1.5), material-specific
+            const meltingPoint = material['Melting Point']; // °C
+            if (material.Category === 'Polymer') {
+                if (meltingPoint < 200) {
+                    score += 1.5;
+                } else if (meltingPoint < 350) {
+                    score += 1.0;
+                } else {
+                    score += 0.5;
+                }
+            } else if (material.Category === 'Metal') {
+                if (meltingPoint < 800) {
+                    score += 0.5; // Too soft, not common
+                } else if (meltingPoint < 1500) {
+                    score += 1.5;
+                } else {
+                    score += 1.0;
+                }
+            } else if (material.Category === 'Glass' || material.Category === 'Ceramic') {
+                if (meltingPoint < 1000) {
+                    score += 1.5;
+                } else if (meltingPoint < 1600) {
+                    score += 1.0;
+                } else {
+                    score += 0.5;
+                }
+            }
+
+            // Density (0–1), general heuristic
+            const density = material.Density;
+            if (density < 1.0) {
+                score += 1.0;
+            } else if (density < 3.0) {
+                score += 0.5;
+            }
+
+            // Toxicity (0–2), inverse score
             const toxicityScores = {
                 'Low': 2.0,
-                'Moderate': 1.5,
-                'High': 0.5,
+                'Moderate': 1.0,
+                'High': 0.3,
                 'Very High': 0.0
             };
-            breakdown.toxicity = toxicityScores[data.toxicity] || 0;
-            score += breakdown.toxicity;
+            score += toxicityScores[material.Toxicity] || 0;
 
-            // Processing ease (0-2 points)
-            let processingScore = 1.0; // Base score
-            if (data.category === 'Metal' && data.magnetism === 'Ferrous') {
-                processingScore += 0.5; // Magnetic separation advantage
-            }
-            if (data.category === 'Polymer' && data.additives === 'No') {
-                processingScore += 0.5; // Easier to recycle without additives
-            }
-            breakdown.processing = Math.min(processingScore, 2.0);
-            score += breakdown.processing;
-
-            // Market demand (0-1 point)
-            let demandScore = 0.5; // Base score
-            if (['Metal', 'Glass'].includes(data.category)) {
-                demandScore = 1.0; // High demand materials
-            }
-            breakdown.demand = demandScore;
-            score += breakdown.demand;
-
-            // Contamination risk (0-1 point, inverted)
-            let contaminationScore = 0.5; // Base score
-            if (data.toxicity === 'Low' && data.category !== 'Composite') {
-                contaminationScore = 1.0; // Lower contamination risk
-            }
-            breakdown.contamination = contaminationScore;
-            score += breakdown.contamination;
-
-            return {
-                total: Math.min(score, 10),
-                breakdown: breakdown
+            // Polymer Type (0–1.5) – only if polymer
+            const polymerTypeScores = {
+                'PET': 1.5,
+                'HDPE': 1.5,
+                'PP': 1.0,
+                'PVC': 0.5,
+                'PS': 0.5,
+                'Other': 0.0
             };
+            if (material.Category === 'Polymer') {
+                score += polymerTypeScores[material['Polymer Type']] || 0;
+            }
+
+            // Additives (penalty of up to -1)
+            if (material.Category === 'Polymer' && material.Additives === 'Yes') {
+                score -= 1.0;
+            }
+            let demandScore = 0.5;
+
+            if (material.Category === 'Metal') {
+                demandScore = material.Magnetism === 'Ferrous' ? 1.0 : 0.8; 
+            } else if (material.Category === 'Glass') {
+                demandScore = 1.0;
+            } else if (material.Category === 'Polymer') {
+                demandScore = ['PET', 'HDPE'].includes(material['Polymer Type']) ? 1.0 : 0.5;
+            } else if (material.Category === 'Ceramic') {
+                demandScore = 0.3;
+            } else if (material.Category === 'Composite') {
+                demandScore = 0.2;
+            }
+
+            score += demandScore;
+
+            return Math.min(Math.max(Math.round(score * 100) / 100, 0), 10);      
         }
 
         function displayResults(scoreData, materialData) {
