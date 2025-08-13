@@ -527,38 +527,63 @@
                 </div>
             `).join('');
         }
-// Get processing steps based on material type
 function getProcessingSteps(material) {
     switch (material.Category) {
         case 'Metal':
-            return [
-                {
-                    title: 'Collection & Sorting',
-                    description: `${material.Material} is collected and sorted. ${
-                        material.Magnetism === 'Ferrous' ? 
-                        'Magnetic separation enables efficient sorting of ferrous metals.' : 
-                        'Non-ferrous metals require visual/density sorting and alloy identification.'
-                    }`
-                },
-                {
-                    title: 'Cleaning & Preparation',
-                    description: 'Contaminants are removed and the material is prepared for melting. Highly toxic metals require additional handling precautions.'
-                },
-                {
-                    title: 'Melting & Reformation',
-                    description: `Material is melted at ~${material['Melting Point'] || 'high'}°C and reformed into new products. Energy use depends on metal type: e.g., aluminum is low-energy, copper and steel are more energy-intensive.`
-                },
-                {
-                    title: 'Processing Challenges & Benefits',
-                    description: 'Metals can be recycled indefinitely without significant quality loss. Challenges include maintaining purity for alloys, energy-intensive melting, and safe handling of toxic metals.'
-                }
-            ];
+            const toxicNote = (material.Toxicity === 'High' || material.Toxicity === 'Very High') ?
+                ' Requires additional precautions due to high toxicity.' : '';
+            if (material.Material.includes('Alloy')) {
+                return [
+                    {
+                        title: 'Collection & Sorting',
+                        description: `${material.Material} is collected and sorted. Visual and density sorting help separate alloys; magnetic separation is used for ferrous alloys.${toxicNote}`
+                    },
+                    {
+                        title: 'Cleaning & Preparation',
+                        description: 'Contaminants are removed and the alloy is prepared for melting. Handling may be more complex due to multiple metals.'
+                    },
+                    {
+                        title: 'Melting & Reformation',
+                        description: `Alloy is melted at ~${material['Melting Point'] || 'high'}°C and reformed into new products. Maintaining consistent composition is important for quality.`
+                    },
+                    {
+                        title: 'Processing Challenges & Benefits',
+                        description: 'Alloys can be recycled indefinitely, but maintaining purity and properties is harder than for pure metals. Energy-intensive melting applies.'
+                    }
+                ];
+            } else {
+                // Pure metals
+                return [
+                    {
+                        title: 'Collection & Sorting',
+                        description: `${material.Material} is collected and sorted. ${
+                            material.Magnetism === 'Ferrous' ? 
+                            'Magnetic separation enables efficient sorting of ferrous metals.' : 
+                            'Non-ferrous metals require visual/density sorting.'
+                        }${toxicNote}`
+                    },
+                    {
+                        title: 'Cleaning & Preparation',
+                        description: 'Contaminants are removed and the metal is prepared for melting.'
+                    },
+                    {
+                        title: 'Melting & Reformation',
+                        description: `Material is melted at ~${material['Melting Point'] || 'high'}°C and reformed into new products. Energy requirements vary depending on the metal.`
+                    },
+                    {
+                        title: 'Processing Challenges & Benefits',
+                        description: 'Pure metals can be recycled indefinitely with minimal quality loss. Challenges include energy-intensive melting processes and maintaining material purity.'
+                    }
+                ];
+            }
 
         case 'Polymer':
+            const polymerBenefit = (material['Polymer Type'] === 'PET' || material['Polymer Type'] === 'HDPE') ?
+                ' Well-established recycling streams and higher market demand make recycling more viable.' : '';
             return [
                 {
                     title: 'Collection & Sorting',
-                    description: `${material.Material} is collected and sorted using optical or manual methods to identify polymer type.`
+                    description: `${material.Material} is collected and sorted to identify polymer type.${polymerBenefit}`
                 },
                 {
                     title: 'Cleaning & Preparation',
@@ -566,11 +591,11 @@ function getProcessingSteps(material) {
                 },
                 {
                     title: 'Reprocessing',
-                    description: 'Clean polymer flakes are melted into pellets or new products. Low melting temperatures reduce energy use compared to metals.'
+                    description: 'Clean polymer flakes are melted into pellets or new products. Low melting temperatures reduce energy use.'
                 },
                 {
                     title: 'Processing Challenges & Benefits',
-                    description: 'Challenges include degradation over multiple cycles and contamination from mixed plastics. PET and HDPE benefit from established recycling streams.'
+                    description: `Challenges include degradation over multiple cycles and contamination.${material.Additives === 'Yes' ? ' Additives require additional processing and may limit end-use applications.' : ' No additives simplify recycling and expand reuse possibilities.'}`
                 }
             ];
 
@@ -578,35 +603,36 @@ function getProcessingSteps(material) {
             return [
                 {
                     title: 'Collection & Sorting',
-                    description: 'Glass is collected and sorted by color and type to reduce contamination and maintain quality.'
+                    description: 'Glass is collected and sorted by color and type.'
                 },
                 {
                     title: 'Cleaning & Crushing',
-                    description: 'Labels and contaminants are removed, then glass is crushed into cullet.'
+                    description: 'Labels and contaminants are removed; glass is crushed into cullet.'
                 },
                 {
                     title: 'Melting & Reformation',
-                    description: `Cullet is melted at ~${material['Melting Point'] || 'high temperatures'}°C and formed into new products. Energy savings achieved using recycled cullet.`
+                    description: `Cullet is melted at ~${material['Melting Point'] || 'high temperatures'}°C and formed into new products. Energy savings are achieved using recycled cullet.`
                 },
                 {
                     title: 'Processing Challenges & Benefits',
                     description: `${
                         material.Material.includes('Borosilicate') ? 
-                        'Borosilicate glass requires separate processing due to high durability and melting point, but is highly recyclable for specialized uses.' : 
-                        'Breakage during collection contaminates streams. Heavy weight increases transport costs. Color sorting is essential for quality.'
+                        'Requires separate processing due to high durability and melting point. Highly recyclable for specialized applications.' : 
+                        'Breakage during collection contaminates streams; heavy weight increases transport costs; color sorting is essential.'
                     }`
                 }
             ];
 
+        // Ceramics and composites remain the same
         case 'Ceramic':
             return [
                 {
                     title: 'Collection & Sorting',
-                    description: `${material.Material} is collected and sorted based on composition and contamination.`
+                    description: `${material.Material} is collected and sorted based on composition.`
                 },
                 {
                     title: 'Processing',
-                    description: `Material is crushed and processed at high temperatures (~${material['Melting Point'] || 'high'}) for potential reuse as aggregate or filler.`
+                    description: `Material is crushed and processed at high temperatures (~${material['Melting Point'] || 'high'}) for reuse as aggregate or filler.`
                 },
                 {
                     title: 'Recovery & Application',
@@ -614,7 +640,7 @@ function getProcessingSteps(material) {
                 },
                 {
                     title: 'Processing Challenges & Benefits',
-                    description: 'Challenges include high energy requirements and limited applications. Benefits include reduced landfill usage and potential incorporation into new materials.'
+                    description: 'Challenges: high energy requirements, limited applications. Benefits: reduce landfill usage, partial reuse.'
                 }
             ];
 
@@ -626,15 +652,15 @@ function getProcessingSteps(material) {
                 },
                 {
                     title: 'Pre-processing & Separation',
-                    description: 'Materials are reduced in size and separated using thermal, chemical, or mechanical methods.'
+                    description: 'Size reduction and separation using thermal, chemical, or mechanical methods.'
                 },
                 {
                     title: 'Material Recovery',
-                    description: 'Components recovered where possible. Some materials may be used for energy recovery via pyrolysis.'
+                    description: 'Components recovered where possible. Some materials used for energy via pyrolysis.'
                 },
                 {
                     title: 'Processing Challenges & Benefits',
-                    description: 'Challenges include complex bonding, energy-intensive separation, and limited applications. Benefits include partial material recovery and reduced raw material demand.'
+                    description: 'Challenges: complex bonding, energy-intensive separation, limited applications. Benefits: partial recovery, reduced raw material demand.'
                 }
             ];
 
