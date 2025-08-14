@@ -35,7 +35,6 @@
     gap: 2.2rem;
     align-items: center;
     font-size: 1.2rem;
-    color: rgb(135, 99, 26);
 }
 
 .nav-links a {
@@ -86,7 +85,6 @@
 .nav-search button {
     padding: 0.75rem 1.5rem;
     background-color: white;
-    color: #2c5530;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -96,7 +94,6 @@
 
 .nav-search button:hover {
     background-color: #f0f0f0;
-    color: #1e3a21;
 }
 
 .footer-container {

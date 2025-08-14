@@ -323,13 +323,11 @@
             document.getElementById('high-risk').textContent = highRiskCount;
         }
 
-        // Create all charts
         function createCharts() {
             createCategoryChart();
             createThermalChart();
         }
 
-        // Category chart
         function createCategoryChart() {
             const ctx = document.getElementById('categoryChart').getContext('2d');
             
@@ -355,11 +353,11 @@
                         label: 'Average Recyclability Score',
                         data: averages,
                         backgroundColor: [
-                            '#1a734c',
-                            '#22a35c',
-                            '#4fc3f7',
-                            '#ff9800',
-                            '#f44336'
+                            '#F5EE9E',
+                            '#768E46',
+                            '#4F6D7A',
+                            '#BD632F',
+                            '#663F46'
                         ],
                         borderColor: '#fff',
                         borderWidth: 2

@@ -1,28 +1,22 @@
-/* Overview Page Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Gill Sans', sans-serif;
 }
 
 body {
-    font-family: 'Gill Sans', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #715522;
+    color: rgb(135, 99, 26);
+    background-color: #BBA58F;
 }
 
 :root {
-    --primary-green: #1a734c;
-    --primary-green-light: #22a35c;
-    --primary-green-dark: #155a3c;
-    --primary-green-rgba: rgba(26, 115, 76, 0.95);
-    --primary-green-rgba-light: rgba(34, 163, 92, 0.1);
-    --excellent-color: #1a734c;
-    --good-color: #4caf50;
-    --moderate-color: #ffeb3b;
-    --fair-color: #ff9800;
-    --poor-color: #f44336;
+    --excellent-color: #1B642F;
+    --good-color: #6DA54F;
+    --moderate-color: #F5EE9E;
+    --fair-color: #FA7921;
+    --poor-color: #A4303F;
 }
 
 .navbar {
@@ -53,7 +47,6 @@ body {
     gap: 2.2rem;
     align-items: center;
     font-size: 1.2rem;
-    color: rgb(135, 99, 26);
 }
 
 .nav-links a {
@@ -73,7 +66,6 @@ body {
     color: rgb(135, 99, 26);
     font-size: 1.1rem;
     font-weight: 600;
-    font-family: 'Gill Sans', sans-serif;
 }
 
 .nav-search {
@@ -104,7 +96,6 @@ body {
 .nav-search button {
     padding: 0.75rem 1.5rem;
     background-color: white;
-    color: #2c5530;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -114,7 +105,6 @@ body {
 
 .nav-search button:hover {
     background-color: #f0f0f0;
-    color: #1e3a21;
 }
 
 .footer-container {
