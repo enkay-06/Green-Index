@@ -285,7 +285,6 @@
             return Math.min(Math.max(Math.round(score * 100) / 100, 0), 10);
         }
 
-        // Initialize page content
         function initializePage() {
             updateSummaryCards();
             createCharts();
@@ -293,11 +292,9 @@
             generateInsights();
         }
 
-        // Update summary cards
         function updateSummaryCards() {
             const totalMaterials = materialsData.length;
             
-            // Find best category by average score
             const categoryScores = {};
             materialsData.forEach(material => {
                 if (!categoryScores[material.Category]) {
