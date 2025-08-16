@@ -49,69 +49,51 @@
             
             <div class="carousel-container">
                 <div class="carousel-track" id="carousel-track">
-                    <article class="article-card" onclick="openArticle('https://www.nature.com/articles/s41893-021-00720-8')">
+                    <article class="article-card" onclick="openArticle('https://unu.edu/article/integrating-sustainability-material-selection-ethical-and-strategic-obligation')">
                         <div class="article-image">
-                            <div class="placeholder-image">🌍</div>
+                            <img src="images/articles/UN.webp" alt="United Nations" style="width:100%;height:200px;object-fit:cover;">
                         </div>
                         <div class="article-content">
-                            <h3>The Future of Circular Economy</h3>
-                            <p>Exploring how circular economy principles are transforming manufacturing and waste management across industries.</p>
-                            <span class="article-date">June 2025</span>
+                            <h3>Integrating Sustainability in Material Selection</h3>
+                            <div style="font-size:0.95rem; color:#888; margin-bottom:0.5rem;">United Nations</div>
+                            <p>Explores the ethical and strategic obligations of integrating sustainability into material selection for products and infrastructure.</p>
+                            <span class="article-date">28 June 2024</span>
                         </div>
                     </article>
 
-                    <article class="article-card" onclick="openArticle('https://www.sciencedirect.com/science/article/pii/S0921344921001427')">
+                    <article class="article-card" onclick="openArticle('https://www.autodesk.com/blogs/construction/top-sustainable-construction-materials/')">
                         <div class="article-image">
-                            <div class="placeholder-image">♻️</div>
+                            <img src="images/articles/Autodesk.jpg" alt="Autodesk Construction" style="width:100%;height:200px;object-fit:cover;">
                         </div>
                         <div class="article-content">
-                            <h3>Advanced Plastic Recycling Technologies</h3>
-                            <p>Revolutionary chemical recycling methods are breaking down complex polymers into their basic components for infinite reuse.</p>
-                            <span class="article-date">May 2025</span>
+                            <h3>Top Sustainable Construction Materials</h3>
+                            <div style="font-size:0.95rem; color:#888; margin-bottom:0.5rem;">Autodesk</div>
+                            <p>A look at the most sustainable materials used in modern construction and their impact on the environment.</p>
+                            <span class="article-date">June 23 2025</span>
                         </div>
                     </article>
 
-                    <article class="article-card" onclick="openArticle('https://www.epa.gov/recyclingstrategy')">
+                    <article class="article-card" onclick="openArticle('https://www.azom.com/article.aspx?ArticleID=24004')">
                         <div class="article-image">
-                            <div class="placeholder-image">🏭</div>
+                            <img src="images/articles/AZO.webp" alt="AZO Materials" style="width:100%;height:200px;object-fit:cover;">
                         </div>
                         <div class="article-content">
-                            <h3>Metal Recovery Innovations</h3>
-                            <p>New techniques in metal extraction and purification are increasing recovery rates and reducing environmental impact.</p>
-                            <span class="article-date">April 2025</span>
+                            <h3>Innovations in Sustainable Materials</h3>
+                            <div style="font-size:0.95rem; color:#888; margin-bottom:0.5rem;">AZO Materials</div>
+                            <p>Highlights recent innovations in sustainable materials and their applications in various industries.</p>
+                            <span class="article-date">Oct 4 2024</span>
                         </div>
                     </article>
 
-                    <article class="article-card" onclick="openArticle('https://www.unep.org/news-and-stories/story/glass-recycling-environmental-benefits')">
+                    <article class="article-card" onclick="openArticle('https://www.usgbc.org/articles/green-building-101-sustainable-materials-and-resources')">
                         <div class="article-image">
-                            <div class="placeholder-image">🧪</div>
+                            <img src="images/articles/usgbc.png" alt="US Green Building Council" style="width:100%;height:200px;object-fit:cover;">
                         </div>
                         <div class="article-content">
-                            <h3>Glass Recycling Breakthroughs</h3>
-                            <p>Scientists develop new methods to recycle complex glass composites, opening doors to infinite glass recycling loops.</p>
-                            <span class="article-date">March 2025</span>
-                        </div>
-                    </article>
-
-                    <article class="article-card" onclick="openArticle('https://www.worldbank.org/en/topic/urbandevelopment/brief/solid-waste-management')">
-                        <div class="article-image">
-                            <div class="placeholder-image">📱</div>
-                        </div>
-                        <div class="article-content">
-                            <h3>Smart Waste Management Systems</h3>
-                            <p>AI-powered sorting systems are revolutionizing waste processing facilities with 99% accuracy in material identification.</p>
-                            <span class="article-date">February 2025</span>
-                        </div>
-                    </article>
-
-                    <article class="article-card" onclick="openArticle('https://www.greenbiz.com/article/composites-recycling-breakthrough')">
-                        <div class="article-image">
-                            <div class="placeholder-image">🚀</div>
-                        </div>
-                        <div class="article-content">
-                            <h3>Composite Material Recycling</h3>
-                            <p>Breakthrough technologies enable recycling of carbon fiber and complex composite materials used in aerospace and automotive.</p>
-                            <span class="article-date">January 2025</span>
+                            <h3>Green Building 101: Sustainable Materials and Resources</h3>
+                            <div style="font-size:0.95rem; color:#888; margin-bottom:0.5rem;">US Green Building Council</div>
+                            <p>Introduction to sustainable materials and resources in green building practices, with tips for environmentally responsible choices.</p>
+                            <span class="article-date">June 4 2014</span>
                         </div>
                     </article>
                 </div>
@@ -157,7 +139,7 @@
             const middleLayer = document.getElementById('middle-layer');
             const foreLayer = document.getElementById('fore-layer');
             
-            if (backLayer) backLayer.style.transform = `translateY(${rate * -0.05}px)`;
+            if (backLayer) backLayer.style.transform = `translateY(${rate * -0.05 - 40}px)`;
             if (middleLayer) middleLayer.style.transform = `translateY(${rate * 0.3}px)`;
             if (foreLayer) foreLayer.style.transform = `translateY(${rate * 0.8}px)`;
         });
