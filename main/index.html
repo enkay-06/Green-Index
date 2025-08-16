@@ -145,34 +145,42 @@
         });
 
         // Carousel functionality
-        let currentSlide = 0;
         const carouselTrack = document.getElementById('carousel-track');
-        const articles = document.querySelectorAll('.article-card');
-        const totalSlides = articles.length;
         const slidesToShow = 3; // Number of cards to show at once
-        const maxSlide = totalSlides - slidesToShow;
+        let isSliding = false;
 
-        function updateCarousel() {
-            const slideWidth = 100 / slidesToShow;
-            const translateX = -currentSlide * slideWidth;
-            carouselTrack.style.transform = `translateX(${translateX}%)`;
+        function slideCarousel(direction) {
+            if (isSliding) return;
+            isSliding = true;
+            const slideWidth = carouselTrack.offsetWidth / slidesToShow;
+            carouselTrack.style.transition = 'transform 0.5s ease';
+            carouselTrack.style.transform = `translateX(${direction === 'next' ? -slideWidth : slideWidth}px)`;
+
+            setTimeout(() => {
+                carouselTrack.style.transition = 'none';
+                carouselTrack.style.transform = 'translateX(0)';
+                if (direction === 'next') {
+                    // Move first card to end
+                    carouselTrack.appendChild(carouselTrack.firstElementChild);
+                } else {
+                    // Move last card to front
+                    carouselTrack.insertBefore(carouselTrack.lastElementChild, carouselTrack.firstElementChild);
+                }
+                isSliding = false;
+            }, 500);
         }
 
         function nextSlide() {
-            currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
-            updateCarousel();
+            slideCarousel('next');
         }
 
         function prevSlide() {
-            currentSlide = currentSlide <= 0 ? maxSlide : currentSlide - 1;
-            updateCarousel();
+            slideCarousel('prev');
         }
 
-        // Event listeners for carousel buttons
         document.getElementById('next-btn').addEventListener('click', nextSlide);
         document.getElementById('prev-btn').addEventListener('click', prevSlide);
 
-        // Auto-play carousel
         setInterval(nextSlide, 5000);
 
         // Function to open articles
