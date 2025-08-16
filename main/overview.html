@@ -356,8 +356,8 @@
                             '#F5EE9E',
                             '#768E46',
                             '#4F6D7A',
-                            '#BD632F',
-                            '#663F46'
+                            '#5DABA0',
+                            '#A95666'
                         ],
                         borderColor: '#fff',
                         borderWidth: 2
@@ -390,7 +390,6 @@
             });
         }
 
-        // Thermal stability chart
         function createThermalChart() {
             const ctx = document.getElementById('thermalChart').getContext('2d');
             
@@ -445,7 +444,6 @@
             });
         }
 
-        // Populate materials table
         function populateTable() {
             const tbody = document.getElementById('materials-tbody');
             const sortedMaterials = [...materialsData].sort((a, b) => b.recyclabilityScore - a.recyclabilityScore);
@@ -456,7 +454,7 @@
                     <tr>
                         <td><strong>${material.Material}</strong></td>
                         <td><span class="category-badge ${material.Category.toLowerCase()}">${material.Category}</span></td>
-                        <td><span class="score-badge ${scoreClass}">${material.recyclabilityScore.toFixed(1)}</span></td>
+                        <td><span class="score-badge ${scoreClass}">${material.recyclabilityScore}</span></td>
                         <td><span class="toxicity-badge ${getToxicityClass(material.Toxicity)}">${material.Toxicity}</span></td>
                         <td>${material['Thermal Stability']}</td>
                         <td>${material['Melting Point'] || 'N/A'}</td>
@@ -466,7 +464,6 @@
             }).join('');
         }
 
-        // Helper functions
         function getScoreClass(score) {
             if (score >= 8) return 'excellent';
             if (score >= 6) return 'good';
@@ -485,11 +482,9 @@
             }
         }
 
-        // Generate insights
         function generateInsights() {
             const insights = [];
             
-            // Best performing material
             const bestMaterial = materialsData.reduce((best, current) => 
                 current.recyclabilityScore > best.recyclabilityScore ? current : best
             );
@@ -499,7 +494,6 @@
                 icon: '🏆'
             });
 
-            // Category insights
             const metalCount = materialsData.filter(m => m.Category === 'Metal').length;
             const totalCount = materialsData.length;
             insights.push({
@@ -508,7 +502,6 @@
                 icon: '⚡'
             });
 
-            // Toxicity insight
             const highToxicityCount = materialsData.filter(m => 
                 m.Toxicity === 'High' || m.Toxicity === 'Very High'
             ).length;
@@ -518,7 +511,6 @@
                 icon: '⚠️'
             });
 
-            // Processing insight
             const easyToProcess = materialsData.filter(m => 
                 m.Category === 'Metal' && m.Magnetism === 'Ferrous'
             ).length;
@@ -538,7 +530,6 @@
             `).join('');
         }
 
-        // Filter functionality
         function setupFilters() {
             const categoryFilter = document.getElementById('category-filter');
             const toxicityFilter = document.getElementById('toxicity-filter');
@@ -590,7 +581,6 @@
             }).join('');
         }
 
-        // Search functionality
         document.getElementById('search-btn').addEventListener('click', function() {
             const searchTerm = document.getElementById('search-input').value;
             if (searchTerm.trim()) {
@@ -606,7 +596,6 @@
             }
         });
 
-        // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             loadMaterialsData();
             setupFilters();

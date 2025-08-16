@@ -6,8 +6,11 @@
 
 body {
     font-family: 'Gill Sans', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #768E46;
     line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overscroll-behavior: none;
 }
 
 .navbar {
@@ -25,6 +28,9 @@ body {
     height: 65px;
     transition: all 0.3s ease;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
 }   
 
 .nav-right {
@@ -167,10 +173,9 @@ body {
     padding: 80px 0 1rem;
 }
 
-/* Filter Sidebar */
 .filter-sidebar {
     width: 300px;
-    background-color: white;
+    background-color: #EFEFE9;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -180,20 +185,20 @@ body {
 }
 
 .filter-sidebar h3 {
-    color: #2c5530;
+    color: #768E46;
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
 
 .filter-section h4 {
-    color: #4a7c59;
+    color: #363635;
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
 
 .filter-group {
     margin-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #EFEFE9;
     padding-bottom: 1rem;
 }
 
@@ -214,7 +219,7 @@ body {
 .sub-options {
     margin-left: 1rem;
     padding: 0.5rem;
-    background-color: #f9f9f9;
+    background-color: #EFEFE9;
     border-radius: 4px;
     margin-top: 0.5rem;
 }
@@ -223,7 +228,7 @@ body {
     display: block;
     margin: 0.5rem 0 0.2rem 0;
     font-size: 0.9rem;
-    color: #666;
+    color: #363635;
 }
 
 .sub-options input[type="range"] {
@@ -234,14 +239,14 @@ body {
 .sub-options select {
     width: 100%;
     padding: 0.3rem;
-    border: 1px solid #ddd;
+    border: 1px solid #363635;
     border-radius: 4px;
     margin-bottom: 0.5rem;
 }
 
 .sub-options span {
     font-size: 0.8rem;
-    color: #4a7c59;
+    color: #363635;
     font-weight: bold;
 }
 
@@ -257,12 +262,12 @@ body {
 }
 
 #apply-filters {
-    background-color: #2c5530;
+    background-color: #768E46;
     color: white;
 }
 
 #apply-filters:hover {
-    background-color: #1e3a21;
+    background-color: #647a38;
 }
 
 #clear-filters {
@@ -274,7 +279,6 @@ body {
     background-color: #e0e0e0;
 }
 
-/* Results Section */
 .results-section {
     flex: 1;
 }
@@ -287,11 +291,11 @@ body {
 }
 
 .results-header h2 {
-    color: #2c5530;
+    color: #EFEFE9;
 }
 
 #results-count {
-    color: #666;
+    color: #EFEFE9;
     font-size: 0.9rem;
 }
 
@@ -302,7 +306,7 @@ body {
 }
 
 .result-card {
-    background-color: white;
+    background-color: #EFEFE9;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -316,7 +320,7 @@ body {
 }
 
 .result-card h3 {
-    color: #2c5530;
+    color: #768E46;
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
 }
@@ -331,8 +335,8 @@ body {
 }
 
 .glass-material .material-type {
-    background-color: #e3f2fd;
-    color: #1976d2;
+    background-color: #EFEFE9;
+    color: #3b73ab;
 }
 
 .metal-material .material-type {
@@ -370,7 +374,6 @@ body {
     font-weight: bold;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;

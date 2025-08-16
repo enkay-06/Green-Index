@@ -1,5 +1,18 @@
 /* Recyclability Calculator Specific Styles */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+html, body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+}
+
 /* Navbar Search Styling Override */
 .navbar {
     position: fixed;
@@ -16,6 +29,9 @@
     height: 65px;
     transition: all 0.3s ease;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
 }   
 
 .nav-right {

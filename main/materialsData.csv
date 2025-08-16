@@ -9,7 +9,7 @@ Bronze,Metal,High,Non-ferrous,1000,8.8,Low,,No,Low
 Iron,Metal,High,Ferrous,1538,7.87,Low,,No,High
 Steel (Carbon),Metal,High,Ferrous,1500,7.85,Low,,No,Moderate
 Steel (Stainless),Metal,High,Ferrous,1400,8.0,Low,,No,Low
-Steel (Alloy),Metal,High,Ferrous,1450,7.8,Low,,No,Moderate
+Steel Alloy,Metal,High,Ferrous,1450,7.8,Low,,No,Moderate
 Magnesium,Metal,Moderate,Non-ferrous,650,1.74,Low,,No,High
 Magnesium Alloy,Metal,Moderate,Non-ferrous,600,1.8,Low,,No,High
 Molybdenum,Metal,Very High,Non-ferrous,2623,10.2,Moderate,,No,Low
