@@ -432,10 +432,13 @@ body {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background-color: #EFEFE9;
+    background-color: #e0e0de;
     border-radius: 8px;
 }
-
+.metric-item:hover {
+    transform: translateY(-2px);
+    background-color: #EFEFE9;
+}
 .metric-icon {
     font-size: 2rem;
     flex-shrink: 0;
@@ -526,7 +529,6 @@ body {
     font-weight: 500;
 }
 
-/* Guidelines */
 .guidelines.info-card {
     grid-column: 1 / -1;
 }
@@ -538,7 +540,7 @@ body {
 }
 
 .guideline-section h4 {
-    color: rgb(117, 112, 102);
+    color: #757066;
     margin-bottom: 1rem;
     font-size: 1.1rem;
 }
@@ -552,7 +554,7 @@ body {
     margin-bottom: 0.75rem;
     padding-left: 1.5rem;
     position: relative;
-    color: #555;
+    color: #363635;
     line-height: 1.5;
 }
 
@@ -596,9 +598,9 @@ body {
 }
 
 .btn-secondary {
-    background-color: #f0f0f0;
+    background-color: #EFEFE9;
     color: #555;
-    border: 1px solid #ddd;
+    border: 1px solid white;
 }
 
 .btn-secondary:hover {
@@ -606,7 +608,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .material-container {
         padding: 1rem 0.5rem;
