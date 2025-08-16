@@ -185,7 +185,7 @@ body {
 }
 
 .filter-sidebar h3 {
-    color: #768E46;
+    color: #363635;
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
@@ -341,14 +341,20 @@ body {
 
 .metal-material .material-type {
     background-color: #f3e5f5;
-    color: #7b1fa2;
+    color: #6b3781;
 }
 
-.plastic-material .material-type {
+.polymer-material .material-type {
     background-color: #e8f5e8;
-    color: #388e3c;
+    color: #3d693f;
 }
-
+.ceramic-material .material-type {
+    background-color: #e8f5e8;
+    color: #243588;
+}.composite-material .material-type {
+    background-color: #e8f5e8;
+    color: #d3a335;
+}
 #search-btn{
     color: rgb(135, 99, 26);
     font-size: 1.1rem;
@@ -364,13 +370,13 @@ body {
 
 .material-details span {
     font-size: 0.9rem;
-    color: #555;
+    color: #363635;
     padding: 0.2rem 0;
 }
 
 .material-details span:before {
     content: "• ";
-    color: #4a7c59;
+    color: #363635;
     font-weight: bold;
 }
 
