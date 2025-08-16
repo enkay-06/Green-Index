@@ -45,11 +45,6 @@
                 <div class="form-card">
                     <h3>Material Properties</h3>
                     
-                    <!-- Material Name -->
-                    <div class="input-group">
-                        <label for="material-name">Material Name</label>
-                        <input type="text" id="material-name" placeholder="Enter material name">
-                    </div>
 
                     <!-- Category Selection -->
                     <div class="input-group">
@@ -318,12 +313,79 @@
             }
         });
 
+        // Find similar materials function
+        function findSimilarMaterials(inputMaterial) {
+            // List of materials from CSV (hardcoded for demo, ideally loaded dynamically)
+            const materialsList = [
+                {Material:'Aluminum',Category:'Metal','Thermal Stability':'High',Magnetism:'Non-ferrous','Melting Point':660, Density:2.7, Toxicity:'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'Copper',Category:'Metal','Thermal Stability':'High',Magnetism:'Non-ferrous','Melting Point':1085, Density:8.96, Toxicity:'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'HDPE (High Density Polyethylene)',Category:'Polymer','Thermal Stability':'Low',Magnetism:'Non-magnetic','Melting Point':130, Density:0.95, Toxicity:'Low', 'Polymer Type':'HDPE', Additives:'No'},
+                {Material:'PET (Polyethylene Terephthalate)',Category:'Polymer','Thermal Stability':'Moderate',Magnetism:'Non-magnetic','Melting Point':260, Density:1.38, Toxicity:'Low', 'Polymer Type':'PET', Additives:'No'},
+                {Material:'Brick',Category:'Ceramic','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':2000, Density:1.8, Toxicity:'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'Soda-lime Glass',Category:'Glass','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':573, Density:2.5, Toxicity:'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'CFRP (Carbon Fiber Reinforced Polymer)',Category:'Composite','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':350, Density:1.6, Toxicity:'Moderate', 'Polymer Type':'', Additives:'Yes'}
+                // ...add more as needed
+            ];
+            // Find similar materials by category and close melting point/density
+            return materialsList.filter(mat => {
+                if (mat.Category !== inputMaterial.Category) return false;
+                if (Math.abs(mat['Melting Point'] - inputMaterial['Melting Point']) > 100) return false;
+                if (Math.abs(mat.Density - inputMaterial.Density) > 0.5) return false;
+                if (mat.Toxicity !== inputMaterial.Toxicity) return false;
+                if (inputMaterial.Category === 'Polymer' && mat['Polymer Type'] && inputMaterial['Polymer Type'] && mat['Polymer Type'] !== inputMaterial['Polymer Type']) return false;
+                return true;
+            });
+        }
+
         // Calculate recyclability score
         document.getElementById('calculate-btn').addEventListener('click', function() {
             const materialData = collectFormData();
             if (validateFormData(materialData)) {
                 const score = calculateRecyclabilityScore(materialData);
-                displayResults(score, materialData);
+                document.getElementById('results-container').style.display = 'block';
+                document.getElementById('score-value').textContent = score.toFixed(1);
+                let ratingClass, ratingText, description;
+                if (score >= 8) {
+                    ratingClass = 'excellent';
+                    ratingText = 'Excellent';
+                    description = 'This material has excellent recyclability potential with minimal processing challenges.';
+                } else if (score >= 6) {
+                    ratingClass = 'good';
+                    ratingText = 'Good';
+                    description = 'This material has good recyclability potential with some processing considerations.';
+                } else if (score >= 4) {
+                    ratingClass = 'moderate';
+                    ratingText = 'Moderate';
+                    description = 'This material has moderate recyclability potential but may face significant challenges.';
+                } else {
+                    ratingClass = 'poor';
+                    ratingText = 'Poor';
+                    description = 'This material has poor recyclability potential and significant processing challenges.';
+                }
+                document.getElementById('score-circle').className = `score-circle ${ratingClass}`;
+                document.getElementById('score-rating').textContent = ratingText;
+                document.getElementById('score-description').textContent = description;
+                // Find and display similar materials
+                const similar = findSimilarMaterials(materialData);
+                let similarHtml = '<div class="similar-materials-container"><h4>Possible Similar Materials</h4>';
+                if (similar.length > 0) {
+                    similarHtml += '<ul class="similar-materials-list">';
+                    similar.forEach(mat => {
+                        similarHtml += `<li class="similar-material-item"><span class="material-name">${mat.Material}</span> <span class="material-category">(${mat.Category})</span> <span class="material-details">Melting Point: ${mat['Melting Point']}°C, Density: ${mat.Density}</span></li>`;
+                    });
+                    similarHtml += '</ul>';
+                } else {
+                    similarHtml += '<div class="similar-material-item">No close matches found. This may be a unique or unknown material.</div>';
+                }
+                similarHtml += '</div>';
+                let resultsContainer = document.getElementById('results-container');
+                let similarDiv = document.getElementById('similar-materials-list');
+                if (!similarDiv) {
+                    similarDiv = document.createElement('div');
+                    similarDiv.id = 'similar-materials-list';
+                    resultsContainer.appendChild(similarDiv);
+                }
+                similarDiv.innerHTML = similarHtml;
             }
         });
 
@@ -347,35 +409,34 @@
         function collectFormData() {
             const category = document.getElementById('category-select').value;
             const data = {
-                name: document.getElementById('material-name').value,
-                category: category,
-                thermalStability: document.getElementById('thermal-stability').value,
-                density: parseFloat(document.getElementById('density').value) || 0,
-                toxicity: document.getElementById('toxicity').value
+                Category: category,
+                'Thermal Stability': document.getElementById('thermal-stability').value,
+                Density: parseFloat(document.getElementById('density').value) || 0,
+                Toxicity: document.getElementById('toxicity').value
             };
 
             // Add category-specific properties
             if (category === 'Metal') {
-                data.magnetism = document.getElementById('magnetism').value;
-                data.meltingPoint = parseFloat(document.getElementById('melting-point').value) || 0;
+                data.Magnetism = document.getElementById('magnetism').value;
+                data['Melting Point'] = parseFloat(document.getElementById('melting-point').value) || 0;
             } else if (category === 'Polymer') {
-                data.polymerType = document.getElementById('polymer-type').value;
-                data.additives = document.getElementById('additives').value;
-                data.meltingPoint = parseFloat(document.getElementById('polymer-melting-point').value) || 0;
+                data['Polymer Type'] = document.getElementById('polymer-type').value;
+                data.Additives = document.getElementById('additives').value;
+                data['Melting Point'] = parseFloat(document.getElementById('polymer-melting-point').value) || 0;
             } else if (category === 'Ceramic') {
-                data.meltingPoint = parseFloat(document.getElementById('ceramic-melting-point').value) || 0;
+                data['Melting Point'] = parseFloat(document.getElementById('ceramic-melting-point').value) || 0;
             } else if (category === 'Glass') {
-                data.meltingPoint = parseFloat(document.getElementById('glass-melting-point').value) || 0;
+                data['Melting Point'] = parseFloat(document.getElementById('glass-melting-point').value) || 0;
             } else if (category === 'Composite') {
-                data.additives = document.getElementById('composite-additives').value;
-                data.meltingPoint = parseFloat(document.getElementById('composite-melting-point').value) || 0;
+                data.Additives = document.getElementById('composite-additives').value;
+                data['Melting Point'] = parseFloat(document.getElementById('composite-melting-point').value) || 0;
             }
 
             return data;
         }
 
         function validateFormData(data) {
-            if (!data.name || !data.category || !data.thermalStability || !data.toxicity) {
+            if (!data.Category || !data['Thermal Stability'] || !data.Toxicity) {
                 alert('Please fill in all required fields');
                 return false;
             }
@@ -387,9 +448,9 @@
 
             const categoryScores = {
                 'Metal': 3.0,
-                'Glass': 2.5,
-                'Polymer': 2.0,
-                'Ceramic': 1.0,
+                'Glass': 2.0,
+                'Polymer': 1.5,
+                'Ceramic': 0.8,
                 'Composite': 0.5
             };
             score += categoryScores[material.Category] || 0;
@@ -397,68 +458,53 @@
             // Thermal Stability (0–2), slightly adjusted for recyclability logic
             const thermalScores = {
                 'Low': 0.5,
-                'Moderate': 1.5,
-                'High': 1.0,
-                'Very High': 0.5
+                'Moderate': 1.0,
+                'High': 0.7,
+                'Very High': 0.3
             };
             score += thermalScores[material['Thermal Stability']] || 0;
 
-            // Magnetism (0–1)
-            const magneticScore = (material.Category === 'Metal' && material.Magnetism === 'Ferrous') ? 1.0 : 0.0;
+            // Reactivity not present in form
+            const magneticScore = (material.Category === 'Metal' && material.Magnetism === 'Ferrous') ? 1.2 : 0.5;
             score += magneticScore;
 
             // Melting Point (0–1.5), material-specific
-            const meltingPoint = material['Melting Point']; // °C
+            const meltingPoint = parseFloat(material['Melting Point']);
             if (material.Category === 'Polymer') {
-                if (meltingPoint < 200) {
-                    score += 1.5;
-                } else if (meltingPoint < 350) {
-                    score += 1.0;
-                } else {
-                    score += 0.5;
-                }
+                if (meltingPoint < 200) score += 1.0;
+                else if (meltingPoint < 350) score += 0.7;
+                else score += 0.3;
             } else if (material.Category === 'Metal') {
-                if (meltingPoint < 800) {
-                    score += 0.5; // Too soft, not common
-                } else if (meltingPoint < 1500) {
-                    score += 1.5;
-                } else {
-                    score += 1.0;
-                }
+                if (meltingPoint < 800) score += 0.5;
+                else if (meltingPoint < 1500) score += 0.8;
+                else score += 0.3;
             } else if (material.Category === 'Glass' || material.Category === 'Ceramic') {
-                if (meltingPoint < 1000) {
-                    score += 1.5;
-                } else if (meltingPoint < 1600) {
-                    score += 1.0;
-                } else {
-                    score += 0.5;
-                }
+                if (meltingPoint < 1000) score += 0.7;
+                else if (meltingPoint < 1600) score += 0.5;
+                else score += 0.3;
             }
 
             // Density (0–1), general heuristic
             const density = material.Density;
-            if (density < 1.0) {
-                score += 1.0;
-            } else if (density < 3.0) {
-                score += 0.5;
-            }
+            if (density < 1.0) score += 0.5;
+            else if (density < 3.0) score += 0.3;
 
             // Toxicity (0–2), inverse score
             const toxicityScores = {
-                'Low': 2.0,
-                'Moderate': 1.0,
-                'High': 0.3,
+                'Low': 1.0,
+                'Moderate': 0.5,
+                'High': 0.2,
                 'Very High': 0.0
             };
             score += toxicityScores[material.Toxicity] || 0;
 
             // Polymer Type (0–1.5) – only if polymer
             const polymerTypeScores = {
-                'PET': 1.5,
-                'HDPE': 1.5,
-                'PP': 1.0,
-                'PVC': 0.5,
-                'PS': 0.5,
+                'PET': 0.5,
+                'HDPE': 0.5,
+                'PP': 0.3,
+                'PVC': 0.2,
+                'PS': 0.2,
                 'Other': 0.0
             };
             if (material.Category === 'Polymer') {
@@ -467,25 +513,23 @@
 
             // Additives (penalty of up to -1)
             if (material.Category === 'Polymer' && material.Additives === 'Yes') {
-                score -= 1.0;
+                score -= 0.5;
             }
-            let demandScore = 0.5;
-
+            let demandScore = 0.3;
             if (material.Category === 'Metal') {
-                demandScore = material.Magnetism === 'Ferrous' ? 1.0 : 0.8; 
+                demandScore = material.Magnetism === 'Ferrous' ? 1.0 : 0.6;
             } else if (material.Category === 'Glass') {
-                demandScore = 1.0;
+                demandScore = 0.5;
             } else if (material.Category === 'Polymer') {
-                demandScore = ['PET', 'HDPE'].includes(material['Polymer Type']) ? 1.0 : 0.5;
+                demandScore = ['PET','HDPE'].includes(material['Polymer Type']) ? 0.7 : 0.3;
             } else if (material.Category === 'Ceramic') {
-                demandScore = 0.3;
-            } else if (material.Category === 'Composite') {
                 demandScore = 0.2;
+            } else if (material.Category === 'Composite') {
+                demandScore = 0.1;
             }
-
             score += demandScore;
 
-            return Math.min(Math.max(Math.round(score * 100) / 100, 0), 10);      
+            return Math.min(Math.max(Math.round(score * 100) / 100, 0), 10);
         }
 
         function displayResults(scoreData, materialData) {

@@ -499,6 +499,61 @@ html, body {
     margin-bottom: 0;
 }
 
+/* Similar Materials Section */
+.similar-materials-container {
+    margin-top: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(44, 85, 48, 0.07);
+}
+
+.similar-materials-container h4 {
+    color: #2c5530;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.similar-materials-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.similar-material-item {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    padding: 1rem;
+    border-left: 4px solid #4a7c59;
+    font-size: 0.98rem;
+    color: #333;
+    box-shadow: 0 1px 4px rgba(44, 85, 48, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.similar-material-item:last-child {
+    margin-bottom: 0;
+}
+
+.material-name {
+    font-weight: bold;
+    color: #2c5530;
+}
+
+.material-category {
+    color: #768E46;
+    font-size: 0.95rem;
+    margin-left: 0.5rem;
+}
+
+.material-details {
+    color: #555;
+    font-size: 0.92rem;
+}
+
 /* Action Buttons */
 .action-buttons {
     display: flex;
