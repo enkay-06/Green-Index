@@ -191,7 +191,7 @@ body {
 }
 
 .filter-section h4 {
-    color: #363635;
+    color: #757066;
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
@@ -228,7 +228,7 @@ body {
     display: block;
     margin: 0.5rem 0 0.2rem 0;
     font-size: 0.9rem;
-    color: #363635;
+    color: #757066;
 }
 
 .sub-options input[type="range"] {
@@ -239,14 +239,14 @@ body {
 .sub-options select {
     width: 100%;
     padding: 0.3rem;
-    border: 1px solid #363635;
+    border: 1px solid #757066;
     border-radius: 4px;
     margin-bottom: 0.5rem;
 }
 
 .sub-options span {
     font-size: 0.8rem;
-    color: #363635;
+    color: #757066;
     font-weight: bold;
 }
 
