@@ -185,7 +185,7 @@ body {
 }
 
 .filter-sidebar h3 {
-    color: #363635;
+    color: #757066;
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
@@ -370,13 +370,13 @@ body {
 
 .material-details span {
     font-size: 0.9rem;
-    color: #363635;
+    color: #757066;
     padding: 0.2rem 0;
 }
 
 .material-details span:before {
     content: "• ";
-    color: #363635;
+    color: #757066;
     font-weight: bold;
 }
 
