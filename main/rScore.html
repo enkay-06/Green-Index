@@ -205,43 +205,6 @@
                         </div>
                     </div>
 
-                    <div class="score-breakdown">
-                        <h4>Score Breakdown</h4>
-                        <div class="breakdown-grid">
-                            <div class="breakdown-item">
-                                <span class="breakdown-label">Material Category:</span>
-                                <span class="breakdown-value" id="category-score">-</span>
-                            </div>
-                            <div class="breakdown-item">
-                                <span class="breakdown-label">Thermal Properties:</span>
-                                <span class="breakdown-value" id="thermal-score">-</span>
-                            </div>
-                            <div class="breakdown-item">
-                                <span class="breakdown-label">Toxicity Impact:</span>
-                                <span class="breakdown-value" id="toxicity-score">-</span>
-                            </div>
-                            <div class="breakdown-item">
-                                <span class="breakdown-label">Processing Ease:</span>
-                                <span class="breakdown-value" id="processing-score">-</span>
-                            </div>
-                            <div class="breakdown-item">
-                                <span class="breakdown-label">Market Demand:</span>
-                                <span class="breakdown-value" id="demand-score">-</span>
-                            </div>
-                            <div class="breakdown-item">
-                                <span class="breakdown-label">Contamination Risk:</span>
-                                <span class="breakdown-value" id="contamination-score">-</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="recommendations">
-                        <h4>Recycling Recommendations</h4>
-                        <div id="recommendations-list">
-                            <!-- Recommendations will be populated by JavaScript -->
-                        </div>
-                    </div>
-
                     <div class="action-buttons">
                         <button class="btn-primary" id="save-result-btn">Save Result</button>
                         <button class="btn-secondary" id="print-result-btn">Print Assessment</button>
@@ -391,9 +354,21 @@
 
         // Reset form
         document.getElementById('reset-btn').addEventListener('click', function() {
-            document.querySelector('.form-card').reset();
+            // Reset all input fields
+            document.querySelectorAll('.form-card input, .form-card select').forEach(el => {
+                if (el.type === 'number' || el.tagName === 'INPUT') {
+                    el.value = '';
+                } else if (el.tagName === 'SELECT') {
+                    el.selectedIndex = 0;
+                }
+            });
+            // Hide all category-specific properties
             document.querySelectorAll('.category-properties').forEach(prop => prop.style.display = 'none');
+            // Hide results section
             document.getElementById('results-container').style.display = 'none';
+            // Remove similar materials section if present
+            const similarDiv = document.getElementById('similar-materials-list');
+            if (similarDiv) similarDiv.innerHTML = '';
         });
 
         // Print results
@@ -567,51 +542,9 @@
             scoreRating.textContent = ratingText;
             scoreDescription.textContent = description;
 
-            // Display breakdown scores
-            document.getElementById('category-score').textContent = scoreData.breakdown.category.toFixed(1);
-            document.getElementById('thermal-score').textContent = scoreData.breakdown.thermal.toFixed(1);
-            document.getElementById('toxicity-score').textContent = scoreData.breakdown.toxicity.toFixed(1);
-            document.getElementById('processing-score').textContent = scoreData.breakdown.processing.toFixed(1);
-            document.getElementById('demand-score').textContent = scoreData.breakdown.demand.toFixed(1);
-            document.getElementById('contamination-score').textContent = scoreData.breakdown.contamination.toFixed(1);
-
-            // Generate recommendations
-            generateRecommendations(materialData, scoreData);
-
             // Show results
             resultsContainer.style.display = 'block';
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function generateRecommendations(materialData, scoreData) {
-            const recommendationsList = document.getElementById('recommendations-list');
-            const recommendations = [];
-
-            if (materialData.toxicity === 'High' || materialData.toxicity === 'Very High') {
-                recommendations.push('Special handling required due to high toxicity - ensure proper safety protocols');
-            }
-
-            if (materialData.category === 'Metal' && materialData.magnetism === 'Ferrous') {
-                recommendations.push('Can utilize magnetic separation for efficient sorting');
-            }
-
-            if (materialData.category === 'Polymer' && materialData.additives === 'Yes') {
-                recommendations.push('May require additive removal or separation before recycling');
-            }
-
-            if (scoreData.total < 4) {
-                recommendations.push('Consider alternative disposal methods or specialized recycling facilities');
-            }
-
-            if (materialData.category === 'Composite') {
-                recommendations.push('Complex material separation may be required - consider specialized recycling programs');
-            }
-
-            if (recommendations.length === 0) {
-                recommendations.push('Standard recycling processes should be suitable for this material');
-            }
-
-            recommendationsList.innerHTML = recommendations.map(rec => `<p class="recommendation-item">${rec}</p>`).join('');
         }
     </script>
 </body>
