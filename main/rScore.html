@@ -75,6 +75,16 @@
                         </select>
                     </div>
 
+                    <div class="input-group">
+                        <label for="chemical-reactivity">Chemical Reactivity</label>
+                        <select id="chemical-reactivity">
+                            <option value="">Select Reactivity</option>
+                            <option value="Low">Low</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+
                     <!-- Metal-specific Properties -->
                     <div id="metal-properties" class="category-properties" style="display: none;">
                         <h4>Metal Properties</h4>
@@ -368,7 +378,8 @@
                 Category: category,
                 'Thermal Stability': document.getElementById('thermal-stability').value,
                 Density: parseFloat(document.getElementById('density').value) || 0,
-                Toxicity: document.getElementById('toxicity').value
+                Toxicity: document.getElementById('toxicity').value,
+                'Chemical Reactivity': document.getElementById('chemical-reactivity').value
             };
 
             // Add category-specific properties
@@ -401,7 +412,6 @@
 
         function calculateRecyclabilityScore(material) {
             let score = 0;
-
             const categoryScores = {
                 'Metal': 3.0,
                 'Glass': 2.0,
@@ -410,8 +420,6 @@
                 'Composite': 0.5
             };
             score += categoryScores[material.Category] || 0;
-
-            // Thermal Stability (0–2), slightly adjusted for recyclability logic
             const thermalScores = {
                 'Low': 0.5,
                 'Moderate': 1.0,
@@ -419,13 +427,15 @@
                 'Very High': 0.3
             };
             score += thermalScores[material['Thermal Stability']] || 0;
-
-            // Reactivity not present in form
+            const reactivityScores = {
+                'Low': 1.0,
+                'Moderate': 0.5,
+                'High': 0.0
+            };
+            score += reactivityScores[material['Chemical Reactivity']] || 0;
             const magneticScore = (material.Category === 'Metal' && material.Magnetism === 'Ferrous') ? 1.2 : 0.5;
             score += magneticScore;
-
-            // Melting Point (0–1.5), material-specific
-            const meltingPoint = parseFloat(material['Melting Point']);
+            const meltingPoint = parseFloat(material['Melting Point']); // Celsius
             if (material.Category === 'Polymer') {
                 if (meltingPoint < 200) score += 1.0;
                 else if (meltingPoint < 350) score += 0.7;
@@ -439,13 +449,9 @@
                 else if (meltingPoint < 1600) score += 0.5;
                 else score += 0.3;
             }
-
-            // Density (0–1), general heuristic
             const density = material.Density;
             if (density < 1.0) score += 0.5;
             else if (density < 3.0) score += 0.3;
-
-            // Toxicity (0–2), inverse score
             const toxicityScores = {
                 'Low': 1.0,
                 'Moderate': 0.5,
@@ -453,8 +459,6 @@
                 'Very High': 0.0
             };
             score += toxicityScores[material.Toxicity] || 0;
-
-            // Polymer Type (0–1.5) – only if polymer
             const polymerTypeScores = {
                 'PET': 0.5,
                 'HDPE': 0.5,
@@ -466,8 +470,6 @@
             if (material.Category === 'Polymer') {
                 score += polymerTypeScores[material['Polymer Type']] || 0;
             }
-
-            // Additives (penalty of up to -1)
             if (material.Category === 'Polymer' && material.Additives === 'Yes') {
                 score -= 0.5;
             }
@@ -484,7 +486,6 @@
                 demandScore = 0.1;
             }
             score += demandScore;
-
             return Math.min(Math.max(Math.round(score * 100) / 100, 0), 10);
         }
 
