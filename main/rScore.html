@@ -331,7 +331,8 @@
                 if (similar.length > 0) {
                     similarHtml += '<ul class="similar-materials-list">';
                     similar.forEach(mat => {
-                        similarHtml += `<li class="similar-material-item"><span class="material-name">${mat.Material}</span> <span class="material-category">(${mat.Category})</span> <span class="material-details">Melting Point: ${mat['Melting Point']}°C, Density: ${mat.Density}</span></li>`;
+                        const materialQuery = encodeURIComponent(mat.Material);
+                        similarHtml += `<li class="similar-material-item" style="cursor:pointer" onclick="window.location.href='material-details.html?q=${materialQuery}'"><span class="material-name">${mat.Material}</span> <span class="material-category">(${mat.Category})</span> <span class="material-details">Melting Point: ${mat['Melting Point']}°C, Density: ${mat.Density}</span></li>`;
                     });
                     similarHtml += '</ul>';
                 } else {
