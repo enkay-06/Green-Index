@@ -400,11 +400,11 @@ body {
 .score-info h4 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #2c5530;
+    color: #757066;
 }
 
 .score-info p {
-    color: #666;
+    color: #757066;
     line-height: 1.6;
     font-size: 1rem;
 }
@@ -475,11 +475,10 @@ body {
     background-color: #768E46;
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(44, 85, 48, 0.07);
 }
 
 .similar-materials-container h4 {
-    color: #2c5530;
+    color: #EFEFE9;
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
@@ -491,14 +490,12 @@ body {
 }
 
 .similar-material-item {
-    background-color: #fff;
+    background-color: #EFEFE9;
     border-radius: 8px;
     margin-bottom: 0.75rem;
     padding: 1rem;
-    border-left: 4px solid #4a7c59;
     font-size: 0.98rem;
-    color: #333;
-    box-shadow: 0 1px 4px rgba(44, 85, 48, 0.05);
+    color: #757066;
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -510,7 +507,7 @@ body {
 
 .material-name {
     font-weight: bold;
-    color: #2c5530;
+    color: #757066;
 }
 
 .material-category {
@@ -520,22 +517,8 @@ body {
 }
 
 .material-details {
-    color: #555;
+    color: #757066;
     font-size: 0.92rem;
-}
-
-/* Action Buttons */
-.action-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.action-buttons .btn-primary,
-.action-buttons .btn-secondary {
-    flex: 0 1 auto;
-    min-width: 120px;
 }
 
 /* Responsive Design */

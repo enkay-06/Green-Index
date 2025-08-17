@@ -99,6 +99,7 @@
                                 <th>Recyclability Score</th>
                                 <th>Toxicity</th>
                                 <th>Thermal Stability</th>
+                                <th>Chemical Reactivity</th>
                                 <th>Melting Point (°C)</th>
                                 <th>Density</th>
                             </tr>
@@ -457,6 +458,7 @@
                         <td><span class="score-badge ${scoreClass}">${material.recyclabilityScore}</span></td>
                         <td><span class="toxicity-badge ${getToxicityClass(material.Toxicity)}">${material.Toxicity}</span></td>
                         <td>${material['Thermal Stability']}</td>
+                        <td>${material['Chemical Reactivity'] || 'N/A'}</td>
                         <td>${material['Melting Point'] || 'N/A'}</td>
                         <td>${material.Density || 'N/A'}</td>
                     </tr>
