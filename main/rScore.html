@@ -179,7 +179,7 @@
 
             <!-- Results Section -->
             <section class="results-section">
-                <div class="results-card" id="results-container" >
+                <div class="results-card" id="results-container" style="display: none;">
                     <h3>Recyclability Assessment</h3>
                     
                     <div class="score-display">
@@ -194,7 +194,6 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button class="btn-primary" id="save-result-btn">Save Result</button>
                         <button class="btn-secondary" id="print-result-btn">Print Assessment</button>
                     </div>
                 </div>
@@ -363,12 +362,6 @@
         document.getElementById('print-result-btn').addEventListener('click', function() {
             window.print();
         });
-
-        // Save results (placeholder for future implementation)
-        document.getElementById('save-result-btn').addEventListener('click', function() {
-            alert('Save functionality will be implemented with backend integration');
-        });
-
         function collectFormData() {
             const category = document.getElementById('category-select').value;
             const data = {
