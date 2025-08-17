@@ -14,9 +14,9 @@
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="search.html">Search</a>
-                <a href="overview.html">Overview</a>
                 <a href="rScore.html">Calculator</a>
-            </div>
+                <a href="overview.html">Overview</a>
+           </div>
             <div class="nav-search">
                 <input type="text" id="search-input" placeholder="Search materials...">
                 <button id="search-btn">Search</button>
@@ -465,48 +465,128 @@
 
         function getEnvironmentalMetrics(material) {
             const defaults = {
-                carbonFootprint: '2.0 kg CO₂/kg',
-                waterUsage: '25 L/kg',
-                energyConsumption: '75 MJ/kg',
-                recyclingEfficiency: 70
+                carbonFootprint: '2.5 kg CO₂/kg',
+                waterUsage: '30 L/kg',
+                energyConsumption: '80 MJ/kg',
+                recyclingEfficiency: 65
             };
             
             switch (material.Category) {
                 case 'Metal':
-                    return {
-                        carbonFootprint: '8.5 kg CO₂/kg',
-                        waterUsage: '150 L/kg',
-                        energyConsumption: '120 MJ/kg',
-                        recyclingEfficiency: 90
-                    };
+                    if (material.Material.includes('Aluminum')) {
+                        return {
+                            carbonFootprint: '12.8 kg CO₂/kg',
+                            waterUsage: '170 L/kg',
+                            energyConsumption: '170 MJ/kg',
+                            recyclingEfficiency: 95
+                        };
+                    } else if (material.Material.includes('Steel')) {
+                        return {
+                            carbonFootprint: '2.2 kg CO₂/kg',
+                            waterUsage: '50 L/kg',
+                            energyConsumption: '20 MJ/kg',
+                            recyclingEfficiency: 98
+                        };
+                    } else if (material.Material.includes('Copper')) {
+                        return {
+                            carbonFootprint: '4.1 kg CO₂/kg',
+                            waterUsage: '80 L/kg',
+                            energyConsumption: '35 MJ/kg',
+                            recyclingEfficiency: 90
+                        };
+                    } else {
+                        return {
+                            carbonFootprint: '6.5 kg CO₂/kg',
+                            waterUsage: '100 L/kg',
+                            energyConsumption: '75 MJ/kg',
+                            recyclingEfficiency: 92
+                        };
+                    }
                 case 'Glass':
-                    return {
-                        carbonFootprint: '0.8 kg CO₂/kg',
-                        waterUsage: '20 L/kg',
-                        energyConsumption: '45 MJ/kg',
-                        recyclingEfficiency: 85
-                    };
+                    if (material.Material.includes('Borosilicate')) {
+                        return {
+                            carbonFootprint: '1.2 kg CO₂/kg',
+                            waterUsage: '25 L/kg',
+                            energyConsumption: '55 MJ/kg',
+                            recyclingEfficiency: 75
+                        };
+                    } else {
+                        return {
+                            carbonFootprint: '0.6 kg CO₂/kg',
+                            waterUsage: '15 L/kg',
+                            energyConsumption: '35 MJ/kg',
+                            recyclingEfficiency: 90
+                        };
+                    }
                 case 'Polymer':
-                    return {
-                        carbonFootprint: '2.1 kg CO₂/kg',
-                        waterUsage: '28 L/kg',
-                        energyConsumption: '84 MJ/kg',
-                        recyclingEfficiency: material.Additives === 'No' ? 80 : 65
-                    };
+                    if (material['Polymer Type'] === 'PET') {
+                        return {
+                            carbonFootprint: '2.3 kg CO₂/kg',
+                            waterUsage: '25 L/kg',
+                            energyConsumption: '80 MJ/kg',
+                            recyclingEfficiency: material.Additives === 'No' ? 85 : 70
+                        };
+                    } else if (material['Polymer Type'] === 'HDPE') {
+                        return {
+                            carbonFootprint: '1.8 kg CO₂/kg',
+                            waterUsage: '20 L/kg',
+                            energyConsumption: '75 MJ/kg',
+                            recyclingEfficiency: material.Additives === 'No' ? 85 : 70
+                        };
+                    } else if (material['Polymer Type'] === 'PVC') {
+                        return {
+                            carbonFootprint: '3.1 kg CO₂/kg',
+                            waterUsage: '35 L/kg',
+                            energyConsumption: '90 MJ/kg',
+                            recyclingEfficiency: material.Additives === 'No' ? 60 : 45
+                        };
+                    } else {
+                        return {
+                            carbonFootprint: '2.5 kg CO₂/kg',
+                            waterUsage: '30 L/kg',
+                            energyConsumption: '85 MJ/kg',
+                            recyclingEfficiency: material.Additives === 'No' ? 70 : 55
+                        };
+                    }
                 case 'Ceramic':
-                    return {
-                        carbonFootprint: '1.2 kg CO₂/kg',
-                        waterUsage: '35 L/kg',
-                        energyConsumption: '95 MJ/kg',
-                        recyclingEfficiency: 30
-                    };
+                    if (material.Material.includes('Porcelain')) {
+                        return {
+                            carbonFootprint: '1.4 kg CO₂/kg',
+                            waterUsage: '40 L/kg',
+                            energyConsumption: '100 MJ/kg',
+                            recyclingEfficiency: 35
+                        };
+                    } else {
+                        return {
+                            carbonFootprint: '1.1 kg CO₂/kg',
+                            waterUsage: '30 L/kg',
+                            energyConsumption: '90 MJ/kg',
+                            recyclingEfficiency: 25
+                        };
+                    }
                 case 'Composite':
-                    return {
-                        carbonFootprint: '3.5 kg CO₂/kg',
-                        waterUsage: '45 L/kg',
-                        energyConsumption: '110 MJ/kg',
-                        recyclingEfficiency: 25
-                    };
+                    if (material.Material.includes('Carbon Fiber')) {
+                        return {
+                            carbonFootprint: '25.0 kg CO₂/kg',
+                            waterUsage: '55 L/kg',
+                            energyConsumption: '285 MJ/kg',
+                            recyclingEfficiency: 30
+                        };
+                    } else if (material.Material.includes('Fiberglass')) {
+                        return {
+                            carbonFootprint: '8.1 kg CO₂/kg',
+                            waterUsage: '45 L/kg',
+                            energyConsumption: '100 MJ/kg',
+                            recyclingEfficiency: 20
+                        };
+                    } else {
+                        return {
+                            carbonFootprint: '4.5 kg CO₂/kg',
+                            waterUsage: '40 L/kg',
+                            energyConsumption: '95 MJ/kg',
+                            recyclingEfficiency: 25
+                        };
+                    }
                 default:
                     return defaults;
             }

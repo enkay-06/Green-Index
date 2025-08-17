@@ -209,6 +209,7 @@ body {
     font-weight: 500;
     cursor: pointer;
     margin-bottom: 0.5rem;
+    color: #757066;
 }
 
 .checkbox-label input[type="checkbox"] {

@@ -7,8 +7,8 @@
 
 body {
     line-height: 1.6;
-    color: rgb(135, 99, 26);
-    background-color: #BBA58F;
+    color: #757066;
+    background-color: #768E46;
     min-height: 100vh;
     overflow-x: hidden;
     overscroll-behavior: none;  
@@ -17,7 +17,7 @@ body {
 :root {
     --excellent-color: #1B642F;
     --good-color: #6DA54F;
-    --moderate-color: #F5EE9E;
+    --moderate-color: #dbc909;
     --fair-color: #FA7921;
     --poor-color: #A4303F;
 }
@@ -169,7 +169,7 @@ body {
 }
 
 .breadcrumb a {
-    color: white;
+    color: #EFEFE9;
     text-decoration: none;
 }
 
@@ -179,11 +179,11 @@ body {
 
 .breadcrumb .separator {
     margin: 0 8px;
-    color: white;
+    color: #EFEFE9;
 }
 
 .breadcrumb .current {
-    color: white;
+    color: #EFEFE9;
 }
 
 .overview-header {
@@ -193,13 +193,13 @@ body {
 
 .overview-header h1 {
     font-size: 2.5rem;
-    color: white;
+    color: #EFEFE9;
     margin-bottom: 10px;
 }
 
 .overview-header p {
     font-size: 1.1rem;
-    color: white;
+    color: #EFEFE9;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -216,7 +216,7 @@ body {
 }
 
 .summary-card {
-    background: white;
+    background: #EFEFE9;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -230,7 +230,7 @@ body {
 }
 
 .summary-card h3 {
-    color: rgb(135, 99, 26);
+    color: #757066;
     font-size: 1rem;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -241,12 +241,12 @@ body {
     display: block;
     font-size: 2.5rem;
     font-weight: bold;
-    color: rgb(135, 99, 26);
+    color: #757066;
     margin-bottom: 5px;
 }
 
 .summary-card p {
-    color: rgb(135, 99, 26);
+    color: #757066;
     font-size: 0.9rem;
 }
 
@@ -261,14 +261,14 @@ body {
 }
 
 .chart-container {
-    background: white;
+    background: #EFEFE9;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .chart-container h3 {
-    color: #555;
+    color: #757066;
     margin-bottom: 20px;
     text-align: center;
     font-size: 1.3rem;
@@ -283,14 +283,14 @@ body {
 }
 
 .table-container {
-    background: white;
+    background: #EFEFE9;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 .table-container h3 {
-    color: rgb(135, 99, 26);
+    color: #757066;
     padding: 30px 30px 20px;
     margin: 0;
     font-size: 1.5rem;
@@ -306,7 +306,7 @@ body {
 .table-controls select,
 .table-controls input {
     padding: 8px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #EFEFE9;
     border-radius: 6px;
     font-size: 0.9rem;
 }
@@ -329,20 +329,20 @@ body {
 #materials-table td {
     padding: 15px 31px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #EFEFE9;
 }
 
 #materials-table th {
-    background-color: #f8f9fa;
+    background-color: #EFEFE9;
     font-weight: 600;
-    color: rgb(135, 99, 26);
+    color: #757066;
     position: sticky;
     top: 0;
     z-index: 10;
 }
 
 #materials-table tr:hover {
-    background-color: #f8f9fa;
+    background-color: #d9d9d3;
 }
 
 .category-badge {
@@ -384,7 +384,7 @@ body {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
-    color: white;
+    color: #EFEFE9;
 }
 
 .score-badge.excellent {
@@ -445,14 +445,14 @@ body {
 }
 
 .insights-container {
-    background: white;
+    background: #EFEFE9;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .insights-container h3 {
-    color: rgb(135, 99, 26);
+    color: #757066;
     margin-bottom: 20px;
     font-size: 1.5rem;
 }
@@ -464,10 +464,10 @@ body {
 }
 
 .insight-card {
-    background: #f8f9fa;
+    background: #EFEFE9;
     padding: 25px;
     border-radius: 8px;
-    border-left: 4px solid rgb(135, 99, 26);
+    border-left: 4px solid #757066;
     transition: transform 0.3s ease;
 }
 
@@ -481,13 +481,13 @@ body {
 }
 
 .insight-card h4 {
-    color: rgb(135, 99, 26);
+    color: #757066;
     margin-bottom: 10px;
     font-size: 1.1rem;
 }
 
 .insight-card p {
-    color: #666;
+    color: #757066;
     font-size: 0.9rem;
     line-height: 1.5;
 }
