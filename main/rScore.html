@@ -274,22 +274,52 @@
         function findSimilarMaterials(inputMaterial) {
             // List of materials from CSV (hardcoded for demo, ideally loaded dynamically)
             const materialsList = [
-                {Material:'Aluminum',Category:'Metal','Thermal Stability':'High',Magnetism:'Non-ferrous','Melting Point':660, Density:2.7, Toxicity:'Low', 'Polymer Type':'', Additives:'No'},
-                {Material:'Copper',Category:'Metal','Thermal Stability':'High',Magnetism:'Non-ferrous','Melting Point':1085, Density:8.96, Toxicity:'Low', 'Polymer Type':'', Additives:'No'},
-                {Material:'HDPE (High Density Polyethylene)',Category:'Polymer','Thermal Stability':'Low',Magnetism:'Non-magnetic','Melting Point':130, Density:0.95, Toxicity:'Low', 'Polymer Type':'HDPE', Additives:'No'},
-                {Material:'PET (Polyethylene Terephthalate)',Category:'Polymer','Thermal Stability':'Moderate',Magnetism:'Non-magnetic','Melting Point':260, Density:1.38, Toxicity:'Low', 'Polymer Type':'PET', Additives:'No'},
-                {Material:'Brick',Category:'Ceramic','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':2000, Density:1.8, Toxicity:'Low', 'Polymer Type':'', Additives:'No'},
-                {Material:'Soda-lime Glass',Category:'Glass','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':573, Density:2.5, Toxicity:'Low', 'Polymer Type':'', Additives:'No'},
-                {Material:'CFRP (Carbon Fiber Reinforced Polymer)',Category:'Composite','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':350, Density:1.6, Toxicity:'Moderate', 'Polymer Type':'', Additives:'Yes'}
+                {Material:'Aluminum',Category:'Metal','Thermal Stability':'High',Magnetism:'Non-ferrous','Melting Point':660, Density:2.7, Toxicity:'Low', 'Chemical Reactivity':'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'Iron',Category:'Metal','Thermal Stability':'High',Magnetism:'Ferrous','Melting Point':1538, Density:7.874, Toxicity:'Low', 'Chemical Reactivity':'Moderate', 'Polymer Type':'', Additives:'No'},
+                {Material:'Steel',Category:'Metal','Thermal Stability':'High',Magnetism:'Ferrous','Melting Point':1370, Density:7.75, Toxicity:'Low', 'Chemical Reactivity':'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'Copper',Category:'Metal','Thermal Stability':'High',Magnetism:'Non-ferrous','Melting Point':1085, Density:8.96, Toxicity:'Low', 'Chemical Reactivity':'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'HDPE (High Density Polyethylene)',Category:'Polymer','Thermal Stability':'Low',Magnetism:'Non-magnetic','Melting Point':130, Density:0.95, Toxicity:'Low', 'Chemical Reactivity':'Low', 'Polymer Type':'HDPE', Additives:'No'},
+                {Material:'PET (Polyethylene Terephthalate)',Category:'Polymer','Thermal Stability':'Moderate',Magnetism:'Non-magnetic','Melting Point':260, Density:1.38, Toxicity:'Low', 'Chemical Reactivity':'Low', 'Polymer Type':'PET', Additives:'No'},
+                {Material:'Brick',Category:'Ceramic','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':2000, Density:1.8, Toxicity:'Low', 'Chemical Reactivity':'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'Soda-lime Glass',Category:'Glass','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':573, Density:2.5, Toxicity:'Low', 'Chemical Reactivity':'Low', 'Polymer Type':'', Additives:'No'},
+                {Material:'CFRP (Carbon Fiber Reinforced Polymer)',Category:'Composite','Thermal Stability':'High',Magnetism:'Non-magnetic','Melting Point':350, Density:1.6, Toxicity:'Moderate', 'Chemical Reactivity':'Low', 'Polymer Type':'', Additives:'Yes'}
                 // ...add more as needed
             ];
-            // Find similar materials by category and close melting point/density
+
+            // Define properties that must match exactly
+            const strictProperties = [
+                'Thermal Stability',
+                'Chemical Reactivity',
+                'Polymer Type',
+                'Additives',
+                'Magnetism',
+                'Toxicity'
+            ];
+
+            // Find similar materials with strict and flexible matching
             return materialsList.filter(mat => {
+                // Category must always match
                 if (mat.Category !== inputMaterial.Category) return false;
-                if (Math.abs(mat['Melting Point'] - inputMaterial['Melting Point']) > 100) return false;
-                if (Math.abs(mat.Density - inputMaterial.Density) > 0.5) return false;
-                if (mat.Toxicity !== inputMaterial.Toxicity) return false;
-                if (inputMaterial.Category === 'Polymer' && mat['Polymer Type'] && inputMaterial['Polymer Type'] && mat['Polymer Type'] !== inputMaterial['Polymer Type']) return false;
+
+                // Check strict matching properties
+                for (const prop of strictProperties) {
+                    // Only check if the input material has this property and it's not empty
+                    if (inputMaterial[prop] && inputMaterial[prop] !== '') {
+                        if (mat[prop] !== inputMaterial[prop]) return false;
+                    }
+                }
+
+                // Check properties with allowed ranges
+                // Melting point: Allow ±100°C range
+                if (inputMaterial['Melting Point'] && mat['Melting Point']) {
+                    if (Math.abs(mat['Melting Point'] - inputMaterial['Melting Point']) > 100) return false;
+                }
+
+                if (inputMaterial.Density && mat.Density) {
+                    const densityRange = inputMaterial.Density * 0.3;
+                    if (Math.abs(mat.Density - inputMaterial.Density) > densityRange) return false;
+                }
+
                 return true;
             });
         }
